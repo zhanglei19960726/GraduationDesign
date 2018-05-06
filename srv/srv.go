@@ -37,6 +37,7 @@ func validateUrl(w http.ResponseWriter, r *http.Request) bool {
 
 }
 func procRequest(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "text/xml")
 	r.ParseForm()
 	if !validateUrl(w, r) {
 		log.Println("Wechat Service: this http request is not from Wechat platform!")
@@ -51,6 +52,12 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		fmt.Println("Wechat Service: Recv text msg [" + requestBody.Content + "] from user [" + requestBody.FromUserName + "]!")
+		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello "+requestBody.Content)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+		fmt.Println(w, responseBody)
 	}
 }
 
