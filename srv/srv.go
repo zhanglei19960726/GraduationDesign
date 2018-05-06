@@ -50,7 +50,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 			log.Println(err.Error())
 			return
 		}
-		fmt.Println("Wechat Service: Recv text msg [%s] from user [%s]!", requestBody.Content, requestBody.FromUserName)
+		fmt.Println("Wechat Service: Recv text msg [" + requestBody.Content + "] from user [" + requestBody.FromUserName + "]!")
 	}
 }
 
