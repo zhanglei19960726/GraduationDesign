@@ -44,7 +44,14 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 
 	}
 	log.Println("Wechat Service: validateUrl Ok!")
-	handle(w,r)
+	if r.Method == "POST" {
+		requestBody, err := parseTextRequestBody(r)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+		fmt.Println("Wechat Service: Recv text msg [%s] from user [%s]!", requestBody.Content, requestBody.FromUserName)
+	}
 }
 
 func Run() {
