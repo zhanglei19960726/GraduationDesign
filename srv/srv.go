@@ -44,6 +44,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 
 	}
 	log.Println("Wechat Service: validateUrl Ok!")
+	handle(w,r)
 }
 
 func Run() {
