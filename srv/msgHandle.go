@@ -7,14 +7,18 @@ import (
 	"time"
 )
 
+type CDATAText struct {
+	Text string `xml:",innerxml"`
+}
+
 //微信报文格式
 type TextRequestBody struct {
 	XMLName      xml.Name `xml:"xml"`
-	ToUserName   string
-	FromUserName string
+	ToUserName   CDATAText
+	FromUserName CDATAText
 	CreateTime   time.Duration
-	MsgType      string
-	Content      string
+	MsgType      CDATAText
+	Content      CDATAText
 	MsgId        int
 }
 
@@ -29,8 +33,8 @@ func parseTextRequestBody(r *http.Request) (*TextRequestBody, error) {
 	return requestBody, nil
 }
 
-func value2CDATA(v string) string {
-	return "<![CATA[" + v + "]]>"
+func value2CDATA(v string) CDATAText {
+	return CDATAText{"<![CATA[" + v + "]]>"}
 }
 
 //打包
