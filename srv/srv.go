@@ -57,11 +57,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 			log.Println(err.Error())
 			return
 		}
-		_, err = w.Write(responseBody)
-		if err != nil {
-			log.Println(err.Error())
-			return
-		}
+		fmt.Fprint(w, responseBody)
 	}
 }
 
