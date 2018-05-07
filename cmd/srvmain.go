@@ -1,7 +1,12 @@
 package main
 
-import "GraduationDesign/srv"
+import (
+	"GraduationDesign/client/diyMen"
+	"GraduationDesign/srv"
+)
 
 func main() {
-	srv.Run()
+	go srv.Run()
+	go diyMen.CreateWxMenu()
+	select {}
 }
