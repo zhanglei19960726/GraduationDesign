@@ -57,11 +57,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 			log.Println("Wechat Service : makeTextResponseBody error:", err)
 			return
 		}
-		num, err := w.Write(responseBody)
-		if err != nil {
-			fmt.Println(1)
-		}
-		fmt.Println(num)
+		w.Write(responseBody)
 	}
 }
 
