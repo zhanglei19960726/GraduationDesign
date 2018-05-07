@@ -57,7 +57,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 			log.Println(err.Error())
 			return
 		}
-		fmt.Fprint(w, responseBody)
+		fmt.Fprintf(w, string(responseBody))
 	}
 }
 
