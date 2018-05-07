@@ -34,7 +34,7 @@ func parseTextRequestBody(r *http.Request) (*TextRequestBody, error) {
 }
 
 func value2CDATA(v string) CDATAText {
-	return CDATAText{"<![CDATA[" + v + "]]>"}
+	return CDATAText{Text: "<![CDATA[" + v + "]]>"}
 }
 
 //打包

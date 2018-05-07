@@ -52,12 +52,12 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		fmt.Println("Wechat Service: Recv text msg [" + requestBody.Content.Text + "] from user [" + requestBody.FromUserName.Text + "]!")
-		responseBody, err := makeTextResponseBody(requestBody.ToUserName.Text, requestBody.FromUserName.Text, "hello "+requestBody.Content.Text)
+		responseBody, err := makeTextResponseBody(requestBody.FromUserName.Text, requestBody.ToUserName.Text, "hello "+requestBody.Content.Text)
 		if err != nil {
 			log.Println(err.Error())
 			return
 		}
-		fmt.Fprint(w, responseBody)
+		fmt.Fprint(w, string(responseBody))
 	}
 }
 
