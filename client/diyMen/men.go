@@ -34,35 +34,35 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 }
 
 func CreateWxMenu() {
-	menuStr := `{
-            "button": [
-            {
-                "name": "进入商城",
-                "type": "view",
-                "url": "http://www.baidu.com/"
+	menuStr := ` {
+     "button":[
+     {    
+          "type":"click",
+          "name":"今日歌曲",
+          "key":"V1001_TODAY_MUSIC"
+      },
+      {
+           "name":"菜单",
+           "sub_button":[
+           {    
+               "type":"view",
+               "name":"搜索",
+               "url":"http://www.soso.com/"
             },
             {
-
-                "name":"管理中心",
-                 "sub_button":[
-                        {
-                        "name": "用户中心",
-                        "type": "click",
-                        "key": "molan_user_center"
-                        },
-                        {
-                        "name": "公告",
-                        "type": "click",
-                        "key": "molan_institution"
-                        }]
-            },
+                 "type":"miniprogram",
+                 "name":"wxa",
+                 "url":"http://mp.weixin.qq.com",
+                 "appid":"wx286b93c14bbf93aa",
+                 "pagepath":"pages/lunar/index"
+             },
             {
-                "name": "资料修改",
-                "type": "view",
-                "url": "http://www.baidu.com/user_view"
-            }
-            ]
-        }`
+               "type":"click",
+               "name":"赞一下我们",
+               "key":"V1001_GOOD"
+            }]
+       }]
+ }`
 	accessToken, err := WxPlatUtil.GetAndUpdateDBWxAToken()
 	if err != nil {
 		panic(err)
