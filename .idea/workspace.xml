@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/cmd/WxPlatUtilMain.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/diyMen/mue.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WxPlatUtil/WxPlatUtil.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/WxPlatUtilMain.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/WxPlatUtilMain.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,10 +26,10 @@
         </entry>
       </file>
       <file leaf-file-name="WxPlatUtil.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WxPlatUtil/WxPlatUtil.go">
+        <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-185">
-              <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+            <state relative-caret-position="550">
+              <caret line="53" selection-start-line="53" selection-end-line="54" />
               <folding>
                 <element signature="e#20#106#0" expanded="true" />
               </folding>
@@ -35,11 +37,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WxPlatUtilMain.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WxPlatUtilMain.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmd/WxPlatUtilMain.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+            <state relative-caret-position="198">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#14#62#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mue.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/diyMen/mue.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+              <folding>
+                <element signature="e#16#103#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,7 +121,10 @@
         <option value="$PROJECT_DIR$/srv/msgHandle.go" />
         <option value="$PROJECT_DIR$/srv/srv.go" />
         <option value="$PROJECT_DIR$/WxPlatUtil/WxPlatUtil.go" />
+        <option value="$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go" />
         <option value="$PROJECT_DIR$/cmd/WxPlatUtilMain.go" />
+        <option value="$PROJECT_DIR$/client/diyMue/mue.go" />
+        <option value="$PROJECT_DIR$/client/diyMen/mue.go" />
       </list>
     </option>
   </component>
@@ -138,7 +158,23 @@
             <path>
               <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
               <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="WxPlatUtil" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
               <item name="cmd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="srv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -155,6 +191,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\go_workspace\src\GraduationDesign\client" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -210,10 +251,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="676" y="0" width="697" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18078668" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.37362638" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289256" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
@@ -326,20 +367,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WxPlatUtil/WxPlatUtil.go">
+    <entry file="file://$PROJECT_DIR$/cmd/WxPlatUtilMain.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-185">
-          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+        <state relative-caret-position="198">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#14#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="53" selection-start-line="53" selection-end-line="54" />
           <folding>
             <element signature="e#20#106#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/WxPlatUtilMain.go">
+    <entry file="file://$PROJECT_DIR$/client/diyMen/mue.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+        <state relative-caret-position="480">
+          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+          <folding>
+            <element signature="e#16#103#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
