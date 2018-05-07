@@ -7,5 +7,5 @@ import (
 
 func main() {
 	WxPlatUtil.GetAndUpdateDBWxAToken()
-	fmt.Println()
+	fmt.Println(WxPlatUtil.AccessToken)
 }
