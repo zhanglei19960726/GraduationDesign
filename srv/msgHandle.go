@@ -29,7 +29,9 @@ type msgBase struct {
 type RequestBody struct {
 	XMLName xml.Name `xml:"xml"`
 	msgBase
-	MsgId int
+	MsgId    int
+	Event    string
+	EventKey string
 }
 
 //响应普通消息格式

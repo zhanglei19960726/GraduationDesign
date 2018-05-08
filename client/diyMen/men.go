@@ -36,24 +36,19 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 
 func CreateWxMenu() error {
 	menuStr := ` {
-    "button": [
-        	{
-            	"type": "click", 
-            	"name": "今日歌曲", 
-            	"key": "V1001_TODAY_MUSIC"
-        	}, 
+    "button": [ 
         	{
             	"name": "菜单", 
             	"sub_button": [
                 	{
                     	"type": "click", 
-                    	"name": "赞一下我们", 
-                    	"key": "V1001_GOOD"
+                    	"name": "课件", 
+                    	"key": "V1"
                 	}, 
                 	{
                     	"type": "click", 
-                    	"name": "赞一下我们", 
-                    	"key": "V1001_GOOD"
+                    	"name": "安装教程", 
+                    	"key": "V2"
                 	}
             	]
         	},
@@ -63,12 +58,12 @@ func CreateWxMenu() error {
                 	{
                     	"type": "click", 
                     	"name": "赞一下我们", 
-                    	"key": "V1001_GOOD"
+                    	"key": "V3"
                 	}, 
                 	{
                     	"type": "click", 
                     	"name": "赞一下我们", 
-                    	"key": "V1001_GOOD"
+                    	"key": "V4"
                 	}
             	]
         	}
@@ -79,6 +74,5 @@ func CreateWxMenu() error {
 		log.Println(err.Error())
 		return err
 	}
-	fmt.Println("111", WxPlatUtil.Accesstoken)
 	return pushWxMenuCreate(WxPlatUtil.Accesstoken, []byte(menuStr))
 }

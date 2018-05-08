@@ -39,6 +39,7 @@ func validateUrl(w http.ResponseWriter, r *http.Request) bool {
 }
 func procRequest(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
+
 	//验证消息是否是微信消息
 	if !validateUrl(w, r) {
 		log.Println("Wechat Service: this http request is not from Wechat platform!")
@@ -46,14 +47,22 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 
 	}
 	log.Println("Wechat Service: validateUrl Ok!")
+
+	//创建菜单
 	diyMen.CreateWxMenu()
+
 	if r.Method == "POST" {
 		requestBody, err := parseTextRequestBody(r)
 		if err != nil {
 			log.Println(err.Error())
 			return
 		}
+		wxHandle(w, requestBody)
+	}
+}
 
+func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
+	if requestBody.MsgType == "event" {
 		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello "+requestBody.FromUserName)
 		if err != nil {
 			log.Println("Wechat Service : makeTextResponseBody error:", err)
