@@ -26,6 +26,7 @@ var (
 	appID               = "wxd2329671b539d3c8"
 	appSecret           = "c90858154797ced838e0d828b68b653b"
 	accessTokenFetchUrl = "https://api.weixin.qq.com/cgi-bin/token"
+	Accesstoken         string
 )
 
 //获取AccessToken
@@ -62,11 +63,12 @@ func fetchAccessToken(appID, appSecret, accessTokenFetchUrl string) (string, err
 	}
 }
 
-func GetAndUpdateDBWxAToken() (string, error) {
+func GetAndUpdateDBWxAToken() error {
 	token, err := fetchAccessToken(appID, appSecret, accessTokenFetchUrl)
 	if err != nil {
 		log.Println("向微信服务器发送获取accessToken的get请求失败：", err)
-		return "", err
+		return err
 	}
-	return token, nil
+	Accesstoken = token
+	return nil
 }

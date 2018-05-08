@@ -3,6 +3,7 @@ package diyMen
 import (
 	"GraduationDesign/client/WxPlatUtil"
 	"bytes"
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
@@ -33,7 +34,7 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 	return nil
 }
 
-func CreateWxMenu() {
+func CreateWxMenu() error {
 	menuStr := ` {
      "button":[
      {    
@@ -62,10 +63,11 @@ func CreateWxMenu() {
                "key":"V1001_GOOD"
             }]
        }]
- }`
-	accessToken, err := WxPlatUtil.GetAndUpdateDBWxAToken()
+ 	}`
+	err := WxPlatUtil.GetAndUpdateDBWxAToken()
+	fmt.Println("token is :", WxPlatUtil.Accesstoken)
 	if err != nil {
 		panic(err)
 	}
-	pushWxMenuCreate(accessToken, []byte(menuStr))
+	return pushWxMenuCreate(WxPlatUtil.Accesstoken, []byte(menuStr))
 }
