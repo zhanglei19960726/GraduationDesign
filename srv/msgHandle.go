@@ -18,11 +18,11 @@ type MenErrorResponse struct {
 }
 
 type msgBase struct {
-	ToUserName   CDATAText
-	FromUserName CDATAText
+	ToUserName   string
+	FromUserName string
 	CreateTime   time.Duration
-	MsgType      CDATAText
-	Content      CDATAText
+	MsgType      string
+	Content      string
 }
 
 //请求普通消息格式
@@ -30,8 +30,8 @@ type RequestBody struct {
 	XMLName xml.Name `xml:"xml"`
 	msgBase
 	MsgId    int
-	Event    CDATAText
-	EventKey CDATAText
+	Event    string
+	EventKey string
 }
 
 //响应普通消息格式

@@ -15,8 +15,8 @@ func clickHanlde(eventKey string) string {
 	}
 }
 
-func subscribeHandle(eventKey string) {
-
+func subscribeHandle(eventKey string) string {
+	return "hello"
 }
 
 func unsubscribeHanlde(eventKey string) {
