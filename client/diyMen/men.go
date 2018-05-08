@@ -17,11 +17,11 @@ type MenErrorResponse struct {
 }
 
 var (
-	menuFetchUrl = " https://api.weixin.qq.com/cgi-bin/menu/create?access_token="
+	menuFetchUrl = " https://api.weixin.qq.com/cgi-bin/menu/create"
 )
 
 func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
-	requsLine := menuFetchUrl + accessToken
+	requsLine := menuFetchUrl + "?access_token=" + accessToken
 	fmt.Println("2222222222222222222222", requsLine)
 	resp, err := http.Post(requsLine, "application/json; encoding=utf-8", bytes.NewReader(menuJsonBytes))
 	if err != nil {
