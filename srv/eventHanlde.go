@@ -1,18 +1,15 @@
 package srv
 
-import "fmt"
-
 func clickHanlde(eventKey string) string {
-	fmt.Println("1111111111111", eventKey)
 	switch eventKey {
-	case "v1":
-		return "v1"
-	case "v2":
-		return "v2"
-	case "v3":
-		return "v3"
-	case "v4":
-		return "v4"
+	case "V1":
+		return "课件"
+	case "V2":
+		return "安装教程"
+	case "V3":
+		return "赞一下我们"
+	case "V4":
+		return "赞一下我们"
 	default:
 		return "error"
 	}
