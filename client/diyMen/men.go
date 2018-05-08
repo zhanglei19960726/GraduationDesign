@@ -49,9 +49,19 @@ func CreateWxMenu() error {
             "key": "V1001_TODAY_MUSIC"
         }, 
         {
-            "type": "click", 
-            "name": "kkk", 
-            "key": "V101_TODA"
+            "name": "菜单", 
+            "sub_button": [
+                {
+                    "type": "click", 
+                    "name": "赞一下我们", 
+                    "key": "V1001_GOOD"
+                }, 
+                {
+                    "type": "click", 
+                    "name": "赞一下我们", 
+                    "key": "V1001_GOOD"
+                }
+            ]
         }
     ]
 }`
