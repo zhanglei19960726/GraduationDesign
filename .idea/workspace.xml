@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/diyMen/mue.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/diyMen/men.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/srvmain.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/srvmain.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srv/srv.go" beforeDir="false" afterPath="$PROJECT_DIR$/srv/srv.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +18,8 @@
       <file leaf-file-name="srvmain.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmd/srvmain.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+            <state relative-caret-position="154">
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
               <folding>
                 <element signature="e#14#82#0" expanded="true" />
               </folding>
@@ -29,8 +30,8 @@
       <file leaf-file-name="WxPlatUtil.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="893">
-              <caret line="52" column="12" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="52" selection-end-column="12" />
+            <state relative-caret-position="968">
+              <caret line="52" column="12" selection-start-line="51" selection-start-column="35" selection-end-line="52" selection-end-column="12" />
               <folding>
                 <element signature="e#20#106#0" expanded="true" />
               </folding>
@@ -38,14 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="men.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="men.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="64" column="2" selection-start-line="64" selection-start-column="2" selection-end-line="64" selection-end-column="2" />
-              <folding>
-                <element signature="e#16#103#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="22">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -53,8 +51,8 @@
       <file leaf-file-name="bytes.go" pinned="false" current-in-tab="false">
         <entry file="file://C:/Go/src/bytes/bytes.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="49" />
+            <state relative-caret-position="1364">
+              <caret line="65" column="44" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -62,7 +60,7 @@
       <file leaf-file-name="msgHandle.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srv/msgHandle.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
+            <state relative-caret-position="990">
               <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
               <folding>
                 <element signature="e#13#72#0" expanded="true" />
@@ -71,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="srv.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="srv.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/srv/srv.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="53" column="40" lean-forward="true" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+            <state relative-caret-position="225">
+              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -83,7 +81,7 @@
       <file leaf-file-name="server.go" pinned="false" current-in-tab="false">
         <entry file="file://C:/Go/src/net/http/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="2398">
               <caret line="132" column="27" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
             </state>
           </provider>
@@ -107,14 +105,14 @@
       <list>
         <option value="$PROJECT_DIR$/GraduationDesign/srv/srv.go" />
         <option value="$PROJECT_DIR$/srv/msgHandle.go" />
-        <option value="$PROJECT_DIR$/srv/srv.go" />
         <option value="$PROJECT_DIR$/WxPlatUtil/WxPlatUtil.go" />
         <option value="$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go" />
         <option value="$PROJECT_DIR$/cmd/WxPlatUtilMain.go" />
         <option value="$PROJECT_DIR$/client/diyMue/mue.go" />
         <option value="$PROJECT_DIR$/client/diyMen/mue.go" />
-        <option value="$PROJECT_DIR$/cmd/srvmain.go" />
         <option value="$PROJECT_DIR$/client/diyMen/men.go" />
+        <option value="$PROJECT_DIR$/cmd/srvmain.go" />
+        <option value="$PROJECT_DIR$/srv/srv.go" />
       </list>
     </option>
   </component>
@@ -250,11 +248,10 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17927383" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15960665" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289256" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3338926" />
@@ -268,6 +265,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,6 +284,122 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/cmd/srvmain.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="e#14#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1144">
+          <caret line="52" column="12" selection-start-line="51" selection-start-column="35" selection-end-line="52" selection-end-column="12" />
+          <folding>
+            <element signature="e#20#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/bytes/bytes.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srv/msgHandle.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="e#13#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srv/srv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/net/http/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2904">
+          <caret line="132" column="27" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/srvmain.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="e#14#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1144">
+          <caret line="52" column="12" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="52" selection-end-column="12" />
+          <folding>
+            <element signature="e#20#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/bytes/bytes.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srv/msgHandle.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="e#13#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srv/srv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1166">
+          <caret line="53" column="40" lean-forward="true" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/net/http/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2904">
+          <caret line="132" column="27" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1012">
+          <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmd/srvmain.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -330,14 +444,14 @@
     </entry>
     <entry file="file://C:/Go/src/net/http/server.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="2398">
           <caret line="132" column="27" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srv/msgHandle.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
+        <state relative-caret-position="990">
           <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
           <folding>
             <element signature="e#13#72#0" expanded="true" />
@@ -345,44 +459,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srv/srv.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="53" column="40" lean-forward="true" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Go/src/bytes/bytes.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="49" />
+        <state relative-caret-position="1364">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/WxPlatUtilMain.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#14#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/srvmain.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/WxPlatUtilMain.go" />
     <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="52" column="12" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="52" selection-end-column="12" />
+        <state relative-caret-position="968">
+          <caret line="52" column="12" selection-start-line="51" selection-start-column="35" selection-end-line="52" selection-end-column="12" />
           <folding>
             <element signature="e#20#106#0" expanded="true" />
           </folding>
@@ -391,11 +479,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="64" column="2" selection-start-line="64" selection-start-column="2" selection-end-line="64" selection-end-column="2" />
+        <state relative-caret-position="22">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/srvmain.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
-            <element signature="e#16#103#0" expanded="true" />
+            <element signature="e#14#82#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srv/srv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
         </state>
       </provider>
     </entry>
