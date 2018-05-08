@@ -1,6 +1,9 @@
 package srv
 
+import "fmt"
+
 func clickHanlde(eventKey string) string {
+	fmt.Println("1111111111111", eventKey)
 	switch eventKey {
 	case "v1":
 		return "v1"
