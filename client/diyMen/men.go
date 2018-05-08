@@ -22,6 +22,7 @@ var (
 
 func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 	requsLine := menuFetchUrl + accessToken
+	fmt.Println("2222222222222222222222", requsLine)
 	resp, err := http.Post(requsLine, "application/json; encoding=utf-8", bytes.NewReader(menuJsonBytes))
 	if err != nil {
 		log.Println("发送建立菜单请求失败：", err.Error())
