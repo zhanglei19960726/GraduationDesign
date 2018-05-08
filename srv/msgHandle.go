@@ -11,18 +11,28 @@ type CDATAText struct {
 	Text string `xml:",innerxml"`
 }
 
-//微信收消息报文格式
-type TextRequestBody struct {
-	XMLName      xml.Name `xml:"xml"`
+//创建菜单微信返回json格式
+type MenErrorResponse struct {
+	ErrorCode int
+	ErrMsg    string
+}
+
+type msgBase struct {
 	ToUserName   string
 	FromUserName string
 	CreateTime   time.Duration
 	MsgType      string
 	Content      string
-	MsgId        int
 }
 
-//微信发消息报文格式
+//请求普通消息格式
+type RequestBody struct {
+	XMLName xml.Name `xml:"xml"`
+	msgBase
+	MsgId int
+}
+
+//响应普通消息格式
 type TextReponseBody struct {
 	XMLName      xml.Name `xml:"xml"`
 	ToUserName   CDATAText
@@ -32,13 +42,15 @@ type TextReponseBody struct {
 	Content      CDATAText
 }
 
+//
+
 //解析微信客户端消息内容
-func parseTextRequestBody(r *http.Request) (*TextRequestBody, error) {
+func parseTextRequestBody(r *http.Request) (*RequestBody, error) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		return nil, err
 	}
-	requestBody := &TextRequestBody{}
+	requestBody := &RequestBody{}
 	xml.Unmarshal(body, requestBody)
 	return requestBody, nil
 }
