@@ -9,12 +9,6 @@ import (
 	"strings"
 )
 
-//创建菜单微信返回json格式
-type MenErrorResponse struct {
-	ErrorCode int
-	ErrMsg    string
-}
-
 func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 	postReq, err := http.NewRequest("POST",
 		strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/menu/create", "?access_token=", accessToken}, ""),
