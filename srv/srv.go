@@ -45,11 +45,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 
 	}
 	log.Println("Wechat Service: validateUrl Ok!")
-	err := diyMen.CreateWxMenu()
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
+	diyMen.CreateWxMenu()
 	if r.Method == "POST" {
 		requestBody, err := parseTextRequestBody(r)
 		if err != nil {

@@ -3,9 +3,7 @@ package diyMen
 import (
 	"GraduationDesign/client/WxPlatUtil"
 	"bytes"
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
@@ -17,32 +15,29 @@ type MenErrorResponse struct {
 	ErrMsg    string
 }
 
-var (
-	menuFetchUrl = " https://api.weixin.qq.com/cgi-bin/menu/create"
-)
-
 func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
-	requsLine := strings.Join([]string{menuFetchUrl, "?access_token=", accessToken}, "")
-	fmt.Println("2222222222222222222222", requsLine)
-	resp, err := http.Post(requsLine, "application/json; encoding=utf-8", bytes.NewReader(menuJsonBytes))
+	postReq, err := http.NewRequest("POST",
+		strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/menu/create", "?access_token=", accessToken}, ""),
+		bytes.NewReader(menuJsonBytes))
+
 	if err != nil {
-		log.Println("发送建立菜单请求失败：", err.Error())
+		fmt.Println("向微信发送菜单建立请求失败", err)
 		return err
+	}
+
+	postReq.Header.Set("Content-Type", "application/json; encoding=utf-8")
+
+	client := &http.Client{}
+	resp, err := client.Do(postReq)
+	if err != nil {
+		fmt.Println("client向微信发送菜单建立请求失败", err)
+		return err
+	} else {
+		fmt.Println("向微信发送菜单建立成功")
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Println("发送post请求创建菜单读取返回body错误", err)
-		return err
-	}
-	atr := &MenErrorResponse{}
-	err = json.Unmarshal(body, &atr)
-	if err != nil {
-		log.Println("发送post请求创建菜单解析body错误", err)
-		return err
-	}
-	fmt.Println("发送Post请求获取 微信返回的错误信息", atr)
-	return fmt.Errorf("%s", atr.ErrMsg)
+
+	return nil
 }
 
 func CreateWxMenu() error {
@@ -76,7 +71,6 @@ func CreateWxMenu() error {
        }]
  	}`
 	err := WxPlatUtil.GetAndUpdateDBWxAToken()
-	fmt.Println("11111111111111111111111111", WxPlatUtil.Accesstoken)
 	if err != nil {
 		log.Println(err.Error())
 		return err
