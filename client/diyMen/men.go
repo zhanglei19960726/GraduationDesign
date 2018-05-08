@@ -43,28 +43,43 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 func CreateWxMenu() error {
 	menuStr := ` {
     "button": [
-        {
-            "type": "click", 
-            "name": "今日歌曲", 
-            "key": "V1001_TODAY_MUSIC"
-        }, 
-        {
-            "name": "菜单", 
-            "sub_button": [
-                {
-                    "type": "click", 
-                    "name": "赞一下我们", 
-                    "key": "V1001_GOOD"
-                }, 
-                {
-                    "type": "click", 
-                    "name": "赞一下我们", 
-                    "key": "V1001_GOOD"
-                }
-            ]
-        }
-    ]
-}`
+        	{
+            	"type": "click", 
+            	"name": "今日歌曲", 
+            	"key": "V1001_TODAY_MUSIC"
+        	}, 
+        	{
+            	"name": "菜单", 
+            	"sub_button": [
+                	{
+                    	"type": "click", 
+                    	"name": "赞一下我们", 
+                    	"key": "V1001_GOOD"
+                	}, 
+                	{
+                    	"type": "click", 
+                    	"name": "赞一下我们", 
+                    	"key": "V1001_GOOD"
+                	}
+            	]
+        	},
+ 			{
+            	"name": "菜单", 
+				"sub_button": [
+                	{
+                    	"type": "click", 
+                    	"name": "赞一下我们", 
+                    	"key": "V1001_GOOD"
+                	}, 
+                	{
+                    	"type": "click", 
+                    	"name": "赞一下我们", 
+                    	"key": "V1001_GOOD"
+                	}
+            	]
+        	}
+    	]
+	}`
 	err := WxPlatUtil.GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
