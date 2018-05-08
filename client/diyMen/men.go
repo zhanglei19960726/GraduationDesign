@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 //创建菜单微信返回json格式
@@ -21,7 +22,7 @@ var (
 )
 
 func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
-	requsLine := menuFetchUrl + "?access_token=" + accessToken
+	requsLine := strings.Join([]string{menuFetchUrl, "?access_token=", accessToken}, "")
 	fmt.Println("2222222222222222222222", requsLine)
 	resp, err := http.Post(requsLine, "application/json; encoding=utf-8", bytes.NewReader(menuJsonBytes))
 	if err != nil {
