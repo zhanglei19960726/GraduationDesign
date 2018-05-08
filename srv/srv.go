@@ -62,28 +62,27 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 }
 
 func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
-	if requestBody.MsgType == "text" {
+	if requestBody.MsgType.Text == "text" {
 		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
 		if err != nil {
 			log.Println("Wechat Service : makeTextResponseBody error:", err)
 			return
 		}
 		w.Write(responseBody)
-	} else if requestBody.MsgType == "event" {
+	} else if requestBody.MsgType.Text == "event" {
 		if requestBody.Event == value2CDATA("CLICK") {
 			//菜单点击事件
-			content := clickHanlde(requestBody.EventKey.Text)
-			fmt.Println(content)
-			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
+			clickHanlde(requestBody.EventKey.Text)
+			responseBody, err := makeTextResponseBody(requestBody.ToUserName.Text, requestBody.FromUserName.Text, requestBody.EventKey.Text)
 			if err != nil {
 				log.Println("Wechat Service : makeTextResponseBody error:", err)
 				return
 			}
 			w.Write(responseBody)
-		} else if requestBody.Event == value2CDATA("subscribe") {
+		} else if requestBody.Event.Text == "subscribe" {
 			//订阅事件
 			subscribeHandle(requestBody.EventKey.Text)
-		} else if requestBody.Event == value2CDATA("unsubscribe") {
+		} else if requestBody.Event.Text == "unsubscribe" {
 			//取消订阅事件
 			unsubscribeHanlde(requestBody.EventKey.Text)
 		}

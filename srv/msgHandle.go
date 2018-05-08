@@ -18,11 +18,11 @@ type MenErrorResponse struct {
 }
 
 type msgBase struct {
-	ToUserName   string
-	FromUserName string
+	ToUserName   CDATAText
+	FromUserName CDATAText
 	CreateTime   time.Duration
-	MsgType      string
-	Content      string
+	MsgType      CDATAText
+	Content      CDATAText
 }
 
 //请求普通消息格式

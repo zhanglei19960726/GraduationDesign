@@ -11,7 +11,7 @@ func clickHanlde(eventKey string) string {
 	case "v4":
 		return "v4"
 	default:
-		return "33333333333333333333333333333333333333"
+		return "error"
 	}
 }
 
