@@ -5,34 +5,42 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
-	"strings"
+)
+
+//创建菜单微信返回json格式
+type MenErrorResponse struct {
+	ErrorCode int
+	ErrMsg    string
+}
+
+var (
+	menuFetchUrl = " https://api.weixin.qq.com/cgi-bin/menu/create?access_token="
 )
 
 func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
-	postReq, err := http.NewRequest("POST",
-		strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/menu/create", "?access_token=", accessToken}, ""),
-		bytes.NewReader(menuJsonBytes))
-
+	requsLine := menuFetchUrl + accessToken
+	resp, err := http.Post(requsLine, "application/json; encoding=utf-8", bytes.NewReader(menuJsonBytes))
 	if err != nil {
-		log.Println("向微信发送菜单建立请求失败", err)
+		log.Println("发送建立菜单请求失败：", err.Error())
 		return err
-	}
-
-	postReq.Header.Set("Content-Type", "application/json; encoding=utf-8")
-
-	client := &http.Client{}
-	resp, err := client.Do(postReq)
-	if err != nil {
-		log.Println("client向微信发送菜单建立请求失败", err)
-		return err
-	} else {
-		log.Println("向微信发送菜单建立成功")
 	}
 	defer resp.Body.Close()
-
-	return nil
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("发送post请求创建菜单读取返回body错误", err)
+		return err
+	}
+	atr := &MenErrorResponse{}
+	err = json.Unmarshal(body, &atr)
+	if err != nil {
+		log.Println("发送post请求创建菜单解析body错误", err)
+		return err
+	}
+	fmt.Println("发送Post请求获取 微信返回的错误信息", atr)
+	return fmt.Errorf("%s", atr.ErrMsg)
 }
 
 func CreateWxMenu() error {
@@ -66,7 +74,6 @@ func CreateWxMenu() error {
        }]
  	}`
 	err := WxPlatUtil.GetAndUpdateDBWxAToken()
-	fmt.Println("token is :", WxPlatUtil.Accesstoken)
 	if err != nil {
 		return err
 	}

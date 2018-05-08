@@ -16,7 +16,7 @@ type AccessTokenResponse struct {
 	ExpiresIn   float64 `json:"expires_in"`
 }
 
-//请求失败
+//请求获取Access失败
 type AccessTokenErrorResponse struct {
 	Error  float64
 	Errmsg string
