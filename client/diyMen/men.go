@@ -51,7 +51,7 @@ func CreateWxMenu() error {
         {
             "type": "click", 
             "name": "kkk", 
-            "key": "V1001_TODA"
+            "key": "V101_TODA"
         }
     ]
 }`
