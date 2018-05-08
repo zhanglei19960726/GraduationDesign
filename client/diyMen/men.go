@@ -74,7 +74,9 @@ func CreateWxMenu() error {
        }]
  	}`
 	err := WxPlatUtil.GetAndUpdateDBWxAToken()
+	fmt.Println(WxPlatUtil.Accesstoken)
 	if err != nil {
+		log.Println(err.Error())
 		return err
 	}
 	menuJsonBytes, err := json.Marshal(menuStr)
