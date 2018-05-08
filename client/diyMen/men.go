@@ -75,5 +75,6 @@ func CreateWxMenu() error {
 		log.Println(err.Error())
 		return err
 	}
+	fmt.Println("111", WxPlatUtil.Accesstoken)
 	return pushWxMenuCreate(WxPlatUtil.Accesstoken, []byte(menuStr))
 }
