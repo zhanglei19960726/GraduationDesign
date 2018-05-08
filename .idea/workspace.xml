@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/diyMen/men.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/diyMen/men.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WxPlatUtil.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WxPlatUtil.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
-              <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="47" />
+            <state relative-caret-position="-251">
+              <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
               <folding>
                 <element signature="e#20#106#0" expanded="true" />
               </folding>
@@ -37,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="men.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="men.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="797">
-              <caret line="71" column="6" selection-start-line="43" selection-start-column="16" selection-end-line="71" selection-end-column="6" />
+            <state relative-caret-position="189">
+              <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
               <folding>
                 <element signature="e#16#122#0" expanded="true" />
               </folding>
@@ -102,8 +103,8 @@
         <option value="$PROJECT_DIR$/client/diyMue/mue.go" />
         <option value="$PROJECT_DIR$/client/diyMen/mue.go" />
         <option value="$PROJECT_DIR$/cmd/srvmain.go" />
-        <option value="$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go" />
         <option value="$PROJECT_DIR$/srv/srv.go" />
+        <option value="$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go" />
         <option value="$PROJECT_DIR$/client/diyMen/men.go" />
       </list>
     </option>
@@ -238,7 +239,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15960665" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289256" />
@@ -489,22 +489,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
+    <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="797">
-          <caret line="71" column="6" selection-start-line="43" selection-start-column="16" selection-end-line="71" selection-end-column="6" />
+        <state relative-caret-position="-251">
+          <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
           <folding>
-            <element signature="e#16#122#0" expanded="true" />
+            <element signature="e#20#106#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go">
+    <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="47" />
+        <state relative-caret-position="189">
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
           <folding>
-            <element signature="e#20#106#0" expanded="true" />
+            <element signature="e#16#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
