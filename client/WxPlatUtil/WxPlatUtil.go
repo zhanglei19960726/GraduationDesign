@@ -23,8 +23,8 @@ type AccessTokenErrorResponse struct {
 }
 
 var (
-	appID               = "wxd2329671b539d3c8"
-	appSecret           = "c90858154797ced838e0d828b68b653b"
+	appID               = "wxf4b1e3a9d5753984"
+	appSecret           = "c8981b2fc40b3ecc24f22dc644829099"
 	accessTokenFetchUrl = "https://api.weixin.qq.com/cgi-bin/token"
 	Accesstoken         string
 )
