@@ -42,14 +42,19 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 
 func CreateWxMenu() error {
 	menuStr := ` {
-     "button":[
-     {    
-          "type":"click",
-          "name":"今日歌曲",
-          "key":"V1001_TODAY_MUSIC"
-      },
+    "button": [
+        {
+            "type": "click", 
+            "name": "今日歌曲", 
+            "key": "V1001_TODAY_MUSIC"
+        }, 
+        {
+            "type": "click", 
+            "name": "kkk", 
+            "key": "V1001_TODA"
+        }
     ]
- 	}`
+}`
 	err := WxPlatUtil.GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
