@@ -72,8 +72,8 @@ func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 	} else if requestBody.MsgType == "event" {
 		if requestBody.Event == "CLICK" {
 			//菜单点击事件
-			clickHanlde(requestBody.EventKey)
-			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, requestBody.EventKey)
+			content := clickHanlde(requestBody.EventKey)
+			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
 			if err != nil {
 				log.Println("Wechat Service : makeTextResponseBody error:", err)
 				return
