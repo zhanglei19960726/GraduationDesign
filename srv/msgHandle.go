@@ -30,8 +30,8 @@ type RequestBody struct {
 	XMLName xml.Name `xml:"xml"`
 	msgBase
 	MsgId    int
-	Event    string
-	EventKey string
+	Event    CDATAText
+	EventKey CDATAText
 }
 
 //响应普通消息格式
@@ -43,8 +43,6 @@ type TextReponseBody struct {
 	MsgType      CDATAText
 	Content      CDATAText
 }
-
-//
 
 //解析微信客户端消息内容
 func parseTextRequestBody(r *http.Request) (*RequestBody, error) {
