@@ -85,7 +85,7 @@ func makeClickResponseBody(fromeUserName, toUserName, key string) ([]byte, error
 	clickResponse := &ClickResponse{}
 	clickResponse.FromUserName = value2CDATA(fromeUserName)
 	clickResponse.ToUserName = value2CDATA(toUserName)
-	clickResponse.MsgType = value2CDATA("link")
+	clickResponse.MsgType = value2CDATA("event")
 	clickResponse.Event = value2CDATA("VIEW")
 	clickResponse.EventKey = value2CDATA(key)
 	clickResponse.CreateTime = time.Duration(time.Now().Unix())
