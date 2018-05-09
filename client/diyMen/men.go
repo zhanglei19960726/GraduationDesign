@@ -44,7 +44,6 @@ func CreateWxMenu() error {
                     	"type": "click", 
                     	"name": "课件", 
                     	"key": "V1"
-						"url":"ftp://140.143.14.180/kejian/"
                 	}, 
                 	{
                     	"type": "click", 
