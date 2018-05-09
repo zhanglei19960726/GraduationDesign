@@ -34,14 +34,25 @@ type RequestBody struct {
 	EventKey string
 }
 
-//响应普通消息格式
-type TextReponseBody struct {
-	XMLName      xml.Name `xml:"xml"`
+type repMsgBase struct {
 	ToUserName   CDATAText
 	FromUserName CDATAText
 	CreateTime   time.Duration
 	MsgType      CDATAText
 	Content      CDATAText
+}
+
+//响应普通消息格式
+type TextReponseBody struct {
+	XMLName xml.Name `xml:"xml"`
+	repMsgBase
+}
+
+type ClickResponse struct {
+	XMLName xml.Name `xml:"xml"`
+	repMsgBase
+	Event    CDATAText
+	EventKey CDATAText
 }
 
 //解析微信客户端消息内容
@@ -68,4 +79,15 @@ func makeTextResponseBody(fromeUserName, toUserName, content string) ([]byte, er
 	textResponseBody.Content = value2CDATA(content)
 	textResponseBody.CreateTime = time.Duration(time.Now().Unix())
 	return xml.Marshal(textResponseBody)
+}
+
+func makeClickResponseBody(fromeUserName, toUserName, key string) ([]byte, error) {
+	clickResponse := &ClickResponse{}
+	clickResponse.FromUserName = value2CDATA(fromeUserName)
+	clickResponse.ToUserName = value2CDATA(toUserName)
+	clickResponse.MsgType = value2CDATA("Event")
+	clickResponse.Event = value2CDATA("VIEW")
+	clickResponse.EventKey = value2CDATA(key)
+	clickResponse.CreateTime = time.Duration(time.Now().Unix())
+	return xml.Marshal(clickResponse)
 }

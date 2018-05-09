@@ -82,7 +82,7 @@ func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 		} else if requestBody.Event == "subscribe" {
 			//订阅事件
 			content := subscribeHandle(requestBody.EventKey)
-			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
+			responseBody, err := makeClickResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
 			if err != nil {
 				log.Println("Wechat Service : makeTextResponseBody error:", err)
 				return
