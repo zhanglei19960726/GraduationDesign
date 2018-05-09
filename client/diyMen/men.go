@@ -38,9 +38,10 @@ func CreateWxMenu() error {
 	menuStr := `{
      "button":[
      {    
-          "type":"click",
+          "type":"view",
           "name":"今日歌曲",
           "key":"V1001_TODAY_MUSIC"
+          "url":"www.baidu.com"
       },
       ]
  }`
