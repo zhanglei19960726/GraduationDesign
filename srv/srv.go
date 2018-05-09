@@ -87,7 +87,7 @@ func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 				log.Println("Wechat Service : makeTextResponseBody error:", err)
 				return
 			}
-			w.Write(responseBody)
+			fmt.Fprint(w, responseBody)
 		} else if requestBody.Event == "unsubscribe" {
 			//取消订阅事件
 			unsubscribeHanlde(requestBody.EventKey)
