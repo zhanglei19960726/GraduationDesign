@@ -69,29 +69,6 @@ func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 			return
 		}
 		w.Write(responseBody)
-	} else if requestBody.MsgType == "event" {
-		if requestBody.Event == "CLICK" {
-			//菜单点击事件
-			content := clickHanlde(requestBody.EventKey)
-			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
-			if err != nil {
-				log.Println("Wechat Service : makeTextResponseBody error:", err)
-				return
-			}
-			w.Write(responseBody)
-		} else if requestBody.Event == "subscribe" {
-			//订阅事件
-			content := subscribeHandle(requestBody.EventKey)
-			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
-			if err != nil {
-				log.Println("Wechat Service : makeTextResponseBody error:", err)
-				return
-			}
-			fmt.Fprint(w, responseBody)
-		} else if requestBody.Event == "unsubscribe" {
-			//取消订阅事件
-			unsubscribeHanlde(requestBody.EventKey)
-		}
 	}
 }
 
