@@ -41,9 +41,10 @@ func CreateWxMenu() error {
             	"name": "菜单", 
             	"sub_button": [
                 	{
-                    	"type": "click", 
+                    	"type": "view", 
                     	"name": "课件", 
-                    	"key": "V1"
+                    	"key": "V1",
+						"url":"ftp://140.143.14.180/kejian/"
                 	}, 
                 	{
                     	"type": "click", 
