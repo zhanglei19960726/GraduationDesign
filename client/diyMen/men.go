@@ -49,22 +49,6 @@ func CreateWxMenu() error {
                 	}
             	]
         	},
- 			{
-            	"name": "菜单", 
-				"sub_button": [
-                	{
-                    	"type": "click", 
-                    	"name": "赞一下我们", 
-                    	"key": "V3"
-                	}, 
-                	{
-                    	"type": "click", 
-                    	"name": "赞一下我们", 
-                    	"key": "V4"
-                	}
-            	]
-        	}
-    	]
 	}`
 	err := WxPlatUtil.GetAndUpdateDBWxAToken()
 	if err != nil {

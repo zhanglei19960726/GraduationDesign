@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srv/msgHandle.go" beforeDir="false" afterPath="$PROJECT_DIR$/srv/msgHandle.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srv/srv.go" beforeDir="false" afterPath="$PROJECT_DIR$/srv/srv.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/diyMen/men.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/diyMen/men.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="men.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="men.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="709">
-              <caret line="71" column="6" lean-forward="true" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
+            <state relative-caret-position="321">
+              <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -48,8 +47,8 @@
       <file leaf-file-name="msgHandle.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srv/msgHandle.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="247">
+              <caret line="83" column="26" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="26" />
               <folding>
                 <element signature="e#13#72#0" expanded="true" />
               </folding>
@@ -57,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="srv.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="srv.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srv/srv.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+            <state relative-caret-position="137">
+              <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -70,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/srv/eventHanlde.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="110">
-              <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="44" />
+              <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -99,9 +98,9 @@
         <option value="$PROJECT_DIR$/cmd/srvmain.go" />
         <option value="$PROJECT_DIR$/client/WxPlatUtil/WxPlatUtil.go" />
         <option value="$PROJECT_DIR$/srv/eventHanlde.go" />
-        <option value="$PROJECT_DIR$/client/diyMen/men.go" />
         <option value="$PROJECT_DIR$/srv/msgHandle.go" />
         <option value="$PROJECT_DIR$/srv/srv.go" />
+        <option value="$PROJECT_DIR$/client/diyMen/men.go" />
       </list>
     </option>
   </component>
@@ -240,7 +239,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15733737" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.3289256" />
@@ -589,34 +587,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
+    <entry file="file://$PROJECT_DIR$/srv/eventHanlde.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="71" column="6" lean-forward="true" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
+        <state relative-caret-position="110">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srv/msgHandle.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        <state relative-caret-position="247">
+          <caret line="83" column="26" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="26" />
           <folding>
             <element signature="e#13#72#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srv/eventHanlde.go">
+    <entry file="file://$PROJECT_DIR$/srv/srv.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="44" />
+        <state relative-caret-position="137">
+          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srv/srv.go">
+    <entry file="file://$PROJECT_DIR$/client/diyMen/men.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+        <state relative-caret-position="321">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
         </state>
       </provider>
     </entry>
