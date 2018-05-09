@@ -73,7 +73,7 @@ func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 		if requestBody.Event == "CLICK" {
 			//菜单点击事件
 			content := clickHanlde(requestBody.EventKey)
-			responseBody, err := makeClickResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
+			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
 			if err != nil {
 				log.Println("Wechat Service : makeTextResponseBody error:", err)
 				return
