@@ -79,6 +79,14 @@ func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 				return
 			}
 			w.Write(responseBody)
+		} else if requestBody.Event == "VIEW" {
+			content := clickHanlde(requestBody.EventKey)
+			responseBody, err := makeClickResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
+			if err != nil {
+				log.Println("Wechat Service : makeTextResponseBody error:", err)
+				return
+			}
+			w.Write(responseBody)
 		} else if requestBody.Event == "subscribe" {
 			//订阅事件
 			content := subscribeHandle(requestBody.EventKey)
