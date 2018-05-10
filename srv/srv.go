@@ -15,6 +15,11 @@ const (
 	token = "zhang"
 )
 
+func init() {
+	//创建菜单
+	diyMen.CreateWxMenu()
+}
+
 func makeSignature(timestamp, nonce string) string {
 	sl := []string{token, timestamp, nonce}
 	sort.Strings(sl)
@@ -47,9 +52,6 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 
 	}
 	log.Println("Wechat Service: validateUrl Ok!")
-
-	//创建菜单
-	diyMen.CreateWxMenu()
 
 	if r.Method == "POST" {
 		requestBody, err := parseTextRequestBody(r)
