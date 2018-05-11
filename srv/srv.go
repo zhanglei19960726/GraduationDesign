@@ -2,7 +2,6 @@ package srv
 
 import (
 	"GraduationDesign/client/News"
-	"GraduationDesign/client/diyMen"
 	"crypto/sha1"
 	"fmt"
 	"io"
@@ -47,8 +46,6 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 		return
 
 	}
-	//创建菜单
-	diyMen.CreateWxMenu()
 	News.AddNews()
 	log.Println("Wechat Service: validateUrl Ok!")
 
