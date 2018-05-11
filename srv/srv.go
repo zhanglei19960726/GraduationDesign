@@ -61,14 +61,12 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 }
 
 func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
-	if requestBody.MsgType == "text" {
-		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
-		if err != nil {
-			log.Println("Wechat Service : makeTextResponseBody error:", err)
-			return
-		}
-		w.Write(responseBody)
+	responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
+	if err != nil {
+		log.Println("Wechat Service : makeTextResponseBody error:", err)
+		return
 	}
+	w.Write(responseBody)
 }
 
 func Run() {
