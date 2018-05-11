@@ -46,7 +46,8 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 		return
 
 	}
-	News.AddNews()
+	id, _ := News.AddNews()
+	fmt.Println("1111111111111111111", id)
 	log.Println("Wechat Service: validateUrl Ok!")
 
 	if r.Method == "POST" {
