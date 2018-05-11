@@ -1,6 +1,8 @@
 package srv
 
 import (
+	"GraduationDesign/client/News"
+	"GraduationDesign/client/diyMen"
 	"crypto/sha1"
 	"fmt"
 	"io"
@@ -8,13 +10,11 @@ import (
 	"net/http"
 	"sort"
 	"strings"
-	"GraduationDesign/client/diyMen"
 )
 
 const (
 	token = "zhang"
 )
-
 
 func makeSignature(timestamp, nonce string) string {
 	sl := []string{token, timestamp, nonce}
@@ -49,6 +49,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 	}
 	//创建菜单
 	diyMen.CreateWxMenu()
+	News.AddNews()
 	log.Println("Wechat Service: validateUrl Ok!")
 
 	if r.Method == "POST" {

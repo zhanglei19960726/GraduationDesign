@@ -40,7 +40,7 @@ func CreateWxMenu() error {
      {    
           "type":"view",
           "name":"今日歌曲",
-          "url":"www.baidu.com"
+          "url":"http://www.baidu.com"
       },
       ]
  }`
