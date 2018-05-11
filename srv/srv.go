@@ -39,7 +39,7 @@ func validateUrl(w http.ResponseWriter, r *http.Request) bool {
 }
 func procRequest(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-
+	fmt.Println("hhahahahah")
 	//验证消息是否是微信消息
 	if !validateUrl(w, r) {
 		log.Println("Wechat Service: this http request is not from Wechat platform!")
