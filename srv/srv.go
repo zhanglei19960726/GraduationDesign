@@ -47,8 +47,8 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 	log.Println("Wechat Service: validateUrl Ok!")
 
 	if r.Method == "POST" {
-		fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 		requestBody, err := parseTextRequestBody(r)
+		fmt.Println("user:", requestBody.FromUserName, "msg:", requestBody.Content)
 		if err != nil {
 			log.Println(err.Error())
 			return
@@ -58,12 +58,15 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 }
 
 func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
-	responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
-	if err != nil {
-		log.Println("Wechat Service : makeTextResponseBody error:", err)
-		return
+	if requestBody.MsgType == "text" {
+		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
+		if err != nil {
+			log.Println("Wechat Service : makeTextResponseBody error:", err)
+			return
+		}
+		w.Write(responseBody)
 	}
-	w.Write(responseBody)
+
 }
 
 func Run() {
