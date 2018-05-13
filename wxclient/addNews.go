@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strings"
 )
 
 type ArticlesReq struct {
@@ -24,17 +23,13 @@ type ArticlesResp struct {
 	MediaId string
 }
 
-var (
-	addNewsUrl = "https://api.weixin.qq.com/cgi-bin/material/add_news"
-)
-
 func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 	postReq, err := http.NewRequest("POST",
-		strings.Join([]string{addNewsUrl, "?access_token=", accessToken}, ""),
+		"https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=%s"+accessToken,
 		bytes.NewReader(newBytes))
 
 	if err != nil {
-		fmt.Println("向微信发送菜单建立请求失败", err)
+		fmt.Println("向微信新增永久素材建立请求失败", err)
 		return nil, err
 	}
 
@@ -43,10 +38,10 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 	client := &http.Client{}
 	resp, err := client.Do(postReq)
 	if err != nil {
-		fmt.Println("client向微信发送菜单建立请求失败", err)
+		fmt.Println("client向微信新增永久素材建立请求失败", err)
 		return nil, err
 	} else {
-		fmt.Println("向微信发送菜单建立成功")
+		fmt.Println("向微信新增永久素材建立成功")
 	}
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
