@@ -33,15 +33,17 @@ func doPost(accessToken string, newBytes []byte) (*msgtypetype.ArticlesResp, err
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
-	if resp.Status != "200 OK" {
-		resperr := &msgtypetype.MenErrorResponse{}
-		json.Unmarshal(body, resperr)
-		return nil, errors.New("error code" + resperr.ErrorCode + " error msge" + resperr.ErrMsg)
-	}
 	if err != nil {
 		log.Println("读取消息失败")
 		return nil, err
 	}
+	if resp.Status != "200 OK" {
+		resperr := &msgtypetype.MenErrorResponse{}
+		json.Unmarshal(body, resperr)
+		fmt.Println(resperr)
+		return nil, errors.New("error code" + resperr.ErrorCode + " error msge" + resperr.ErrMsg)
+	}
+	fmt.Println("1111111111111", string(body))
 	media := &msgtypetype.ArticlesResp{}
 	err = json.Unmarshal(body, media)
 	return media, err
