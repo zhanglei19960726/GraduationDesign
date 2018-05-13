@@ -11,5 +11,5 @@ func Run() {
 		log.Println(err.Error())
 		return
 	}
-	fmt.Println(id)
+	fmt.Println("news id is :", id)
 }
