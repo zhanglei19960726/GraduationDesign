@@ -26,8 +26,8 @@
       <file leaf-file-name="addNews.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+            <state relative-caret-position="401">
+              <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
               <folding>
                 <element signature="e#18#129#0" expanded="true" />
               </folding>
@@ -703,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+        <state relative-caret-position="401">
+          <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
           <folding>
             <element signature="e#18#129#0" expanded="true" />
           </folding>

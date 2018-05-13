@@ -62,6 +62,7 @@ func AddNews() (string, error) {
 		return "", err
 	}
 	req, _ := json.Marshal(news)
+	fmt.Println(222222222222, string(req))
 	id, err := doPost(Accesstoken, req)
 	return id.MediaId, err
 }
