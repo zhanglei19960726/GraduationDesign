@@ -51,19 +51,12 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 }
 
 func AddNews() (string, error) {
-	news := `{
-"articles": [{
-"title": "TITLE",
-"thumb_media_id": "THUMB_MEDIA_ID"",
-"author": "AUTHOR",
-"digest": "DIGEST",
-"show_cover_pic": 1,
-"content": "CONTENT",
-"content_source_url": "http://www.baidu.com"
-},
-//若新增的是多图文素材，则此处应还有几段articles结构
-]
-}`
+	news := &ArticlesReq{}
+	news.Title = "zhanglei"
+	news.Content = "zhanglei"
+	news.ThumbMediaId = ""
+	news.ShowCoverPic = 1
+	news.ContentSourceUrl = "http://www.baidu.com"
 	err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
