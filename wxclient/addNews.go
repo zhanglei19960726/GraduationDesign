@@ -54,7 +54,7 @@ func AddNews() (string, error) {
 	news := &msgtypetype.ArticlesReq{}
 	news.Title = "zhanglei"
 	news.Content = "zhanglei"
-	news.ThumbMediaId = ""
+	news.ThumbMediaId = "333333333333"
 	news.ShowCoverPic = 1
 	news.ContentSourceUrl = "http://www.baidu.com"
 	err := GetAndUpdateDBWxAToken()
