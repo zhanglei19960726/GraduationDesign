@@ -44,7 +44,12 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 		fmt.Println("向微信新增永久素材建立成功")
 	}
 	defer resp.Body.Close()
-	body, _ := ioutil.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("读取消息失败")
+		return nil, err
+	}
+	fmt.Println("22222222222222222222222222", string(body))
 	media := &ArticlesResp{}
 	err = json.Unmarshal(body, media)
 	fmt.Println("1111111111111111111111111", media)
