@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wxclient/addNews.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxclient/addNews.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +35,8 @@
       <file leaf-file-name="addNews.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+            <state relative-caret-position="357">
+              <caret line="77" column="38" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="38" />
               <folding>
                 <element signature="e#18#104#0" expanded="true" />
               </folding>
@@ -645,8 +646,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+        <state relative-caret-position="357">
+          <caret line="77" column="38" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="38" />
           <folding>
             <element signature="e#18#104#0" expanded="true" />
           </folding>
