@@ -1,15 +1,7 @@
 package wxclient
 
-import (
-	"fmt"
-	"log"
-)
+import "net/http"
 
-func Run() {
-	id, err := AddNews()
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
-	fmt.Println("news id is :", id)
+func AdminHanler(w http.ResponseWriter, r *http.Request) {
+
 }

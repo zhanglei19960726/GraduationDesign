@@ -53,6 +53,7 @@ type ClickResponse struct {
 	EventKey CDATAText
 }
 
+//图文素材格式
 type ArticlesReq struct {
 	Title            string //标题
 	ThumbMediaId     string //图文消息的封面图片素材ID
