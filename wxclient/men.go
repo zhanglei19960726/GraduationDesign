@@ -1,7 +1,6 @@
-package diyMen
+package wxclient
 
 import (
-	"GraduationDesign/client/WxPlatUtil"
 	"bytes"
 	"fmt"
 	"log"
@@ -44,10 +43,10 @@ func CreateWxMenu() error {
       },
       ]
  }`
-	err := WxPlatUtil.GetAndUpdateDBWxAToken()
+	err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
 		return err
 	}
-	return pushWxMenuCreate(WxPlatUtil.Accesstoken, []byte(menuStr))
+	return pushWxMenuCreate(Accesstoken, []byte(menuStr))
 }

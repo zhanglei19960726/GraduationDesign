@@ -1,4 +1,4 @@
-package WxPlatUtil
+package wxclient
 
 import (
 	"bytes"

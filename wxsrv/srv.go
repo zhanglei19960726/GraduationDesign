@@ -1,6 +1,7 @@
-package srv
+package wxsrv
 
 import (
+	"GraduationDesign/wxclient"
 	"crypto/sha1"
 	"fmt"
 	"io"
@@ -59,6 +60,14 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 
 func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 	if requestBody.MsgType == "text" {
+		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
+		if err != nil {
+			log.Println("Wechat Service : makeTextResponseBody error:", err)
+			return
+		}
+		w.Write(responseBody)
+	} else if requestBody.MsgType == "subscribe" {
+		wxclient.CreateWxMenu()
 		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
 		if err != nil {
 			log.Println("Wechat Service : makeTextResponseBody error:", err)

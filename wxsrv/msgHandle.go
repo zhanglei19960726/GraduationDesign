@@ -1,4 +1,4 @@
-package srv
+package wxsrv
 
 import (
 	"encoding/xml"

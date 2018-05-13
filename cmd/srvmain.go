@@ -1,9 +1,9 @@
 package main
 
 import (
-	"GraduationDesign/srv"
+	"GraduationDesign/wxsrv"
 )
 
 func main() {
-	srv.Run()
+	wxsrv.Run()
 }

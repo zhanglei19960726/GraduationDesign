@@ -1,7 +1,6 @@
-package News
+package wxclient
 
 import (
-	"GraduationDesign/client/WxPlatUtil"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -63,12 +62,12 @@ func AddNews() (string, error) {
 	news.ContentSourceUrl = "http://www.baidu.com"
 	news.ShowCoverPic = true
 	news.ThumbMediaId = "1234"
-	err := WxPlatUtil.GetAndUpdateDBWxAToken()
+	err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
 		return "", err
 	}
 	req, _ := json.Marshal(news)
-	id, err := doPost(WxPlatUtil.Accesstoken, req)
+	id, err := doPost(Accesstoken, req)
 	return id.MediaId, err
 }
