@@ -4,7 +4,6 @@ import (
 	"GraduationDesign/msgtype"
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -37,14 +36,8 @@ func doPost(accessToken string, newBytes []byte) (*msgtypetype.ArticlesResp, err
 		log.Println("读取消息失败")
 		return nil, err
 	}
-	if resp.StatusCode != 200 {
-		resperr := &msgtypetype.MenErrorResponse{}
-		json.Unmarshal(body, resperr)
-		fmt.Println(resperr)
-		return nil, errors.New("error code" + resperr.ErrorCode + " error msge" + resperr.ErrMsg)
-	}
 	fmt.Println("1111111111111", string(body))
-	fmt.Println("333333333333333333", postReq)
+	fmt.Println("333333333333333333", bytes.NewReader(newBytes))
 	media := &msgtypetype.ArticlesResp{}
 	err = json.Unmarshal(body, media)
 	return media, err
