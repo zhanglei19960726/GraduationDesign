@@ -13,7 +13,7 @@ type CDATAText struct {
 
 //创建菜单微信返回json格式
 type MenErrorResponse struct {
-	ErrorCode int
+	ErrorCode string
 	ErrMsg    string
 }
 

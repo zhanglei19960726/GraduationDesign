@@ -1,8 +1,10 @@
 package wxclient
 
 import (
+	"GraduationDesign/wxsrv"
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -45,14 +47,17 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
+	if resp.Status != "200 OK" {
+		resperr := &wxsrv.MenErrorResponse{}
+		json.Unmarshal(body, resperr)
+		return nil, errors.New("error code" + resperr.ErrorCode + " error msge" + resperr.ErrMsg)
+	}
 	if err != nil {
 		log.Println("读取消息失败")
 		return nil, err
 	}
-	fmt.Println("22222222222222222222222222", string(body))
 	media := &ArticlesResp{}
 	err = json.Unmarshal(body, media)
-	fmt.Println("1111111111111111111111111", media)
 	return media, err
 }
 
