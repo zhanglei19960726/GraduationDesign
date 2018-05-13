@@ -38,7 +38,7 @@ func CreateWxMenu() error {
      "button":[
      {    
           "type":"view",
-          "name":"今日歌曲",
+          "name":"百度一下 ",
           "url":"http://www.baidu.com"
       },
       ]
