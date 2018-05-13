@@ -15,7 +15,7 @@ type ArticlesReq struct {
 	ThumbMediaId     string //图文消息的封面图片素材ID
 	Author           string //作者
 	Digest           string //图文消息摘要
-	ShowCoverPic     bool   //是否显示封面
+	ShowCoverPic     int    //是否显示封面
 	Content          string //图文消息的具体内容
 	ContentSourceUrl string //图文消息的原文地址，即点击“阅读原文”后的URL
 }
@@ -56,24 +56,18 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 }
 
 func AddNews() (string, error) {
-	news := `{
-"articles": [{
-"title": TITLE,
-"thumb_media_id": THUMB_MEDIA_ID,
-"author": AUTHOR,
-"digest": DIGEST,
-"show_cover_pic": SHOW_COVER_PIC(0 / 1),
-"content": CONTENT,
-"content_source_url": CONTENT_SOURCE_URL
-},
-//若新增的是多图文素材，则此处应还有几段articles结构
-]
-}`
+	news := &ArticlesReq{}
+	news.Title = "test"
+	news.Content = "zhanglei"
+	news.ContentSourceUrl = "http://www.baidu.com"
+	news.ShowCoverPic = 1
+	news.ThumbMediaId = "1234"
 	err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
 		return "", err
 	}
-	id, err := doPost(Accesstoken, []byte(news))
+	req, _ := json.Marshal(news)
+	id, err := doPost(Accesstoken, req)
 	return id.MediaId, err
 }
