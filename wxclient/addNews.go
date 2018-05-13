@@ -47,6 +47,7 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 	body, _ := ioutil.ReadAll(resp.Body)
 	media := &ArticlesResp{}
 	err = json.Unmarshal(body, media)
+	fmt.Println("1111111111111111111111111", media)
 	return media, err
 }
 
