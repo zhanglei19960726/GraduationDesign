@@ -1,6 +1,7 @@
 package wxsrv
 
 import (
+	"GraduationDesign/msgtype"
 	"GraduationDesign/wxclient"
 	"crypto/sha1"
 	"fmt"
@@ -57,7 +58,7 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
+func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
 	if requestBody.MsgType == "text" {
 		fmt.Println("user:", requestBody.FromUserName, "msg:", requestBody.Content)
 		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")

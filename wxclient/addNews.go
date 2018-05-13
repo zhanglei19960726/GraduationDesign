@@ -1,7 +1,7 @@
 package wxclient
 
 import (
-	"GraduationDesign/wxsrv"
+	"GraduationDesign/msgtype"
 	"bytes"
 	"encoding/json"
 	"errors"
@@ -11,21 +11,7 @@ import (
 	"net/http"
 )
 
-type ArticlesReq struct {
-	Title            string //标题
-	ThumbMediaId     string //图文消息的封面图片素材ID
-	Author           string //作者
-	Digest           string //图文消息摘要
-	ShowCoverPic     int    //是否显示封面
-	Content          string //图文消息的具体内容
-	ContentSourceUrl string //图文消息的原文地址，即点击“阅读原文”后的URL
-}
-
-type ArticlesResp struct {
-	MediaId string
-}
-
-func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
+func doPost(accessToken string, newBytes []byte) (*msgtypetype.ArticlesResp, error) {
 	postReq, err := http.NewRequest("POST",
 		"https://api.weixin.qq.com/cgi-bin/material/add_news?access_token="+accessToken,
 		bytes.NewReader(newBytes))
@@ -48,7 +34,7 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if resp.Status != "200 OK" {
-		resperr := &wxsrv.MenErrorResponse{}
+		resperr := &msgtypetype.MenErrorResponse{}
 		json.Unmarshal(body, resperr)
 		return nil, errors.New("error code" + resperr.ErrorCode + " error msge" + resperr.ErrMsg)
 	}
@@ -56,13 +42,13 @@ func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 		log.Println("读取消息失败")
 		return nil, err
 	}
-	media := &ArticlesResp{}
+	media := &msgtypetype.ArticlesResp{}
 	err = json.Unmarshal(body, media)
 	return media, err
 }
 
 func AddNews() (string, error) {
-	news := &ArticlesReq{}
+	news := &msgtypetype.ArticlesReq{}
 	news.Title = "zhanglei"
 	news.Content = "zhanglei"
 	news.ThumbMediaId = ""
