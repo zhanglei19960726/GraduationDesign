@@ -66,14 +66,16 @@ func wxHandle(w http.ResponseWriter, requestBody *RequestBody) {
 			return
 		}
 		w.Write(responseBody)
-	} else if requestBody.MsgType == "subscribe" {
-		wxclient.CreateWxMenu()
-		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
-		if err != nil {
-			log.Println("Wechat Service : makeTextResponseBody error:", err)
-			return
+	} else if requestBody.MsgType == "event" {
+		if requestBody.Event == "subscribe" {
+			wxclient.CreateWxMenu()
+			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
+			if err != nil {
+				log.Println("Wechat Service : makeTextResponseBody error:", err)
+				return
+			}
+			w.Write(responseBody)
 		}
-		w.Write(responseBody)
 	}
 
 }
