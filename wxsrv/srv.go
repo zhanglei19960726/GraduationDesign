@@ -83,13 +83,10 @@ func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
 
 func Run() {
 	log.Println("Wechat Service: Start!")
-	go http.HandleFunc("/", procRequest)
-	go http.HandleFunc("/", wxclient.AdminHanler)
-	err := http.ListenAndServe(":80", nil)
-	if err != nil {
-		log.Fatal("Wechat Service: ListenAndServe failed, ", err)
-	}
-	http.ListenAndServe(":8080", nil)
+	http.HandleFunc("/", procRequest)
+	http.HandleFunc("/", wxclient.AdminHanler)
+	go http.ListenAndServe(":80", nil)
+	go http.ListenAndServe(":8080", nil)
 	log.Println("Wechat Service: Stop!")
 	select {}
 }
