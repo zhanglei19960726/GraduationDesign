@@ -25,7 +25,7 @@ type ArticlesResp struct {
 
 func doPost(accessToken string, newBytes []byte) (*ArticlesResp, error) {
 	postReq, err := http.NewRequest("POST",
-		"https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=%s"+accessToken,
+		"https://api.weixin.qq.com/cgi-bin/material/add_news?access_token="+accessToken,
 		bytes.NewReader(newBytes))
 
 	if err != nil {
