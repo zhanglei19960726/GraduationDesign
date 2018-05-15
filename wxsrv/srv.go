@@ -94,12 +94,6 @@ func Run() {
 	clientMux.HandleFunc("/", wxclient.AdminHanler)
 	srvMux := http.NewServeMux()
 	srvMux.HandleFunc("/", procRequest)
-	err := http.ListenAndServe(":8081", clientMux)
-	if err != nil {
-		panic(err.Error())
-	}
-	err = http.ListenAndServe(":80", srvMux)
-	if err != nil {
-		panic(err.Error())
-	}
+	go http.ListenAndServe(":8081", clientMux)
+	http.ListenAndServe(":80", srvMux)
 }
