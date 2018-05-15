@@ -1,38 +1,42 @@
 package wxclient
 
 import (
-	"io/ioutil"
+	"html/template"
 	"net/http"
 	"os"
 )
 
-func readHTML() ([]byte, error) {
-	var buf []byte
-	goPath := os.Getenv("GOPATH")
-	file, err := os.Open(goPath + "/src/GraduationDesign/html/admin.html")
-	if err != nil {
-		return buf, err
-	}
-	buf, err = ioutil.ReadAll(file)
-	if err != nil {
-		return buf, err
-	}
-	return buf, nil
-}
+var (
+	filePath = "\\src\\GraduationDesign\\html\\"
+)
 
-func AdminHanler(w http.ResponseWriter, r *http.Request) {
-	buf, err := readHTML()
+func AdminHandler(w http.ResponseWriter, r *http.Request) {
+	goPath := os.Getenv("GOPATH")
+	t, err := template.ParseFiles(goPath + filePath + "admin.html")
 	if err != nil {
-		panic(err.Error())
+		panic(err)
 		return
 	}
-	w.Write(buf)
+	t.Execute(w, nil)
 	if r.Method == "POST" {
 		title := r.FormValue("title")
 		author := r.FormValue("author")
 		digest := r.FormValue("digest")
 		content := r.FormValue("content")
 		w.Write([]byte("title is :" + title + " autor is :" + author + " digest is :" + digest + " content:" + content))
-		AddNews()
+	}
+}
+
+func HomeHanler(w http.ResponseWriter, r *http.Request) {
+	goPath := os.Getenv("GOPATH")
+	if r.RequestURI == "/admin.html" {
+		http.Redirect(w, r, "/admin", http.StatusFound)
+	} else {
+		t, err := template.ParseFiles(goPath + filePath + "home.html")
+		if err != nil {
+			panic(err)
+			return
+		}
+		t.Execute(w, nil)
 	}
 }
