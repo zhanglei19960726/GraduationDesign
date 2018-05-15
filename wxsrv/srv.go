@@ -67,7 +67,7 @@ func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
 		if requestBody.Content == "1" {
 			content = "ftp://140.143.14.180"
 		} else if requestBody.Content == "2" {
-
+			content = "15029236434"
 		} else {
 			content = "回复“1”获得课件下载地址\n回复“2”获得联系方式"
 		}
