@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	filePath = "\\src\\GraduationDesign\\html\\"
+	filePath = "/src/GraduationDesign/html/"
 )
 
 func AdminHandler(w http.ResponseWriter, r *http.Request) {
