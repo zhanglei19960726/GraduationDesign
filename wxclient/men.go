@@ -38,15 +38,16 @@ func CreateWxMenu() error {
      "button":[
      {    
           "type":"view",
-          "name":"百度一下 ",
+          "name":"百度一下",
           "url":"http://www.baidu.com"
       },
       ]
- }`
+ 	}`
 	err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
 		return err
 	}
+	fmt.Println("token is :", Accesstoken)
 	return pushWxMenuCreate(Accesstoken, []byte(menuStr))
 }

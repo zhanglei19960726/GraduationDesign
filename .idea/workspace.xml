@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wxsrv/srv.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxsrv/srv.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wxclient/men.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxclient/men.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,15 +68,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client.go" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Go/src/net/http/client.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16434">
-              <caret line="760" column="63" selection-start-line="760" selection-start-column="62" selection-end-line="760" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="msgtype.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/msgtype/msgtype.go">
           <provider selected="true" editor-type-id="text-editor">
@@ -89,11 +80,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="srv.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="srv.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxsrv/srv.go">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-251">
+              <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="men.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wxclient/men.go">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="365">
-              <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
+              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -143,7 +143,6 @@
         <option value="$PROJECT_DIR$/srv/msgHandle.go" />
         <option value="$PROJECT_DIR$/srv/srv.go" />
         <option value="$PROJECT_DIR$/srv/wxsrv.go" />
-        <option value="$PROJECT_DIR$/wxclient/men.go" />
         <option value="$PROJECT_DIR$/cmd/clientsrv.go" />
         <option value="$PROJECT_DIR$/wxsrv/msgHandle.go" />
         <option value="$PROJECT_DIR$/html/home.html" />
@@ -152,6 +151,7 @@
         <option value="$PROJECT_DIR$/msgtype/msgtype.go" />
         <option value="$PROJECT_DIR$/wxclient/addNews.go" />
         <option value="$PROJECT_DIR$/wxsrv/srv.go" />
+        <option value="$PROJECT_DIR$/wxclient/men.go" />
       </list>
     </option>
   </component>
@@ -181,6 +181,16 @@
             <path>
               <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
               <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="wxclient" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
@@ -568,13 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxclient/men.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Go/src/bytes/reader.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3190">
@@ -650,8 +653,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wxsrv/srv.go">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-251">
+          <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxclient/men.go">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
-          <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
+          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
         </state>
       </provider>
     </entry>
