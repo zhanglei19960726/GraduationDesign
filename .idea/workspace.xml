@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wxclient/men.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxclient/men.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wxclient/srv.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxclient/srv.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wxsrv/srv.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxsrv/srv.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,8 +36,8 @@
       <file leaf-file-name="addNews.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1210">
-              <caret line="55" column="50" selection-start-line="51" selection-start-column="4" selection-end-line="55" selection-end-column="50" />
+            <state relative-caret-position="968">
+              <caret line="54" column="7" lean-forward="true" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -80,20 +81,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="srv.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="srv.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wxsrv/srv.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-251">
-              <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+            <state relative-caret-position="203">
+              <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="men.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="men.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxclient/men.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+            <state relative-caret-position="295">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -101,8 +102,8 @@
       <file leaf-file-name="srv.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxclient/srv.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="17" />
+            <state relative-caret-position="154">
+              <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -147,11 +148,11 @@
         <option value="$PROJECT_DIR$/wxsrv/msgHandle.go" />
         <option value="$PROJECT_DIR$/html/home.html" />
         <option value="$PROJECT_DIR$/html/admin.html" />
-        <option value="$PROJECT_DIR$/wxclient/srv.go" />
         <option value="$PROJECT_DIR$/msgtype/msgtype.go" />
         <option value="$PROJECT_DIR$/wxclient/addNews.go" />
-        <option value="$PROJECT_DIR$/wxsrv/srv.go" />
         <option value="$PROJECT_DIR$/wxclient/men.go" />
+        <option value="$PROJECT_DIR$/wxclient/srv.go" />
+        <option value="$PROJECT_DIR$/wxsrv/srv.go" />
       </list>
     </option>
   </component>
@@ -613,24 +614,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxclient/srv.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wxclient/WxPlatUtil.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1210">
-          <caret line="55" column="50" selection-start-line="51" selection-start-column="4" selection-end-line="55" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -651,17 +638,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxsrv/srv.go">
+    <entry file="file://$PROJECT_DIR$/wxclient/men.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251">
-          <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        <state relative-caret-position="295">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxclient/men.go">
+    <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+        <state relative-caret-position="968">
+          <caret line="54" column="7" lean-forward="true" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxclient/srv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxsrv/srv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
         </state>
       </provider>
     </entry>

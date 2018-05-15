@@ -9,7 +9,7 @@ import (
 func readHTML() ([]byte, error) {
 	var buf []byte
 	goPath := os.Getenv("GOPATH")
-	file, err := os.Open(goPath + "\\src\\GraduationDesign\\html\\admin.html")
+	file, err := os.Open(goPath + "/src/GraduationDesign/html/admin.html")
 	if err != nil {
 		return buf, err
 	}
