@@ -59,25 +59,32 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 }
 
 func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
+	var content string
+	responseBody := make([]byte, 0)
+	var err error
 	if requestBody.MsgType == "text" {
 		fmt.Println("user:", requestBody.FromUserName, "msg:", requestBody.Content)
-		responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
-		if err != nil {
-			log.Println("Wechat Service : makeTextResponseBody error:", err)
-			return
+		if requestBody.Content == "1" {
+			content = "ftp://140.143.14.180"
+		} else if requestBody.Content == "2" {
+
+		} else {
+			content = "回复“1”获得课件下载地址\n回复“2”获得联系方式"
 		}
-		w.Write(responseBody)
 	} else if requestBody.MsgType == "event" {
 		if requestBody.Event == "subscribe" {
 			wxclient.CreateWxMenu()
-			responseBody, err := makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, "hello")
-			if err != nil {
-				log.Println("Wechat Service : makeTextResponseBody error:", err)
-				return
-			}
-			w.Write(responseBody)
+			content = "回复“1”获得课件下载地址\n回复“2”获得联系方式"
 		}
+	} else {
+		content = "hello"
 	}
+	responseBody, err = makeTextResponseBody(requestBody.ToUserName, requestBody.FromUserName, content)
+	if err != nil {
+		log.Println("Wechat Service : makeTextResponseBody error:", err)
+		return
+	}
+	w.Write(responseBody)
 
 }
 

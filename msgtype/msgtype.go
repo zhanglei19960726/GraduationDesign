@@ -55,13 +55,13 @@ type ClickResponse struct {
 
 //图文素材格式
 type ArticlesReq struct {
-	Title            string //标题
-	ThumbMediaId     string //图文消息的封面图片素材ID
-	Author           string //作者
-	Digest           string //图文消息摘要
-	ShowCoverPic     int    //是否显示封面
-	Content          string //图文消息的具体内容
-	ContentSourceUrl string //图文消息的原文地址，即点击“阅读原文”后的URL
+	Title            string `json:"title"`              //标题
+	ThumbMediaId     string `json:"thumb_media_id"`     //图文消息的封面图片素材ID
+	Author           string `json:"author"`             //作者
+	Digest           string `json:"digest"`             //图文消息摘要
+	ShowCoverPic     int    `json:"show_cover_pic"`     //是否显示封面
+	Content          string `json:"content"`            //图文消息的具体内容
+	ContentSourceUrl string `json:"content_source_url"` //图文消息的原文地址，即点击“阅读原文”后的URL
 }
 
 type ArticlesResp struct {

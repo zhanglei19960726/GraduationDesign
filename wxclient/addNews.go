@@ -8,20 +8,24 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
+	"strings"
+)
+
+var (
+	addNewsUrl = "https://api.weixin.qq.com/cgi-bin/material/add_news"
 )
 
 func doPost(accessToken string, newBytes []byte) (*msgtypetype.ArticlesResp, error) {
-	postReq, err := http.NewRequest("POST",
-		"https://api.weixin.qq.com/cgi-bin/material/add_news?access_token="+accessToken,
-		bytes.NewReader(newBytes))
+	postReq, err := http.NewRequest("POST", strings.Join([]string{addNewsUrl, "?access_token=", accessToken}, ""), bytes.NewReader(newBytes))
 
 	if err != nil {
 		fmt.Println("向微信新增永久素材建立请求失败", err)
 		return nil, err
 	}
-
 	postReq.Header.Set("Content-Type", "application/json; encoding=utf-8")
-
+	postReq.Form = make(url.Values)
+	postReq.Form.Set("articles", string(newBytes))
 	client := &http.Client{}
 	resp, err := client.Do(postReq)
 	if err != nil {
@@ -37,7 +41,7 @@ func doPost(accessToken string, newBytes []byte) (*msgtypetype.ArticlesResp, err
 		return nil, err
 	}
 	fmt.Println("1111111111111", string(body))
-	fmt.Println("333333333333333333", bytes.NewReader(newBytes))
+	fmt.Println("222222222222222", postReq)
 	media := &msgtypetype.ArticlesResp{}
 	err = json.Unmarshal(body, media)
 	return media, err

@@ -33,5 +33,6 @@ func AdminHanler(w http.ResponseWriter, r *http.Request) {
 		digest := r.FormValue("digest")
 		content := r.FormValue("content")
 		w.Write([]byte("title is :" + title + " autor is :" + author + " digest is :" + digest + " content:" + content))
+		AddNews()
 	}
 }
