@@ -89,10 +89,10 @@ func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
 
 func Run() {
 	log.Println("Wechat Service: Start!")
-	clientMux := http.NewServeMux()
-	clientMux.HandleFunc("/", wxclient.AdminHanler)
+	http.HandleFunc("/", wxclient.HomeHanler)
+	http.HandleFunc("/admin", wxclient.AdminHandler)
 	srvMux := http.NewServeMux()
 	srvMux.HandleFunc("/", procRequest)
-	go http.ListenAndServe(":8081", clientMux)
+	go http.ListenAndServe(":8081", nil)
 	http.ListenAndServe(":80", srvMux)
 }
