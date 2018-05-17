@@ -1,8 +1,6 @@
 package main
 
-import (
-	"GraduationDesign/wxsrv"
-)
+import "GraduationDesign/wxsrv"
 
 func main() {
 	wxsrv.Run()

@@ -5,8 +5,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
+	"mime/multipart"
 	"net/http"
 	"os"
 	"strings"
@@ -59,44 +61,41 @@ func AddNews(articles []msgtypetype.Articles) (string, error) {
 }
 
 func AddPicture(fileName string) error {
-	buf := make([]byte, 0)
-	file, err := os.OpenFile(goPath+picturePath+fileName, os.O_RDONLY, 0666)
+	token, err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		panic(err.Error())
 		return err
 	}
-	defer file.Close()
-	num, err := file.Read(buf)
+	fmt.Println(token)
+	bodyBuf := &bytes.Buffer{}
+	bodyWriter := multipart.NewWriter(bodyBuf)
+	fileWriter, err := bodyWriter.CreateFormFile("media", "@"+goPath+picturePath+fileName)
 	if err != nil {
-		panic(err.Error())
+		fmt.Println("error writing to buffer")
+		return err
 	}
-	fmt.Println("1111111111111111111", num)
-	reqBody := msgtypetype.MaterialReq{
-		Media:    buf,
-		Filename: fileName,
-	}
-	data, _ := json.Marshal(reqBody)
-	fmt.Println(string(data))
-	_, err = GetAndUpdateDBWxAToken()
+	file, err := os.Open(goPath + picturePath + fileName)
 	if err != nil {
 		panic(err.Error())
 		return err
 	}
-	//postReq, err := http.NewRequest("POST", strings.Join([]string{addNewsUrl, "?access_token=", token, "&type=", "image"}, ""), bytes.NewReader(data))
-	//client := &http.Client{}
-	//resp, err := client.Do(postReq)
-	//if err != nil {
-	//	fmt.Println("client向微信新增图片素材建立请求失败", err)
-	//	return err
-	//} else {
-	//	fmt.Println("向微信新增图片素材建立成功")
-	//}
-	//defer resp.Body.Close()
-	//body, err := ioutil.ReadAll(resp.Body)
-	//if err != nil {
-	//	log.Println("读取消息失败")
-	//	return err
-	//}
-	//fmt.Println(string(body))
+	_, err = io.Copy(fileWriter, file)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+	contentType := "multipart/form-data"
+	resp, err := http.Post(strings.Join([]string{addPictureUrl, "?access_token=", token, "&type=image"}, ""), contentType, bodyBuf)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+	respBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+	defer resp.Body.Close()
+	fmt.Println(string(respBody))
 	return nil
 }

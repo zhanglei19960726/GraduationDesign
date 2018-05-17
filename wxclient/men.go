@@ -35,14 +35,29 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 
 func CreateWxMenu() error {
 	menuStr := `{
-     "button":[
-     {    
-          "type":"view",
-          "name":"百度一下",
-          "url":"http://www.baidu.com"
-      },
-      ]
- 	}`
+    "button": [
+        {
+            "type": "view", 
+            "name": "课件下载", 
+            "url": "http://www.baidu.com"
+        }, 
+        {
+            "name": "数据库教程", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "mysql教程", 
+                    "url": "http://www.runoob.com/mysql/mysql-tutorial.html"
+                },
+                {
+					"type":"view",
+					"name":"sql server 教程"
+					"url":"http://www.runoob.com/sql/sql-tutorial.html"
+				}
+            ]
+        }
+    ]
+}`
 	accesstoken, err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
