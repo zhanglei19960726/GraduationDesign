@@ -53,3 +53,7 @@ func HomeHanler(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, nil)
 	}
 }
+
+func GetData(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "ftp://140.143.14.180", http.StatusFound)
+}

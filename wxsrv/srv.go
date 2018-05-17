@@ -91,6 +91,7 @@ func Run() {
 	log.Println("Wechat Service: Start!")
 	http.HandleFunc("/", wxclient.HomeHanler)
 	http.HandleFunc("/admin", wxclient.AdminHandler)
+	http.HandleFunc("/getData", wxclient.GetData)
 	srvMux := http.NewServeMux()
 	srvMux.HandleFunc("/", procRequest)
 	go http.ListenAndServe(":8081", nil)

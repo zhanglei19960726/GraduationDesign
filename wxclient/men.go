@@ -29,12 +29,18 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 		fmt.Println("向微信发送菜单建立成功")
 	}
 	defer resp.Body.Close()
+
 	return nil
 }
 
 func CreateWxMenu() error {
 	menuStr := `{
     "button": [
+        {
+            "type": "view", 
+            "name": "课件下载", 
+            "url": "http://140.143.14.180/getData"
+        }, 
         {
             "name": "数据库教程", 
             "sub_button": [
