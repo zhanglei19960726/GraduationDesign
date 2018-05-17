@@ -37,11 +37,6 @@ func CreateWxMenu() error {
 	menuStr := `{
     "button": [
         {
-            "type": "view", 
-            "name": "课件下载", 
-            "url": "http://www.baidu.com"
-        }, 
-        {
             "name": "数据库教程", 
             "sub_button": [
                 {
