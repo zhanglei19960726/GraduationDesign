@@ -29,7 +29,6 @@ func pushWxMenuCreate(accessToken string, menuJsonBytes []byte) error {
 		fmt.Println("向微信发送菜单建立成功")
 	}
 	defer resp.Body.Close()
-
 	return nil
 }
 
@@ -58,6 +57,5 @@ func CreateWxMenu() error {
 		log.Println(err.Error())
 		return err
 	}
-	fmt.Println("token is :", accesstoken)
 	return pushWxMenuCreate(accesstoken, []byte(menuStr))
 }
