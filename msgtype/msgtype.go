@@ -2,6 +2,7 @@ package msgtypetype
 
 import (
 	"encoding/xml"
+	"os"
 	"time"
 )
 
@@ -54,7 +55,8 @@ type ClickResponse struct {
 }
 
 //图文素材格式
-type ArticlesReq struct {
+
+type Articles struct {
 	Title            string `json:"title"`              //标题
 	ThumbMediaId     string `json:"thumb_media_id"`     //图文消息的封面图片素材ID
 	Author           string `json:"author"`             //作者
@@ -64,6 +66,20 @@ type ArticlesReq struct {
 	ContentSourceUrl string `json:"content_source_url"` //图文消息的原文地址，即点击“阅读原文”后的URL
 }
 
+type ArticlesReq struct {
+	Articles []Articles `json:"articles"`
+}
+
 type ArticlesResp struct {
 	MediaId string
+}
+
+type Material struct {
+	File     *os.File
+	Filename string
+}
+
+type MaterialReq struct {
+	Media    []byte `json:"media"`
+	Filename string `json:"filename"`
 }

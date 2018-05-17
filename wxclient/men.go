@@ -43,11 +43,11 @@ func CreateWxMenu() error {
       },
       ]
  	}`
-	err := GetAndUpdateDBWxAToken()
+	accesstoken, err := GetAndUpdateDBWxAToken()
 	if err != nil {
 		log.Println(err.Error())
 		return err
 	}
-	fmt.Println("token is :", Accesstoken)
-	return pushWxMenuCreate(Accesstoken, []byte(menuStr))
+	fmt.Println("token is :", accesstoken)
+	return pushWxMenuCreate(accesstoken, []byte(menuStr))
 }
