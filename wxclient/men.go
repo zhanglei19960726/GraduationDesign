@@ -48,12 +48,12 @@ func CreateWxMenu() error {
                     "type": "view", 
                     "name": "mysql教程", 
                     "url": "http://www.runoob.com/mysql/mysql-tutorial.html"
-                },
+                }, 
                 {
-					"type":"view",
-					"name":"sql server 教程"
+                    "type":"view",
+					"name":"sql server 教程",
 					"url":"http://www.runoob.com/sql/sql-tutorial.html"
-				}
+                }
             ]
         }
     ]
