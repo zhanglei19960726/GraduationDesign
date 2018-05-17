@@ -39,7 +39,7 @@ func CreateWxMenu() error {
         {
             "type": "view", 
             "name": "课件下载", 
-            "url": "http://140.143.14.180/getData"
+            "url": "http://www.zhangleispace.club:8081/getData"
         }, 
         {
             "name": "数据库教程", 
