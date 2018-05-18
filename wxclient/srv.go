@@ -2,8 +2,6 @@ package wxclient
 
 import (
 	"fmt"
-	"github.com/djimenez/iconv-go"
-	"github.com/goquery-master"
 	"html/template"
 	"io"
 	"io/ioutil"
@@ -15,7 +13,7 @@ import (
 var (
 	goPath      = os.Getenv("GOPATH")
 	filePath    = "/src/GraduationDesign/html/"
-	picturePath = "\\src\\GraduationDesign\\picture\\"
+	picturePath = "/src/GraduationDesign/picture/"
 )
 
 func AdminHandler(w http.ResponseWriter, r *http.Request) {
@@ -49,6 +47,8 @@ func AdminHandler(w http.ResponseWriter, r *http.Request) {
 func HomeHanler(w http.ResponseWriter, r *http.Request) {
 	if r.RequestURI == "/admin.html" {
 		http.Redirect(w, r, "/admin", http.StatusFound)
+	} else if r.RequestURI == "/upload.html" {
+		http.Redirect(w, r, "/upload", http.StatusFound)
 	} else {
 		t, err := template.ParseFiles(goPath + filePath + "home.html")
 		if err != nil {
