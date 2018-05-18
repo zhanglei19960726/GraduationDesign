@@ -6,6 +6,7 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"sort"
@@ -44,7 +45,6 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 	if !validateUrl(w, r) {
 		log.Println("Wechat Service: this http request is not from Wechat platform!")
 		return
-
 	}
 	log.Println("Wechat Service: validateUrl Ok!")
 	if r.Method == "POST" {
@@ -57,6 +57,16 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func getData(w http.ResponseWriter, r *http.Request) {
+	resp, err := http.Get("http://www.zhangleispace.club:8009/images" + r.RequestURI)
+	if err != nil {
+		log.Println("li chen hui")
+		return
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	w.Write(body)
+}
+
 func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
 	var content string
 	responseBody := make([]byte, 0)
@@ -64,7 +74,7 @@ func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
 	if requestBody.MsgType == "text" {
 		fmt.Println("user:", requestBody.FromUserName, "msg:", requestBody.Content)
 		if requestBody.Content == "1" {
-			content = "ftp://140.143.14.180"
+			content = "http://www.zhangleispace.club:8009/images/"
 		} else if requestBody.Content == "2" {
 			content = "15029236434"
 		} else {
@@ -92,7 +102,8 @@ func Run() {
 	http.HandleFunc("/", wxclient.HomeHanler)
 	http.HandleFunc("/admin", wxclient.AdminHandler)
 	srvMux := http.NewServeMux()
-	srvMux.HandleFunc("/", procRequest)
+	srvMux.HandleFunc("/", getData)
+	srvMux.HandleFunc("/wx", procRequest)
 	srvMux.HandleFunc("/getData", wxclient.GetData)
 	go http.ListenAndServe(":8081", nil)
 	http.ListenAndServe(":80", srvMux)

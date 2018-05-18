@@ -1,8 +1,12 @@
 package wxclient
 
 import (
+	"fmt"
+	"github.com/djimenez/iconv-go"
+	"github.com/goquery-master"
 	"html/template"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -16,6 +20,7 @@ var (
 
 func AdminHandler(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles(goPath + filePath + "admin.html")
+
 	if err != nil {
 		panic(err)
 		return
@@ -55,5 +60,28 @@ func HomeHanler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetData(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "ftp://140.143.14.180", http.StatusFound)
+	resp, err := http.Get("http://www.zhangleispace.club:8009/images/")
+	if err != nil {
+		log.Println("li chen hui")
+		return
+	}
+	utfBody, err := iconv.NewReader(resp.Body, "charset", "utf-8")
+	if err != nil {
+		panic(err.Error())
+		return
+	}
+	doc, err := goquery.NewDocumentFromReader(utfBody)
+	if err != nil {
+		panic(err.Error())
+		return
+	}
+	sel := doc.Find("a")
+	for i := range sel.Nodes {
+		// use `single` as a selection of 1 node
+		fmt.Println(i)
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	w.Write(body)
+	fmt.Println(string(body))
 }
