@@ -5,16 +5,18 @@ import (
 	"GraduationDesign/wxclient"
 	"crypto/sha1"
 	"fmt"
+	"html/template"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"sort"
 	"strings"
 )
 
 const (
-	token = "zhang"
+	token    = "zhang"
+	filePath = "/src/GraduationDesign/file/"
 )
 
 func makeSignature(timestamp, nonce string) string {
@@ -57,14 +59,26 @@ func procRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func getData(w http.ResponseWriter, r *http.Request) {
-	resp, err := http.Get("http://www.zhangleispace.club:8009/images" + r.RequestURI)
+func uploadHanle(w http.ResponseWriter, r *http.Request) {
+	goPath := os.Getenv("GOPATH")
+	t, err := template.ParseFiles(goPath + "/src/GraduationDesign/html/" + "upload.html")
+
 	if err != nil {
-		log.Println("li chen hui")
+		panic(err)
 		return
 	}
-	body, _ := ioutil.ReadAll(resp.Body)
-	w.Write(body)
+	t.Execute(w, nil)
+	if r.Method == "POST" {
+		file, handle, err := r.FormFile("upload")
+		if err != nil {
+			log.Println(err.Error())
+			w.Write([]byte("上传失败"))
+		}
+		f, err := os.OpenFile(goPath+filePath+handle.Filename, os.O_RDWR|os.O_CREATE, 0777)
+		io.Copy(f, file)
+		f.Close()
+		w.Write([]byte("上传成功"))
+	}
 }
 
 func wxHandle(w http.ResponseWriter, requestBody *msgtypetype.RequestBody) {
@@ -102,9 +116,9 @@ func Run() {
 	http.HandleFunc("/", wxclient.HomeHanler)
 	http.HandleFunc("/admin", wxclient.AdminHandler)
 	srvMux := http.NewServeMux()
-	srvMux.HandleFunc("/", getData)
 	srvMux.HandleFunc("/wx", procRequest)
 	srvMux.HandleFunc("/getData", wxclient.GetData)
+	http.HandleFunc("/upload", uploadHanle)
 	go http.ListenAndServe(":8081", nil)
 	http.ListenAndServe(":80", srvMux)
 }
