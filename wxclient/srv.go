@@ -62,23 +62,8 @@ func HomeHanler(w http.ResponseWriter, r *http.Request) {
 func GetData(w http.ResponseWriter, r *http.Request) {
 	resp, err := http.Get("http://www.zhangleispace.club:8009/images/")
 	if err != nil {
-		log.Println("li chen hui")
-		return
-	}
-	utfBody, err := iconv.NewReader(resp.Body, "charset", "utf-8")
-	if err != nil {
 		panic(err.Error())
 		return
-	}
-	doc, err := goquery.NewDocumentFromReader(utfBody)
-	if err != nil {
-		panic(err.Error())
-		return
-	}
-	sel := doc.Find("a")
-	for i := range sel.Nodes {
-		// use `single` as a selection of 1 node
-		fmt.Println(i)
 	}
 	body, _ := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
