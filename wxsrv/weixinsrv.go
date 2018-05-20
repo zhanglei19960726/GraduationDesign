@@ -1,8 +1,11 @@
 package wxsrv
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/wizjin/weixin"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -57,8 +60,8 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
 	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
 	menu.Buttons[2].Name = "讨论区"
-	menu.Buttons[2].Key = talkSpace
-	menu.Buttons[2].Type = weixin.MenuButtonTypeKey
+	menu.Buttons[2].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[2].Url = "http://www.runoob.com/sql/sql-tutorial.html"
 	err := wx.CreateMenu(menu)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -94,14 +97,78 @@ func reciveMessage(w weixin.ResponseWriter, r *weixin.Request) (mediaId string, 
 	return
 }
 
+type Text struct {
+	Text string `json:"text"`
+}
+
+type Percption struct {
+	InputText Text `json:"inputText"`
+}
+
+type UserInfo struct {
+	ApiKey string `json:"apikey"`
+	UserId string `json:"userid"`
+}
+
+type Robort struct {
+	ReqType   int       `json:"req_type"`
+	Percption Percption `json:"percption"`
+	UserInfo  UserInfo  `json:"userinfo"`
+}
+
+const (
+	apiKey = "ed22295b09924bbab90573f18a4449bc"
+	userId = "oJzdQ1p1-ZOh66pHsUTcGEHtXAfg"
+)
+
+func robort() {
+	robort := &Robort{
+		ReqType: 0,
+		Percption: Percption{
+			InputText: Text{
+				Text: "你好",
+			},
+		},
+		UserInfo: UserInfo{
+			ApiKey: apiKey,
+			UserId: userId,
+		},
+	}
+	data, err := json.Marshal(robort)
+	if err != nil {
+		log.Println("json error:", err.Error())
+		return
+	}
+	request, err := http.NewRequest("POST", "http://openapi.tuling123.com/openapi/api/v2", bytes.NewBuffer(data))
+	if err != nil {
+		log.Println("make request error:", err.Error())
+		return
+	}
+	client := &http.Client{}
+	resp, err := client.Do(request)
+	if err != nil {
+		log.Println("send message error:", err.Error())
+		return
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	if err != nil {
+		log.Println("get response error :", err.Error())
+		return
+	}
+	fmt.Println(string(body))
+}
+
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
 	mux.HandleFunc(weixin.MsgTypeText, echo)
 	//注册关注函数
 	mux.HandleFunc(weixin.MsgTypeEventSubscribe, subscribe)
-	//接收点击菜单跳转链接时的事件
+	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
+	//接入机器人
+	robort()
 	http.ListenAndServe(":80", nil)
 }
