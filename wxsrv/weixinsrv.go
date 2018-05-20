@@ -65,18 +65,19 @@ func createMenu(wx *weixin.Weixin) error {
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
-		mediaId, err := reciveMessage(writer, request)
-		if err != nil {
-			log.Println(err.Error())
-			return
-		}
-		fmt.Println(mediaId)
 		article := make([]weixin.Article, 1)
 		article[0].Title = "test"
-		article[0].Description = "zhanglei"
-		article[0].Url = "http://www.baidu.com"
-		article[0].PicUrl = request.PicUrl
-		err = writer.PostNews(article)
+		article[0].Description = "aaa注意事项上传的多媒体文件有格式和大小限制，如下：" +
+			"?  图片（image）: 128K，支持JPG格式" +
+			"?  语音（voice）：256K，播放长度不超过60s，支持AMRMP3格式" +
+			"?  视频（video）：1MB，支持MP4格式" +
+			"?  缩略图（thumb）：64KB，支持JPG格式" +
+			"媒体文件在后台保存时间为3天，即3天后media_id失效。 对于需要重复使用的多媒体文件，可以每3天循环上传一次，更新media_id。" +
+			"二、下载多媒体文件" +
+			"公众号可调用本接口来获取多媒体文件。请注意，视频文件不支持下载，调用该接口需http协议。" +
+			"下载文件使用获取图片数据，写入新文件的方法。" +
+			"http请求方式: GET"
+		err := writer.PostNews(article)
 		if err != nil {
 			log.Println(err.Error())
 			return
