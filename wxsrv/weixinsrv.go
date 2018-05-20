@@ -26,11 +26,12 @@ const (
 
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
-	text, err := robort()
+	text := r.Content
+	res, err := robort(text)
 	if err != nil {
 		log.Println("robort error :", err.Error())
 	}
-	w.ReplyText(text.Values)
+	w.ReplyText(res.Values)
 }
 
 //关注事件的处理函数
@@ -131,11 +132,11 @@ type Results struct {
 	GroupType  int    `json:"groupType"`
 }
 
-func robort() (res *Results, err error) {
+func robort(text string) (res *Response, err error) {
 	robort := &Robort{
 		Perception: Percption{
 			InputText: Text{
-				Text: "你好",
+				Text: text,
 			},
 		},
 		UserInfo: UserInfo{
