@@ -144,7 +144,9 @@ type RobotEmotion struct {
 }
 
 type Intent struct {
-	Code int `json:"code"`
+	Code       int    `json:"code"`
+	ActionName string `json:"actionName"`
+	IntentName string `json:"intentName"`
 }
 
 type Results struct {
