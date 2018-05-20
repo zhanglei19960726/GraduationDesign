@@ -118,7 +118,7 @@ type Robort struct {
 
 const (
 	apiKey = "ed22295b09924bbab90573f18a4449bc"
-	userId = "oJzdQ1p1-ZOh66pHsUTcGEHtXAfg"
+	userId = appID
 )
 
 func robort() {
