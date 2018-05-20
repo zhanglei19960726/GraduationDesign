@@ -26,16 +26,11 @@ const (
 
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
-	txt := r.Content //获取用户发送的消息
-	repaly := ""
-	if txt == "1" {
-		repaly = "http://www.zhangleispace.club:8009/images/"
-	} else if txt == "2" {
-		repaly = "15029236434"
-	} else {
-		repaly = "回复“1”获得课件下载地址\n回复“2”获得联系方式"
+	text, err := robort()
+	if err != nil {
+		log.Println("robort error :", err.Error())
 	}
-	w.ReplyText(repaly)
+	w.ReplyText(text.Values)
 }
 
 //关注事件的处理函数
@@ -121,7 +116,22 @@ const (
 	userId = appID
 )
 
-func robort() {
+type Response struct {
+	Intent  Intent    `json:"intent"`
+	results []Results `json:"results"`
+}
+
+type Intent struct {
+	Code int `json:"code"`
+}
+
+type Results struct {
+	ResultType string `json:"resultType"`
+	Values     string `json:"values"`
+	GroupType  int    `json:"groupType"`
+}
+
+func robort() (res Results, err error) {
 	robort := &Robort{
 		Perception: Percption{
 			InputText: Text{
@@ -157,6 +167,8 @@ func robort() {
 		return
 	}
 	fmt.Println(string(body))
+	err = json.Unmarshal(body, res)
+	return
 }
 
 func Run() {
@@ -168,7 +180,5 @@ func Run() {
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
-	//接入机器人
-	robort()
 	http.ListenAndServe(":80", nil)
 }
