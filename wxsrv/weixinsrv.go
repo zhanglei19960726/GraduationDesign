@@ -171,7 +171,6 @@ func robort(text string) (res *Response, err error) {
 		},
 	}
 	data, err := json.Marshal(robort)
-	fmt.Println(string(data))
 	if err != nil {
 		log.Println("json error:", err.Error())
 		return
@@ -193,7 +192,6 @@ func robort(text string) (res *Response, err error) {
 		log.Println("get response error :", err.Error())
 		return
 	}
-	fmt.Println(string(body))
 	res = &Response{}
 	err = json.Unmarshal(body, res)
 	return
