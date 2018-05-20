@@ -29,7 +29,6 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
-	writer.ReplyText("欢迎关注")
 	wx := &weixin.Weixin{}
 	fmt.Println("11111111111111111")
 	err := createMenu(wx)
