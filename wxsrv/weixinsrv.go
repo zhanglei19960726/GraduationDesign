@@ -106,14 +106,14 @@ type Percption struct {
 }
 
 type UserInfo struct {
-	ApiKey string `json:"apikey"`
-	UserId string `json:"userid"`
+	ApiKey string `json:"apiKey"`
+	UserId string `json:"userId"`
 }
 
 type Robort struct {
-	ReqType   int       `json:"req_type"`
-	Percption Percption `json:"percption"`
-	UserInfo  UserInfo  `json:"userinfo"`
+	ReqType    int       `json:"reqType"`
+	Perception Percption `json:"perception"`
+	UserInfo   UserInfo  `json:"userInfo"`
 }
 
 const (
@@ -123,8 +123,7 @@ const (
 
 func robort() {
 	robort := &Robort{
-		ReqType: 0,
-		Percption: Percption{
+		Perception: Percption{
 			InputText: Text{
 				Text: "你好",
 			},
@@ -135,6 +134,7 @@ func robort() {
 		},
 	}
 	data, err := json.Marshal(robort)
+	fmt.Println(string(data))
 	if err != nil {
 		log.Println("json error:", err.Error())
 		return
