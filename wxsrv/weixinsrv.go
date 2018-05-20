@@ -63,7 +63,7 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
-	fmt.Println("haha")
+	fmt.Println("haha	")
 	writer.ReplyText("haha")
 	if request.EventKey == "databaseIntroductionKey" {
 		//fmt.Println("haha")
@@ -92,7 +92,7 @@ func Run() {
 	//注册关注函数
 	mux.HandleFunc(weixin.MsgTypeEventSubscribe, subscribe)
 	//接收点击菜单跳转链接时的事件
-	mux.HandleFunc(weixin.MsgTypeEventView, eventView)
+	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
 	http.ListenAndServe(":80", nil)
 }
