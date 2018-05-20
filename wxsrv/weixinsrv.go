@@ -3,6 +3,7 @@ package wxsrv
 import (
 	"fmt"
 	"github.com/wizjin/weixin"
+	"log"
 	"net/http"
 	"os"
 )
@@ -64,16 +65,19 @@ func createMenu(wx *weixin.Weixin) error {
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
-		writer.ReplyText("haha")
-		////mediaId, err := reciveMessage(writer, request)
-		////if err != nil {
-		////	log.Println(err.Error())
-		////	return
-		////}
-		//article := make([]weixin.Article, 1)
-		//article[0].Title = "test"
-		//article[0].Description = "zhanglei"
-		//writer.PostNews(article)
+		//mediaId, err := reciveMessage(writer, request)
+		//if err != nil {
+		//	log.Println(err.Error())
+		//	return
+		//}
+		article := make([]weixin.Article, 1)
+		article[0].Title = "test"
+		article[0].Description = "zhanglei"
+		err := writer.PostNews(article)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
 	}
 }
 
