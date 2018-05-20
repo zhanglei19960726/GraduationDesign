@@ -131,7 +131,7 @@ type Results struct {
 	GroupType  int    `json:"groupType"`
 }
 
-func robort() (res Results, err error) {
+func robort() (res *Results, err error) {
 	robort := &Robort{
 		Perception: Percption{
 			InputText: Text{
