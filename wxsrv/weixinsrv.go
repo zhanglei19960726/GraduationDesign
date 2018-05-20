@@ -1,7 +1,8 @@
-package main
+package wxsrv
 
 import (
 	"github.com/wizjin/weixin"
+	"log"
 	"net/http"
 )
 
@@ -28,9 +29,32 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	writer.ReplyText("欢迎关注")
+	wx := &weixin.Weixin{}
+	err := createMenu(wx)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
 }
 
-func main() {
+//创建菜单
+func createMenu(wx *weixin.Weixin) error {
+	menu := &weixin.Menu{make([]weixin.MenuButton, 2)}
+	menu.Buttons[0].Name = "数据库简介"
+	menu.Buttons[0].Type = weixin.MenuButtonTypeKey
+	menu.Buttons[0].Key = "Mykey001"
+	menu.Buttons[1].Name = "数据库教程"
+	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
+	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
+	menu.Buttons[1].SubButtons[0].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[1].SubButtons[0].Url = "http://www.runoob.com/mysql/mysql-tutorial.html"
+	menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
+	menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
+	err := wx.CreateMenu(menu)
+	return err
+}
+func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
 	mux.HandleFunc(weixin.MsgTypeText, echo)

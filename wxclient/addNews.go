@@ -10,7 +10,7 @@ import (
 	"log"
 	"mime/multipart"
 	"net/http"
-	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -69,23 +69,22 @@ func AddPicture(fileName string) error {
 	fmt.Println(token)
 	bodyBuf := &bytes.Buffer{}
 	bodyWriter := multipart.NewWriter(bodyBuf)
-	fileWriter, err := bodyWriter.CreateFormFile("media", "@"+goPath+picturePath+fileName)
+	fileWriter, err := bodyWriter.CreateFormFile("media", filepath.Base(fileName))
 	if err != nil {
 		fmt.Println("error writing to buffer")
 		return err
 	}
-	file, err := os.Open(goPath + picturePath + fileName)
+	buf, err := ioutil.ReadFile(goPath + picturePath + fileName)
+	fmt.Println(err, buf, goPath+picturePath+fileName)
+	num, err := io.Copy(fileWriter, bytes.NewReader(buf))
 	if err != nil {
 		panic(err.Error())
 		return err
 	}
-	_, err = io.Copy(fileWriter, file)
-	if err != nil {
-		log.Println(err.Error())
-		return err
-	}
-	contentType := "multipart/form-data"
-	resp, err := http.Post(strings.Join([]string{addPictureUrl, "?access_token=", token, "&type=image"}, ""), contentType, bodyBuf)
+	fmt.Println(num)
+	contentType := bodyWriter.FormDataContentType()
+	defer bodyWriter.Close()
+	resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token, "&type=image"}, ""), contentType, bodyBuf)
 	if err != nil {
 		log.Println(err.Error())
 		return err
