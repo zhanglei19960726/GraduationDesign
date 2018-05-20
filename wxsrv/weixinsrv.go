@@ -63,10 +63,8 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
-	fmt.Println("haha	")
-	writer.ReplyText("haha")
 	if request.EventKey == "databaseIntroductionKey" {
-		//fmt.Println("haha")
+		writer.ReplyText("haha")
 		////mediaId, err := reciveMessage(writer, request)
 		////if err != nil {
 		////	log.Println(err.Error())
