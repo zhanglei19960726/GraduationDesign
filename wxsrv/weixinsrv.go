@@ -85,6 +85,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		}
 	}
 	if request.EventKey == talkSpace {
+		fmt.Println("hahahahaah")
 		wx := writer.GetWeixin()
 		wx.CreateRedirectURL("http://www.baid.com", weixin.RedirectURLScopeBasic, "")
 	}
