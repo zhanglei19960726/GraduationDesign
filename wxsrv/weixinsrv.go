@@ -31,7 +31,9 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	writer.ReplyText("欢迎关注")
 	wx := &weixin.Weixin{}
+	fmt.Println("11111111111111111")
 	err := createMenu(wx)
+	fmt.Println("hahaha")
 	if err != nil {
 		log.Println(err.Error())
 		return
