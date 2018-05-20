@@ -56,11 +56,11 @@ func createMenu(wx *weixin.Weixin) error {
 	//menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
 	//menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
 	//menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
-	err := wx.CreateMenu(menu)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	return err
+	//err := wx.CreateMenu(menu)
+	//if err != nil {
+	//	fmt.Println(err.Error())
+	//}
+	return nil
 }
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
