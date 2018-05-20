@@ -1,8 +1,8 @@
 package wxsrv
 
 import (
-	"fmt"
 	"github.com/wizjin/weixin"
+	"log"
 	"net/http"
 )
 
@@ -28,14 +28,13 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
-	fmt.Println("haha")
 	writer.ReplyText("欢迎关注")
-	//wx := &weixin.Weixin{}
-	//err := createMenu(wx)
-	//if err != nil {
-	//	log.Println(err.Error())
-	//	return
-	//}
+	wx := &weixin.Weixin{}
+	err := createMenu(wx)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
 }
 
 //创建菜单
