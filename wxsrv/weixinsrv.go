@@ -4,6 +4,7 @@ import (
 	"github.com/wizjin/weixin"
 	"log"
 	"net/http"
+	"fmt"
 )
 
 var (
@@ -28,6 +29,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
+	fmt.Println("haha")
 	writer.ReplyText("欢迎关注")
 	wx := &weixin.Weixin{}
 	err := createMenu(wx)
