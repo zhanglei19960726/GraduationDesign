@@ -18,6 +18,7 @@ const (
 	appID                   = "wxf4b1e3a9d5753984"
 	appSecret               = "c8981b2fc40b3ecc24f22dc644829099"
 	databaseIntroductionKey = "Mykey001"
+	talkSpace               = "Mykey002"
 )
 
 //文本消息的处理函数
@@ -43,7 +44,7 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 
 //创建菜单
 func createMenu(wx *weixin.Weixin) error {
-	menu := &weixin.Menu{make([]weixin.MenuButton, 2)}
+	menu := &weixin.Menu{make([]weixin.MenuButton, 3)}
 	menu.Buttons[0].Name = "数据库简介"
 	menu.Buttons[0].Type = weixin.MenuButtonTypeKey
 	menu.Buttons[0].Key = databaseIntroductionKey
@@ -55,6 +56,9 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
 	menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
 	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
+	menu.Buttons[2].Name = "讨论区"
+	menu.Buttons[2].Key = talkSpace
+	menu.Buttons[2].Type = weixin.MenuButtonTypeKey
 	err := wx.CreateMenu(menu)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -79,6 +83,10 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 			log.Println(err.Error())
 			return
 		}
+	}
+	if request.EventKey == talkSpace {
+		wx := writer.GetWeixin()
+		wx.CreateRedirectURL("http://www.baid.com", weixin.RedirectURLScopeBasic, "")
 	}
 }
 
