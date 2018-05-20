@@ -65,7 +65,9 @@ func createMenu(wx *weixin.Weixin) error {
 	//menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
 	//menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
 	err := wx.CreateMenu(menu)
-	fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 	return err
 }
 func Run() {
