@@ -30,6 +30,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	res, err := robort(text)
 	if err != nil {
 		log.Println("robort error :", err.Error())
+		return
 	}
 	w.ReplyText(res.Results[0].Values)
 }
@@ -118,8 +119,28 @@ const (
 )
 
 type Response struct {
+	Emotion Emotion   `json:"emotion"`
 	Intent  Intent    `json:"intent"`
 	Results []Results `json:"results"`
+}
+
+type Emotion struct {
+	RobotEmotion RobotEmotion `json:"robotEmotion"`
+	UserEmotion  UserEmotion  `json:"userEmotion"`
+}
+
+type UserEmotion struct {
+	A         int `json:"a"`
+	D         int `json:"d"`
+	EmotionId int `json:"emotionId"`
+	P         int `json:"p"`
+}
+
+type RobotEmotion struct {
+	A         int `json:"a"`
+	D         int `json:"d"`
+	EmotionId int `json:"emotionId"`
+	P         int `json:"p"`
 }
 
 type Intent struct {
