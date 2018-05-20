@@ -1,10 +1,9 @@
 package wxsrv
 
 import (
-	"github.com/wizjin/weixin"
-	"log"
-	"net/http"
 	"fmt"
+	"github.com/wizjin/weixin"
+	"net/http"
 )
 
 var (
@@ -31,12 +30,12 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	fmt.Println("haha")
 	writer.ReplyText("欢迎关注")
-	wx := &weixin.Weixin{}
-	err := createMenu(wx)
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
+	//wx := &weixin.Weixin{}
+	//err := createMenu(wx)
+	//if err != nil {
+	//	log.Println(err.Error())
+	//	return
+	//}
 }
 
 //创建菜单
