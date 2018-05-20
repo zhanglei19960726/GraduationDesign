@@ -48,14 +48,14 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[0].Name = "数据库简介"
 	menu.Buttons[0].Type = weixin.MenuButtonTypeKey
 	menu.Buttons[0].Key = "Mykey001"
-	//menu.Buttons[1].Name = "数据库教程"
-	//menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
-	//menu.Buttons[1].SubButtons[0].Name = "mysql教程"
-	//menu.Buttons[1].SubButtons[0].Type = weixin.MenuButtonTypeUrl
-	//menu.Buttons[1].SubButtons[0].Url = "http://www.runoob.com/mysql/mysql-tutorial.html"
-	//menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
-	//menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
-	//menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
+	menu.Buttons[1].Name = "数据库教程"
+	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
+	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
+	menu.Buttons[1].SubButtons[0].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[1].SubButtons[0].Url = "http://www.runoob.com/mysql/mysql-tutorial.html"
+	menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
+	menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
 	//err := wx.CreateMenu(menu)
 	//if err != nil {
 	//	fmt.Println(err.Error())
