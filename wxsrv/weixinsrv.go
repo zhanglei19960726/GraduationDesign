@@ -31,7 +31,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	if err != nil {
 		log.Println("robort error :", err.Error())
 	}
-	w.ReplyText(res.Values)
+	w.ReplyText(res.Results[0].Values)
 }
 
 //关注事件的处理函数
@@ -119,7 +119,7 @@ const (
 
 type Response struct {
 	Intent  Intent    `json:"intent"`
-	results []Results `json:"results"`
+	Results []Results `json:"results"`
 }
 
 type Intent struct {
