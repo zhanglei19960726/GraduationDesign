@@ -149,7 +149,7 @@ type Intent struct {
 
 type Results struct {
 	ResultType string `json:"resultType"`
-	Values     string `json:"values"`
+	Values     Text   `json:"values"`
 	GroupType  int    `json:"groupType"`
 }
 
