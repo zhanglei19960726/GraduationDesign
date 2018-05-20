@@ -67,16 +67,14 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
 		article := make([]weixin.Article, 1)
 		article[0].Title = "test"
-		article[0].Description = "aaa注意事项上传的多媒体文件有格式和大小限制，如下：" +
-			"?  图片（image）: 128K，支持JPG格式" +
-			"?  语音（voice）：256K，播放长度不超过60s，支持AMRMP3格式" +
-			"?  视频（video）：1MB，支持MP4格式" +
-			"?  缩略图（thumb）：64KB，支持JPG格式" +
-			"媒体文件在后台保存时间为3天，即3天后media_id失效。 对于需要重复使用的多媒体文件，可以每3天循环上传一次，更新media_id。" +
-			"二、下载多媒体文件" +
-			"公众号可调用本接口来获取多媒体文件。请注意，视频文件不支持下载，调用该接口需http协议。" +
-			"下载文件使用获取图片数据，写入新文件的方法。" +
-			"http请求方式: GET"
+		article[0].Description = "数据库(Database)是按照数据结构来组织、存储和管理数据的仓库，" +
+			"它产生于距今六十多年前，随着信息技术和市场的发展，特别是二十世纪九十年代以后，" +
+			"数据管理不再仅仅是存储和管理数据，而转变成用户所需要的各种数据管理的方式。数据库有很多种类型，" +
+			"从最简单的存储有各种数据的表格到能够进行海量数据存储的大型数据库系统都在各个方面得到了广泛的应用。" +
+			"在信息化社会，充分有效地管理和利用各类信息资源，是进行科学研究和决策管理的前提条件。" +
+			"数据库技术是管理信息系统、办公自动化系统、决策支持系统等各类信息系统的核心部分，" +
+			"是进行科学研究和决策管理的重要技术手段"
+		article[0].PicUrl = goPath + filePath + "/1.png"
 		err := writer.PostNews(article)
 		if err != nil {
 			log.Println(err.Error())
