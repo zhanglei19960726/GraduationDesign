@@ -32,7 +32,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 		log.Println("robort error :", err.Error())
 		return
 	}
-	w.ReplyText(res.Results[0].Values)
+	w.ReplyText(res.Results[0].Values.Text)
 }
 
 //关注事件的处理函数
