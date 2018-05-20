@@ -66,7 +66,7 @@ func createMenu(wx *weixin.Weixin) error {
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
 		article := make([]weixin.Article, 1)
-		article[0].Title = "test"
+		article[0].Title = "数据库简介"
 		article[0].Description = "数据库(Database)是按照数据结构来组织、存储和管理数据的仓库，" +
 			"它产生于距今六十多年前，随着信息技术和市场的发展，特别是二十世纪九十年代以后，" +
 			"数据管理不再仅仅是存储和管理数据，而转变成用户所需要的各种数据管理的方式。数据库有很多种类型，" +
@@ -74,7 +74,6 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 			"在信息化社会，充分有效地管理和利用各类信息资源，是进行科学研究和决策管理的前提条件。" +
 			"数据库技术是管理信息系统、办公自动化系统、决策支持系统等各类信息系统的核心部分，" +
 			"是进行科学研究和决策管理的重要技术手段"
-		article[0].PicUrl = "https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E6%95%B0%E6%8D%AE%E5%BA%93&step_word=&hs=0&pn=25&spn=0&di=23535632560&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=4004079351%2C2690703655&os=1014783586%2C3044524420&simid=4222711903%2C466055311&adpicid=0&lpn=0&ln=1982&fr=&fmq=1526821402827_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fwww.langsinsoft.com%2Fuploads%2F160121%2F1-1601211I942Z2.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bswg2ftgf5up_z%26e3Bv54AzdH3FvwfjAzdH3F1wpwkwfjAzdH3Fdd_z%26e3Bip4s&gsm=0&rpstart=0&rpnum=0&islist=&querylist="
 		err := writer.PostNews(article)
 		if err != nil {
 			log.Println(err.Error())
