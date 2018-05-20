@@ -73,6 +73,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		article := make([]weixin.Article, 1)
 		article[0].Title = "test"
 		article[0].Description = "zhanglei"
+		article[0].Url = "http://www.baidu.com"
 		err := writer.PostNews(article)
 		if err != nil {
 			log.Println(err.Error())
