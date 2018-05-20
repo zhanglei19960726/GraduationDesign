@@ -65,16 +65,18 @@ func createMenu(wx *weixin.Weixin) error {
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
-		//mediaId, err := reciveMessage(writer, request)
-		//if err != nil {
-		//	log.Println(err.Error())
-		//	return
-		//}
+		mediaId, err := reciveMessage(writer, request)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+		fmt.Println(mediaId)
 		article := make([]weixin.Article, 1)
 		article[0].Title = "test"
 		article[0].Description = "zhanglei"
 		article[0].Url = "http://www.baidu.com"
-		err := writer.PostNews(article)
+		article[0].PicUrl = request.PicUrl
+		err = writer.PostNews(article)
 		if err != nil {
 			log.Println(err.Error())
 			return
