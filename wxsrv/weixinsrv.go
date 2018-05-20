@@ -1,6 +1,7 @@
 package wxsrv
 
 import (
+	"fmt"
 	"github.com/wizjin/weixin"
 	"log"
 	"net/http"
@@ -34,6 +35,17 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	if err != nil {
 		log.Println(err.Error())
 		return
+	}
+	DeleteMenu(wx)
+}
+
+//获取菜单
+func DeleteMenu(wx *weixin.Weixin) {
+	menu, err := wx.GetMenu()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(menu)
 	}
 }
 
