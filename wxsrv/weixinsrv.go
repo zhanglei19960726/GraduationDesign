@@ -3,7 +3,6 @@ package wxsrv
 import (
 	"fmt"
 	"github.com/wizjin/weixin"
-	"log"
 	"net/http"
 )
 
@@ -30,6 +29,8 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	writer.ReplyText("欢迎关注")
+	wx := writer.GetWeixin()
+	createMenu(wx)
 }
 
 //获取菜单
@@ -56,10 +57,10 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
 	menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
 	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
-	//err := wx.CreateMenu(menu)
-	//if err != nil {
-	//	fmt.Println(err.Error())
-	//}
+	err := wx.CreateMenu(menu)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 	return nil
 }
 func Run() {
@@ -68,15 +69,6 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeText, echo)
 	//注册关注函数
 	mux.HandleFunc(weixin.MsgTypeEventSubscribe, subscribe)
-	wx := &weixin.Weixin{}
-	fmt.Println("11111111111111111")
-	err := createMenu(wx)
-	fmt.Println("hahaha")
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
-	DeleteMenu(wx)
 	http.Handle("/", mux)
 	http.ListenAndServe(":80", nil)
 }
