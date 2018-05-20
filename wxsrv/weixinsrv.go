@@ -191,6 +191,7 @@ func robort(text string) (res *Response, err error) {
 		return
 	}
 	fmt.Println(string(body))
+	res.Intent.Code = 0
 	buf, _ := json.Marshal(res)
 	fmt.Println(string(buf))
 	err = json.Unmarshal(body, res)
