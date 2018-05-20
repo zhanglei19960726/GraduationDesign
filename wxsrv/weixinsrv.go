@@ -29,15 +29,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
-	wx := &weixin.Weixin{}
-	fmt.Println("11111111111111111")
-	err := createMenu(wx)
-	fmt.Println("hahaha")
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
-	DeleteMenu(wx)
+	writer.ReplyText("欢迎关注")
 }
 
 //获取菜单
@@ -76,6 +68,15 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeText, echo)
 	//注册关注函数
 	mux.HandleFunc(weixin.MsgTypeEventSubscribe, subscribe)
+	wx := &weixin.Weixin{}
+	fmt.Println("11111111111111111")
+	err := createMenu(wx)
+	fmt.Println("hahaha")
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	DeleteMenu(wx)
 	http.Handle("/", mux)
 	http.ListenAndServe(":80", nil)
 }
