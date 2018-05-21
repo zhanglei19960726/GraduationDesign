@@ -72,6 +72,8 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
+	//用户授权
+	userAgree()
 	if request.EventKey == databaseIntroductionKey {
 		article := make([]weixin.Article, 1)
 		article[0].Title = "数据库简介"
@@ -237,7 +239,5 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
 	http.HandleFunc("/upload", uploadHandler)
-	//用户授权
-	userAgree()
 	http.ListenAndServe(":80", nil)
 }
