@@ -72,9 +72,9 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
-	//用户授权
-	userAgree()
 	if request.EventKey == databaseIntroductionKey {
+		wx := writer.GetWeixin()
+		wx.CreateRedirectURL(redirectUri, weixin.RedirectURLScopeBasic, "")
 		article := make([]weixin.Article, 1)
 		article[0].Title = "数据库简介"
 		article[0].Description = "数据库(Database)是按照数据结构来组织、存储和管理数据的仓库，" +
@@ -209,10 +209,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func userAgree() {
-	wxUrl := "https://open.weixin.qq.com/connect/oauth2/authorize" +
-		"?appid=" +
-		"&redirect_uri=" + redirectUri +
-		"&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+
 	request, err := http.NewRequest("POST", wxUrl, nil)
 	if err != nil {
 		log.Println("new request error:", err.Error())
