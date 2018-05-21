@@ -74,8 +74,9 @@ func createMenu(wx *weixin.Weixin) error {
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
 		wx := writer.GetWeixin()
-		url := wx.CreateRedirectURL(redirectUri, weixin.RedirectURLScopeBasic, "")
-		userAgree(url)
+		url := wx.CreateRedirectURL(redirectUri, weixin.RedirectURLScopeUserInfo, "")
+		fmt.Println(url)
+		//userAgree(url)
 		article := make([]weixin.Article, 1)
 		article[0].Title = "数据库简介"
 		article[0].Description = "数据库(Database)是按照数据结构来组织、存储和管理数据的仓库，" +
@@ -115,12 +116,6 @@ func userAgree(url string) {
 		return
 	}
 	fmt.Println(string(body))
-}
-
-func reciveMessage(w weixin.ResponseWriter, r *weixin.Request) (mediaId string, err error) {
-	// 上传本地文件并获取MediaID
-	mediaId, err = w.UploadMediaFromFile(weixin.MediaTypeImage, filePath+"/1.png")
-	return
 }
 
 type Text struct {
