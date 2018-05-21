@@ -74,7 +74,8 @@ func createMenu(wx *weixin.Weixin) error {
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
 		wx := writer.GetWeixin()
-		wx.CreateRedirectURL(redirectUri, weixin.RedirectURLScopeBasic, "")
+		code := wx.CreateRedirectURL(redirectUri, weixin.RedirectURLScopeBasic, "")
+		fmt.Println("code is ", code)
 		article := make([]weixin.Article, 1)
 		article[0].Title = "数据库简介"
 		article[0].Description = "数据库(Database)是按照数据结构来组织、存储和管理数据的仓库，" +
