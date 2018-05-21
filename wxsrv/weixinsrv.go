@@ -210,7 +210,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 
 func userAgree() {
 	wxUrl := "https://open.weixin.qq.com/connect/oauth2/authorize" +
-		"?appid=" + appID +
+		"?appid=" +
 		"&redirect_uri=" + redirectUri +
 		"&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
 	request, err := http.NewRequest("GET", wxUrl, nil)
@@ -224,7 +224,8 @@ func userAgree() {
 		log.Println("send msg error :", err.Error())
 		return
 	}
-	_, err = ioutil.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
 	defer resp.Body.Close()
 	fmt.Println(resp.Request.URL)
 }
