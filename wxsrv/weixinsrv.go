@@ -200,6 +200,9 @@ func robort(text string) (res *Response, err error) {
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("hello world"))
+	if r.Method == "GET" {
+		fmt.Println("GET")
+	}
 }
 
 func Run() {
