@@ -74,8 +74,8 @@ func createMenu(wx *weixin.Weixin) error {
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == databaseIntroductionKey {
 		wx := writer.GetWeixin()
-		code := wx.CreateRedirectURL(redirectUri, weixin.RedirectURLScopeBasic, "")
-		fmt.Println("code is ", code)
+		url := wx.CreateRedirectURL(redirectUri, weixin.RedirectURLScopeBasic, "")
+		userAgree(url)
 		article := make([]weixin.Article, 1)
 		article[0].Title = "数据库简介"
 		article[0].Description = "数据库(Database)是按照数据结构来组织、存储和管理数据的仓库，" +
@@ -94,6 +94,27 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	} else if request.EventKey == talkSpace {
 		writer.ReplyText("haha")
 	}
+}
+
+func userAgree(url string) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Println("send msg err : ", err.Error())
+		return
+	}
+	client := http.Client{}
+	res, err := client.Do(req)
+	if err != nil {
+		log.Println("get msg err: ", err.Error())
+		return
+	}
+	defer res.Body.Close()
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		log.Println("read body err :", err.Error())
+		return
+	}
+	fmt.Println(string(body))
 }
 
 func reciveMessage(w weixin.ResponseWriter, r *weixin.Request) (mediaId string, err error) {
