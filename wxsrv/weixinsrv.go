@@ -81,7 +81,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 			"在信息化社会，充分有效地管理和利用各类信息资源，是进行科学研究和决策管理的前提条件。" +
 			"数据库技术是管理信息系统、办公自动化系统、决策支持系统等各类信息系统的核心部分，" +
 			"是进行科学研究和决策管理的重要技术手段"
-		article[0].Url = "http://www.zhangleispace.club:8081/upload"
+		article[0].Url = "http://www.zhangleispace.club/upload"
 		err := writer.PostNews(article)
 		if err != nil {
 			log.Println(err.Error())
