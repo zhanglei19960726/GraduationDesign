@@ -22,6 +22,7 @@ const (
 	appSecret               = "c8981b2fc40b3ecc24f22dc644829099"
 	databaseIntroductionKey = "Mykey001"
 	talkSpace               = "Mykey002"
+	redirectUri             = "http://www.zhangleispace.club/upload"
 )
 
 //文本消息的处理函数
@@ -205,6 +206,27 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func userAgree() {
+	request, err := http.NewRequest("GET", "https://open.weixin.qq.com/connect/oauth2/authorize"+
+		"?appid="+appID+
+		"&redirect_uri="+redirectUri+
+		"&response_type=snsapi_base"+
+		"&scope=SCOPE#wechat_redirect", nil)
+	if err != nil {
+		log.Println("new request error:", err.Error())
+		return
+	}
+	client := &http.Client{}
+	resp, err := client.Do(request)
+	if err != nil {
+		log.Println("send msg error :", err.Error())
+		return
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	fmt.Println(string(body))
+}
+
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
@@ -215,5 +237,7 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
 	http.HandleFunc("/upload", uploadHandler)
+	//用户授权
+	userAgree()
 	http.ListenAndServe(":80", nil)
 }
