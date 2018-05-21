@@ -56,14 +56,9 @@ func HomeHanler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("hello world"))
-}
-
 func Run() {
 	http.HandleFunc("/", HomeHanler)
 	http.HandleFunc("/admin", AdminHandler)
-	http.HandleFunc("/upload", uploadHandler)
 	http.ListenAndServe(":8081", nil)
 }
 

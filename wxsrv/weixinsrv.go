@@ -198,6 +198,10 @@ func robort(text string) (res *Response, err error) {
 	return
 }
 
+func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("hello world"))
+}
+
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
@@ -207,5 +211,6 @@ func Run() {
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
+	http.HandleFunc("/upload", uploadHandler)
 	http.ListenAndServe(":80", nil)
 }
