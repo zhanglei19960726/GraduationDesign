@@ -208,25 +208,6 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func userAgree() {
-
-	request, err := http.NewRequest("POST", wxUrl, nil)
-	if err != nil {
-		log.Println("new request error:", err.Error())
-		return
-	}
-	client := &http.Client{}
-	resp, err := client.Do(request)
-	if err != nil {
-		log.Println("send msg error :", err.Error())
-		return
-	}
-	body, err := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
-	defer resp.Body.Close()
-	fmt.Println(resp.Request.URL)
-}
-
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
