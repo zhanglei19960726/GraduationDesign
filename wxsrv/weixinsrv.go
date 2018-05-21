@@ -224,9 +224,9 @@ func userAgree() {
 		log.Println("send msg error :", err.Error())
 		return
 	}
-	body, err := ioutil.ReadAll(resp.Body)
+	_, err = ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
-	fmt.Println(string(body))
+	fmt.Println(resp.Request.URL)
 }
 
 func Run() {
