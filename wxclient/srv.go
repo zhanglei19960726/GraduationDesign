@@ -13,7 +13,6 @@ var (
 	goPath      = os.Getenv("GOPATH")
 	filePath    = "/src/GraduationDesign/html/"
 	picturePath = "/src/GraduationDesign/picture/"
-	FileName    string
 )
 
 func AdminHandler(w http.ResponseWriter, r *http.Request) {
@@ -57,9 +56,14 @@ func HomeHanler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("hello world"))
+}
+
 func Run() {
 	http.HandleFunc("/", HomeHanler)
 	http.HandleFunc("/admin", AdminHandler)
+	http.HandleFunc("/upload", uploadHandler)
 	http.ListenAndServe(":8081", nil)
 }
 
