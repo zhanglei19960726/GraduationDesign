@@ -213,7 +213,7 @@ func userAgree() {
 		"?appid=" +
 		"&redirect_uri=" + redirectUri +
 		"&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
-	request, err := http.NewRequest("GET", wxUrl, nil)
+	request, err := http.NewRequest("POST", wxUrl, nil)
 	if err != nil {
 		log.Println("new request error:", err.Error())
 		return
