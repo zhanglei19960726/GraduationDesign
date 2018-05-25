@@ -1,7 +1,6 @@
 package wxsrv
 
 import (
-	"GraduationDesign/msgtype"
 	"GraduationDesign/wxclient"
 	"fmt"
 	"github.com/wizjin/weixin"
@@ -50,17 +49,17 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[0].SubButtons[1].Name = "数据库模式"
 	menu.Buttons[0].SubButtons[1].Key = sqlModlekey
 	menu.Buttons[0].SubButtons[1].Type = weixin.MenuButtonTypeKey
-	//menu.Buttons[1].Name = "精彩案例"
-	//menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
-	//menu.Buttons[1].SubButtons[0].Name = "mysql教程"
-	//menu.Buttons[1].SubButtons[0].Type = weixin.MenuButtonTypeUrl
-	//menu.Buttons[1].SubButtons[0].Url = "http://www.runoob.com/mysql/mysql-tutorial.html"
-	//menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
-	//menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
-	//menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
-	//menu.Buttons[2].Name = "在线指导"
-	//menu.Buttons[2].Type = weixin.MenuButtonTypeUrl
-	//menu.Buttons[2].Url = "http://www.runoob.com/sql/sql-tutorial.html"
+	menu.Buttons[1].Name = "精彩案例"
+	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
+	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
+	menu.Buttons[1].SubButtons[0].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[1].SubButtons[0].Url = "http://www.runoob.com/mysql/mysql-tutorial.html"
+	menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
+	menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
+	menu.Buttons[2].Name = "在线指导"
+	menu.Buttons[2].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[2].Url = "http://www.runoob.com/sql/sql-tutorial.html"
 	err := wx.CreateMenu(menu)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -72,17 +71,13 @@ func createMenu(wx *weixin.Weixin) error {
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == sqlKey {
-		mediaId, err := writer.UploadMediaFromFile(weixin.MediaTypeImage, filePath+"1.png")
-		if err != nil {
-			fmt.Println("upload pircture err:", err.Error())
-			return
-		}
-		article := make([]msgtypetype.Articles, 1)
-		article[0].Title = "数据库简介"
-		article[0].Content = "zhanglei111111111111111112344455"
-		article[0].ShowCoverPic = 1
-		article[0].ThumbMediaId = mediaId
-		_, err = wxclient.AddNews(article)
+		err := wxclient.AddPicture("1.png")
+		//article := make([]msgtypetype.Articles, 1)
+		//article[0].Title = "数据库简介"
+		//article[0].Content = "zhanglei111111111111111112344455"
+		//article[0].ShowCoverPic = 1
+		//article[0].ThumbMediaId = mediaId
+		//_, err = wxclient.AddNews(article)
 		if err != nil {
 			log.Println(err.Error())
 			return
