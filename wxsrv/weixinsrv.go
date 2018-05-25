@@ -73,8 +73,13 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	if request.EventKey == sqlKey {
 		articles[0].Title = "sql"
 		mediaId, err := writer.UploadMediaFromFile(weixin.MediaTypeImage, filePath+"1.png")
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
 		articles[0].PicUrl = mediaId
 		articles[0].Description = "hahahahaahahhahahhaha"
+		err = writer.PostNews(articles)
 		if err != nil {
 			log.Println(err.Error())
 			return
