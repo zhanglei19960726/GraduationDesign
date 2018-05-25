@@ -72,7 +72,6 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	articles := make([]weixin.Article, 2)
 	if request.EventKey == sqlKey {
 		articles[0].Title = "sql"
-		articles[0].PicUrl = "http://mmbiz.qpic.cn/mmbiz/gLO17UPS6FS2xsypf378iaNhWacZ1G1UplZYWEYfwvuU6Ont96b1roYs CNFwaRrSaKTPCUdBK9DgEHicsKwWCBRQ/0"
 		articles[0].Description = "hahahahaahahhahahhaha"
 		articles[1].Title = "sql1"
 		articles[1].Description = "hahahahaahahhahahhaha"
