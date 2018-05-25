@@ -1,7 +1,6 @@
 package wxsrv
 
 import (
-	"GraduationDesign/wxclient"
 	"fmt"
 	"github.com/wizjin/weixin"
 	"io/ioutil"
@@ -70,14 +69,12 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
+	articles := make([]weixin.Article, 1)
 	if request.EventKey == sqlKey {
-		err := wxclient.AddPicture("1.png")
-		//article := make([]msgtypetype.Articles, 1)
-		//article[0].Title = "数据库简介"
-		//article[0].Content = "zhanglei111111111111111112344455"
-		//article[0].ShowCoverPic = 1
-		//article[0].ThumbMediaId = mediaId
-		//_, err = wxclient.AddNews(article)
+		articles[0].Title = "sql"
+		mediaId, err := writer.UploadMediaFromFile(weixin.MediaTypeImage, filePath+"1.png")
+		articles[0].PicUrl = mediaId
+		articles[0].Description = "hahahahaahahhahahhaha"
 		if err != nil {
 			log.Println(err.Error())
 			return
