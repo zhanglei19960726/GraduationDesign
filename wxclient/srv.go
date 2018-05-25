@@ -12,7 +12,7 @@ import (
 var (
 	goPath      = os.Getenv("GOPATH")
 	filePath    = "/src/GraduationDesign/html/"
-	picturePath = "/src/GraduationDesign/picture/"
+	picturePath = "/src/GraduationDesign/file/"
 )
 
 func AdminHandler(w http.ResponseWriter, r *http.Request) {
