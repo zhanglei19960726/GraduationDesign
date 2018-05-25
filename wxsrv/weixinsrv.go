@@ -40,7 +40,7 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 
 //创建菜单
 func createMenu(wx *weixin.Weixin) error {
-	menu := &weixin.Menu{make([]weixin.MenuButton, 1)}
+	menu := &weixin.Menu{make([]weixin.MenuButton, 3)}
 	menu.Buttons[0].Name = "在线学习"
 	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 2)
 	menu.Buttons[0].SubButtons[0].Name = "sql 语句"
