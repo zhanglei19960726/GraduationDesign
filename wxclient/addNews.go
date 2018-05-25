@@ -66,22 +66,19 @@ func AddPicture(fileName string) error {
 		panic(err.Error())
 		return err
 	}
-	fmt.Println(token)
 	bodyBuf := &bytes.Buffer{}
 	bodyWriter := multipart.NewWriter(bodyBuf)
-	fileWriter, err := bodyWriter.CreateFormFile("media", filepath.Base(fileName))
+	fileWriter, err := bodyWriter.CreateFormFile("filename", filepath.Base(fileName))
 	if err != nil {
 		fmt.Println("error writing to buffer")
 		return err
 	}
 	buf, err := ioutil.ReadFile(goPath + picturePath + fileName)
-	fmt.Println(err, buf, goPath+picturePath+fileName)
-	num, err := io.Copy(fileWriter, bytes.NewReader(buf))
+	_, err = io.Copy(fileWriter, bytes.NewReader(buf))
 	if err != nil {
 		panic(err.Error())
 		return err
 	}
-	fmt.Println(num)
 	contentType := bodyWriter.FormDataContentType()
 	defer bodyWriter.Close()
 	resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token, "&type=image"}, ""), contentType, bodyBuf)
