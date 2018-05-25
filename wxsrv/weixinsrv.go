@@ -72,24 +72,11 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	articles := make([]weixin.Article, 2)
 	if request.EventKey == sqlKey {
 		articles[0].Title = "sql"
-		mediaId, err := writer.UploadMediaFromFile(weixin.MediaTypeImage, filePath+"1.png")
-		if err != nil {
-			log.Println(err.Error())
-			return
-		}
-		articles[0].PicUrl = mediaId
+		articles[0].PicUrl = "http://mmbiz.qpic.cn/mmbiz/gLO17UPS6FS2xsypf378iaNhWacZ1G1UplZYWEYfwvuU6Ont96b1roYs CNFwaRrSaKTPCUdBK9DgEHicsKwWCBRQ/0"
 		articles[0].Description = "hahahahaahahhahahhaha"
 		articles[1].Title = "sql1"
-		if err != nil {
-			log.Println(err.Error())
-			return
-		}
-		articles[0].Description = "hahahahaahahhahahhaha"
-		err = writer.PostNews(articles)
-		if err != nil {
-			log.Println(err.Error())
-			return
-		}
+		articles[1].Description = "hahahahaahahhahahhaha"
+		writer.PostNews(articles)
 	} else if request.EventKey == talkSpace {
 
 	}
