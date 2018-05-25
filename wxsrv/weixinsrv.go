@@ -69,7 +69,7 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
-	articles := make([]weixin.Article, 1)
+	articles := make([]weixin.Article, 2)
 	if request.EventKey == sqlKey {
 		articles[0].Title = "sql"
 		mediaId, err := writer.UploadMediaFromFile(weixin.MediaTypeImage, filePath+"1.png")
@@ -78,6 +78,12 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 			return
 		}
 		articles[0].PicUrl = mediaId
+		articles[0].Description = "hahahahaahahhahahhaha"
+		articles[1].Title = "sql1"
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
 		articles[0].Description = "hahahahaahahhahahhaha"
 		err = writer.PostNews(articles)
 		if err != nil {
