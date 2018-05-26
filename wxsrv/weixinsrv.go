@@ -41,12 +41,11 @@ func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, descript
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	media, err := w.UploadMediaFromFile(weixin.MediaTypeImage, path+"sql.jpg")
-	fmt.Println(media)
 	if err != nil {
 		log.Println(err.Error())
 		return
 	}
-	w.ReplyImage(media)
+	w.DownloadMediaToFile(media, goPath)
 	content := ""
 	switch r.Content {
 	case "学习":
