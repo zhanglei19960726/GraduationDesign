@@ -27,14 +27,15 @@ type Updata struct {
 }
 
 type Now struct {
-	Fl      string `json:"fl"`       //体感温 摄氏度
-	Tmp     string `json:"tmp"`      //温度 摄氏度
-	WindDir string `json:"wind_dir"` //风向
-	WindSc  string `json:"wind_sc"`  //风力
-	WindSpd string `json:"wind_spd"` //风速 km/h
-	Hum     string `json:"hum"`      //相对湿度
-	Pcpn    string `json:"pcpn"`     //降水量
-	Vis     string `json:"vis"`      //能见度 km
+	Fl       string `json:"fl"`        //体感温 摄氏度
+	Tmp      string `json:"tmp"`       //温度 摄氏度
+	WindDir  string `json:"wind_dir"`  //风向
+	WindSc   string `json:"wind_sc"`   //风力
+	WindSpd  string `json:"wind_spd"`  //风速 km/h
+	Hum      string `json:"hum"`       //相对湿度
+	Pcpn     string `json:"pcpn"`      //降水量
+	Vis      string `json:"vis"`       //能见度 km
+	ContText string `json:"cont_text"` //实况天气状况
 }
 
 type HeWeather6 struct {
