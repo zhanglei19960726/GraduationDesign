@@ -81,6 +81,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		articles[0].Title = "sql 语句"
 		articles[0].PicUrl = sqlPictureURL
 		articles[0].Description = "zhangleihaha"
+		articles[0].Url = "http://www.baidu.com"
 		articles[1].Title = "数据库模型"
 		articles[1].PicUrl = modlePictureURL
 		articles[2].Title = "数据库完整性和安全性"
