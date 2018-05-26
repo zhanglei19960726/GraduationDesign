@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
+    <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="1">
+      <change afterPath="$PROJECT_DIR$/html/sql.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wxsrv/weixinsrv.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxsrv/weixinsrv.go" afterDir="false" />
     </list>
@@ -18,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
+              <caret line="124" column="20" selection-start-line="124" selection-start-column="20" selection-end-line="124" selection-end-column="20" />
               <folding>
                 <element signature="e#15#127#0" expanded="true" />
               </folding>
@@ -26,11 +27,38 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="sql.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/sql.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="srv.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wxclient/srv.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="addNews.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1061">
+            <state relative-caret-position="1914">
               <caret line="96" column="35" lean-forward="true" selection-start-line="96" selection-start-column="35" selection-end-line="96" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="msgHandle.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wxsrv/msgHandle.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -38,8 +66,8 @@
       <file leaf-file-name="weixin.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../github.com/wizjin/weixin/weixin.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-123">
-              <caret line="1108" column="13" lean-forward="true" selection-start-line="1108" selection-start-column="13" selection-end-line="1108" selection-end-column="13" />
+            <state relative-caret-position="185">
+              <caret line="1223" column="24" selection-start-line="1223" selection-start-column="24" selection-end-line="1223" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -56,8 +84,17 @@
       <file leaf-file-name="srv.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxsrv/srv.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="-405">
               <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WxPlatUtil.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wxclient/WxPlatUtil.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -67,8 +104,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Go File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -113,6 +150,7 @@
         <option value="$PROJECT_DIR$/msgtype/msgtype.go" />
         <option value="$PROJECT_DIR$/wxclient/srv.go" />
         <option value="$PROJECT_DIR$/wxclient/addNews.go" />
+        <option value="$PROJECT_DIR$/html/sql.html" />
         <option value="$PROJECT_DIR$/wxsrv/weixinsrv.go" />
       </list>
     </option>
@@ -148,6 +186,11 @@
               <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
               <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
               <item name="file" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GraduationDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GraduationDesign" type="b2602c69:ProjectViewProjectNode" />
@@ -260,7 +303,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.495" visible="true" weight="0.21406959" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.495" visible="true" weight="0.21406959" />
       <window_info anchor="bottom" id="TODO" order="5" sideWeight="0.4977307" weight="0.32561985" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50226927" side_tool="true" weight="0.3250825" />
       <window_info anchor="right" id="Database" order="3" />
@@ -269,7 +312,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49924356" weight="0.3305785" />
       <window_info anchor="bottom" id="Run" order="11" sideWeight="0.4977307" weight="0.3570248" />
       <window_info id="Structure" order="1" sideWeight="0.505" side_tool="true" weight="0.18154311" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49848714" visible="true" weight="0.38512397" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49848714" weight="0.38512397" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4977307" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -349,7 +392,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/picture/q.go" />
     <entry file="file://C:/Go/src/mime/multipart/writer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -434,13 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxsrv/msgHandle.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmd/wxclient.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -457,20 +492,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/file/1.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wxclient/srv.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wxclient/WxPlatUtil.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmd/srvmain.go">
       <provider selected="true" editor-type-id="text-editor">
@@ -626,29 +647,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../github.com/wizjin/weixin/weixin.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-123">
-          <caret line="1108" column="13" lean-forward="true" selection-start-line="1108" selection-start-column="13" selection-end-line="1108" selection-end-column="13" />
+        <state relative-caret-position="185">
+          <caret line="1223" column="24" selection-start-line="1223" selection-start-column="24" selection-end-line="1223" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/sql.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1061">
+        <state relative-caret-position="1914">
           <caret line="96" column="35" lean-forward="true" selection-start-line="96" selection-start-column="35" selection-end-line="96" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxclient/WxPlatUtil.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxsrv/msgHandle.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wxsrv/srv.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="-405">
           <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxclient/srv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
+          <caret line="124" column="20" selection-start-line="124" selection-start-column="20" selection-end-line="124" selection-end-column="20" />
           <folding>
             <element signature="e#15#127#0" expanded="true" />
           </folding>

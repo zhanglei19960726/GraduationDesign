@@ -7,11 +7,13 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"text/template"
 )
 
 var (
 	goPath   = os.Getenv("GOPATH")
 	filePath = goPath + "/src/GraduationDesign/file/"
+	htmlPath = goPath + "/src/GraduationDesign/html/"
 )
 
 //
@@ -79,7 +81,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	wx := writer.GetWeixin()
 	articles := make([]weixin.Article, 3)
 	if request.EventKey == sqlKey {
-		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/upload", weixin.RedirectURLScopeBasic, "")
+		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sql", weixin.RedirectURLScopeBasic, "")
 		articles[0].Title = "sql 语句"
 		articles[0].PicUrl = sqlPictureURL
 		articles[0].Description = "zhangleihaha"
@@ -114,11 +116,13 @@ func userAgree(url string) {
 	fmt.Println(string(body))
 }
 
-func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("hello world"))
-	if r.Method == "GET" {
-		fmt.Println("GET")
+func sqlHandler(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles(goPath + htmlPath + "admin.html")
+	if err != nil {
+		log.Println(err.Error())
+		return
 	}
+	t.Execute(w, nil)
 }
 
 func Run() {
@@ -130,6 +134,6 @@ func Run() {
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
-	http.HandleFunc("/upload", uploadHandler)
+	http.HandleFunc("/sql", sqlHandler)
 	http.ListenAndServe(":80", nil)
 }
