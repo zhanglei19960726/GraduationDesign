@@ -140,7 +140,7 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 		return
 	}
 	he := data.HeWeather6[0]
-	content := he.Update.Loc + "" +
+	content := "数据更新时间：" + he.Update.Loc + "" +
 		"\r\n" + he.Basic.AdminArea + he.Basic.ParentCity + he.Basic.Location + "" +
 		"\r\n" + "体感温度：" + he.Now.Fl + "度" +
 		"\r\n" + "温度：" + he.Now.Tmp + "度" +
