@@ -1,11 +1,8 @@
 package wxsrv
 
 import (
-	"GraduationDesign/msgtype"
-	"GraduationDesign/wxclient"
 	"fmt"
 	"github.com/wizjin/weixin"
-	"log"
 	"net/http"
 	"os"
 )
@@ -51,9 +48,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 		content = "请输入以下内容获取学习内容：\r\nSQL语言\r\n数据库安全性和完整性\r\n数据库模式"
 		w.ReplyText(content)
 	case "SQL语言":
-		wx := w.GetWeixin()
-		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sql", weixin.RedirectURLScopeBasic, "")
-		sendOneArticle(w, "SQL 语言", sqlPictureURL, sqlURL, "")
+		sendOneArticle(w, "SQL 语言", sqlPictureURL, sqlNewsURL, "")
 	case "数据库安全性和完整性":
 		wx := w.GetWeixin()
 		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sqlSer", weixin.RedirectURLScopeBasic, "")
@@ -141,17 +136,17 @@ func Run() {
 	http.HandleFunc("/sql", sqlHandler)
 	http.HandleFunc("/module", moduleHandler)
 	http.HandleFunc("/sqlSer", sqlSerHandler)
-	article := make([]msgtypetype.Articles, 1)
-	article[0].Title = "sql 语言"
-	article[0].ThumbMediaId = sqlMedia
-	article[0].Content = "zhangleinihaoshuai"
-	article[0].Digest = "hahaah"
-	article[0].ShowCoverPic = 1
-	mediaID, err := wxclient.AddNews(article)
-	if err != nil {
-		log.Println(err.Error())
-	}
-	fmt.Println(mediaID)
-	fmt.Println(wxclient.GetAndUpdateDBWxAToken())
+	//article := make([]msgtypetype.Articles, 1)
+	//article[0].Title = "sql 语言"
+	//article[0].ThumbMediaId = sqlMedia
+	//article[0].Content = "zhangleinihaoshuai"
+	//article[0].Digest = "hahaah"
+	//article[0].ShowCoverPic = 1
+	//mediaID, err := wxclient.AddNews(article)
+	//if err != nil {
+	//	log.Println(err.Error())
+	//}
+	//fmt.Println(mediaID)
+	//fmt.Println(wxclient.GetAndUpdateDBWxAToken())
 	http.ListenAndServe(":80", nil)
 }
