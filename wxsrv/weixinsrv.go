@@ -32,9 +32,16 @@ const (
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	content := ""
-	if r.Content == "学习" {
-		content = "请输入以下内容获取学习内容：\r\nSQL语言,数据库安全性和完整性，数据库模式"
-	} else {
+	switch r.Content {
+	case "学习":
+		content = "请输入以下内容获取学习内容：\r\nSQL语言\r\n数据库安全性和完整性\r\n数据库模式"
+	case "SQL语言":
+		content = r.Content
+	case "数据库安全性和完整性":
+		content = r.Content
+	case "数据库模式":
+		content = r.Content
+	default:
 		content = r.Content
 	}
 	w.ReplyText(content)
