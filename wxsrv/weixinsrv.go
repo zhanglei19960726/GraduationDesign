@@ -40,7 +40,7 @@ func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, descript
 
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
-	media, err := w.UploadMediaFromFile(weixin.MediaTypeImage, path+"1.jpg")
+	media, err := w.UploadMediaFromFile(weixin.MediaTypeImage, path+"sql.jpg")
 	if err != nil {
 		log.Println(err.Error())
 		return
