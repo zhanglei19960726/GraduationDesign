@@ -121,10 +121,8 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 }
 
 func location(writer weixin.ResponseWriter, request *weixin.Request) {
-	fmt.Println(request.LocationX, request.LocationY)
 	x := strconv.FormatFloat(float64(request.LocationX), 'f', 6, 64)
 	y := strconv.FormatFloat(float64(request.LocationY), 'f', 6, 64)
-	fmt.Println(x, y)
 	response, err := http.Get("https://free-api.heweather.com/s6/weather/now?location=" + x + "," + y + "&key=bef3e2e4c99a4884ae76299f5fc9d407")
 	if err != nil {
 		log.Println(err.Error())
@@ -132,7 +130,6 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 	}
 	defer response.Body.Close()
 	buf, _ := ioutil.ReadAll(response.Body)
-	fmt.Println(string(buf))
 	data := &HeWeather6s{}
 	err = json.Unmarshal(buf, data)
 	if err != nil {
