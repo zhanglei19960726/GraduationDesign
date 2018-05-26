@@ -6,15 +6,6 @@ import (
 	"net/http"
 )
 
-//
-//var (
-//	goPath         = os.Getenv("GOPATH")
-//	path           = goPath + "/src/GraduationDesign/file/"
-//	htmlPath       = goPath + "/src/GraduationDesign/html/"
-//	sqlNewsItemURL string
-//)
-
-//
 const (
 	token           = "zhang"
 	appID           = "wxf4b1e3a9d5753984"
@@ -112,7 +103,6 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	case sqlKey:
 		articles[0].Title = "sql 语句"
 		articles[0].PicUrl = sqlPictureURL
-		articles[0].Description = "zhangleihaha"
 		articles[0].Url = sqlNewsURL
 	case sqlModlekey:
 		articles[0].Title = "数据库模式"
@@ -126,6 +116,10 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	writer.ReplyNews(articles)
 }
 
+func location(writer weixin.ResponseWriter, request *weixin.Request) {
+	fmt.Println(request.LocationX, request.LocationY)
+}
+
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
@@ -134,6 +128,7 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeEventSubscribe, subscribe)
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
+	mux.HandleFunc(weixin.MsgTypeEventLocation, location)
 	http.Handle("/", mux)
 	//article := make([]msgtypetype.Articles, 1)
 	//article[0].Title = "数据库模式"
