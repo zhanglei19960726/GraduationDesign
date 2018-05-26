@@ -3,6 +3,8 @@ package wxsrv
 import (
 	"fmt"
 	"github.com/wizjin/weixin"
+	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -117,8 +119,14 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 }
 
 func location(writer weixin.ResponseWriter, request *weixin.Request) {
-	writer.ReplyText("hahahaahahha")
 	fmt.Println(request.LocationX, request.LocationY)
+	response, err := http.Get("https://free-api.heweather.com/s6/weather/now?location=34.175102,108.858826&key=bef3e2e4c99a4884ae76299f5fc9d407")
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	buf, _ := ioutil.ReadAll(response.Body)
+	fmt.Println(string(buf))
 }
 
 func Run() {
