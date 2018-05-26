@@ -84,7 +84,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		articles[1].PicUrl = modlePictureURL
 		articles[2].Title = "数据库完整性和安全性"
 		articles[2].PicUrl = modlePictureURL
-		writer.PostNews(articles)
+		writer.ReplyNews(articles)
 	} else if request.EventKey == talkSpace {
 	}
 }
