@@ -32,7 +32,13 @@ const (
 
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
-
+	content := ""
+	if r.Content == "学习" {
+		content = "请输入以下内容获取学习内容：\r\nSQL语言,数据库安全性和完整性，数据库模式"
+	} else {
+		content = r.Content
+	}
+	w.ReplyText(content)
 }
 
 //关注事件的处理函数
@@ -117,7 +123,7 @@ func userAgree(url string) {
 }
 
 func sqlHandler(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(htmlPath + "admin.html")
+	t, err := template.ParseFiles(htmlPath + "sql.html")
 	if err != nil {
 		log.Println(err.Error())
 		return
