@@ -61,11 +61,11 @@ func AddNews(articles []msgtypetype.Articles) (string, error) {
 }
 
 func AddPicture(fileName string) error {
-	token, err := GetAndUpdateDBWxAToken()
-	if err != nil {
-		panic(err.Error())
-		return err
-	}
+	//token, err := GetAndUpdateDBWxAToken()
+	//if err != nil {
+	//	panic(err.Error())
+	//	return err
+	//}
 	bodyBuf := &bytes.Buffer{}
 	bodyWriter := multipart.NewWriter(bodyBuf)
 	fileWriter, err := bodyWriter.CreateFormFile("media", filepath.Base(fileName))
@@ -74,6 +74,7 @@ func AddPicture(fileName string) error {
 		return err
 	}
 	buf, err := ioutil.ReadFile(goPath + picturePath + fileName)
+	fmt.Println("buf is ", buf)
 	_, err = io.Copy(fileWriter, bytes.NewReader(buf))
 	if err != nil {
 		panic(err.Error())
