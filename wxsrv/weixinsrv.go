@@ -29,22 +29,36 @@ const (
 	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0"
 )
 
+func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, description string) {
+	article := make([]weixin.Article, 1)
+	article[0].Title = title
+	article[0].Description = description
+	article[0].PicUrl = picUrl
+	article[0].Url = articleurl
+	w.ReplyNews(article)
+}
+
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
+
 	content := ""
 	switch r.Content {
 	case "学习":
 		content = "请输入以下内容获取学习内容：\r\nSQL语言\r\n数据库安全性和完整性\r\n数据库模式"
+		w.ReplyText(content)
 	case "SQL语言":
-		content = r.Content
+		wx := w.GetWeixin()
+		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sql", weixin.RedirectURLScopeBasic, "")
+		sendOneArticle(w, "SQL 语言", sqlPictureURL, sqlURL, "")
 	case "数据库安全性和完整性":
 		content = r.Content
 	case "数据库模式":
 		content = r.Content
 	default:
 		content = r.Content
+		w.ReplyText(content)
 	}
-	w.ReplyText(content)
+
 }
 
 //关注事件的处理函数
