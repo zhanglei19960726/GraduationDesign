@@ -107,14 +107,12 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
-	wx := writer.GetWeixin()
 	articles := make([]weixin.Article, 3)
 	if request.EventKey == sqlKey {
-		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sql", weixin.RedirectURLScopeBasic, "")
 		articles[0].Title = "sql 语句"
 		articles[0].PicUrl = sqlPictureURL
 		articles[0].Description = "zhangleihaha"
-		articles[0].Url = sqlURL
+		articles[0].Url = sqlNewsURL
 		articles[1].Title = "数据库模型"
 		articles[1].PicUrl = modlePictureURL
 		articles[2].Title = "数据库完整性和安全性"
