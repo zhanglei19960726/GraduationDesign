@@ -129,7 +129,7 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeEventSubscribe, subscribe)
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
-	//注册上报地理位置事件
+	//注册上报地理位置
 	mux.HandleFunc(weixin.MsgTypeLocation, location)
 	http.Handle("/", mux)
 	//article := make([]msgtypetype.Articles, 1)
