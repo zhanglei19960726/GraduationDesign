@@ -14,23 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="weixinsrv.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="125" column="14" lean-forward="true" selection-start-line="125" selection-start-column="14" selection-end-line="125" selection-end-column="14" />
-              <folding>
-                <element signature="e#15#79#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="msg.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxsrv/msg.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="204">
+              <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -47,8 +35,20 @@
       <file leaf-file-name="weixin.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../github.com/wizjin/weixin/weixin.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-232">
+            <state relative-caret-position="-364">
               <caret line="136" selection-start-line="136" selection-end-line="137" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="weixinsrv.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+              <folding>
+                <element signature="e#15#109#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -259,7 +259,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.495" visible="true" weight="0.16641453" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.495" visible="true" weight="0.18154311" />
       <window_info anchor="bottom" id="TODO" order="5" sideWeight="0.4977307" weight="0.32561985" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50226927" side_tool="true" weight="0.3250825" />
       <window_info anchor="right" id="Database" order="3" />
@@ -645,10 +645,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxsrv/msg.go">
+    <entry file="file://$PROJECT_DIR$/../github.com/wizjin/weixin/weixin.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="-364">
+          <caret line="136" selection-start-line="136" selection-end-line="137" />
         </state>
       </provider>
     </entry>
@@ -659,19 +659,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../github.com/wizjin/weixin/weixin.go">
+    <entry file="file://$PROJECT_DIR$/wxsrv/msg.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-232">
-          <caret line="136" selection-start-line="136" selection-end-line="137" />
+        <state relative-caret-position="204">
+          <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="125" column="14" lean-forward="true" selection-start-line="125" selection-start-column="14" selection-end-line="125" selection-end-column="14" />
+        <state relative-caret-position="326">
+          <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
           <folding>
-            <element signature="e#15#79#0" expanded="true" />
+            <element signature="e#15#109#0" expanded="true" />
           </folding>
         </state>
       </provider>

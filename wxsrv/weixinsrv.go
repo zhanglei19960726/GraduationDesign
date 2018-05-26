@@ -131,6 +131,7 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 	}
 	defer response.Body.Close()
 	buf, _ := ioutil.ReadAll(response.Body)
+	fmt.Println(buf)
 	data := &HeWeather6s{}
 	err = json.Unmarshal(buf, data)
 	if err != nil {
