@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4dbe99dc-6dcb-4280-88ce-f9b5ba2eeff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/picture/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/picture/6316247_1473257905361_BEFA18503A9E88EC7E0357EBDF88F54F.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/picture/身份证照片 (2).jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/wxclient/addNews.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxclient/addNews.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wxsrv/weixinsrv.go" beforeDir="false" afterPath="$PROJECT_DIR$/wxsrv/weixinsrv.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,23 +14,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="weixinsrv.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="weixinsrv.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+              <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
               <folding>
-                <element signature="e#17#100#0" expanded="true" />
+                <element signature="e#15#127#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addNews.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="addNews.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="83" column="125" selection-start-line="83" selection-start-column="125" selection-end-line="83" selection-end-column="125" />
+            <state relative-caret-position="383">
+              <caret line="78" column="17" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -89,8 +85,8 @@
         <option value="$PROJECT_DIR$/wxsrv/srv.go" />
         <option value="$PROJECT_DIR$/msgtype/msgtype.go" />
         <option value="$PROJECT_DIR$/wxclient/srv.go" />
-        <option value="$PROJECT_DIR$/wxclient/addNews.go" />
         <option value="$PROJECT_DIR$/wxsrv/weixinsrv.go" />
+        <option value="$PROJECT_DIR$/wxclient/addNews.go" />
       </list>
     </option>
   </component>
@@ -615,20 +611,20 @@
     <entry file="file://$PROJECT_DIR$/../github.com/arstd/weixin/shorturl.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="83" column="125" selection-start-line="83" selection-start-column="125" selection-end-line="83" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+          <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
           <folding>
-            <element signature="e#17#100#0" expanded="true" />
+            <element signature="e#15#127#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxclient/addNews.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="78" column="17" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
         </state>
       </provider>
     </entry>

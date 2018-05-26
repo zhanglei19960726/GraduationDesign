@@ -10,6 +10,7 @@ import (
 	"log"
 	"mime/multipart"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
 )
@@ -73,7 +74,9 @@ func AddPicture(fileName string) error {
 		fmt.Println("error writing to buffer")
 		return err
 	}
-	buf, err := ioutil.ReadFile(goPath + picturePath + fileName)
+	file, err := os.Open(goPath + picturePath + fileName)
+	buf := make([]byte, 1024)
+	file.Read(buf)
 	fmt.Println("buf is ", buf)
 	_, err = io.Copy(fileWriter, bytes.NewReader(buf))
 	if err != nil {
