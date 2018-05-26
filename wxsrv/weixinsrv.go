@@ -45,7 +45,10 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 		log.Println(err.Error())
 		return
 	}
-	w.DownloadMediaToFile(media, goPath)
+	if err = w.DownloadMediaToFile(media, goPath); err != nil {
+		log.Println(err.Error())
+		return
+	}
 	content := ""
 	switch r.Content {
 	case "学习":
