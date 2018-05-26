@@ -68,7 +68,7 @@ func AddPicture(fileName string) error {
 	}
 	bodyBuf := &bytes.Buffer{}
 	bodyWriter := multipart.NewWriter(bodyBuf)
-	fileWriter, err := bodyWriter.CreateFormFile("filename", filepath.Base(fileName))
+	fileWriter, err := bodyWriter.CreateFormFile("media", filepath.Base(fileName))
 	if err != nil {
 		fmt.Println("error writing to buffer")
 		return err
@@ -81,7 +81,7 @@ func AddPicture(fileName string) error {
 	}
 	contentType := bodyWriter.FormDataContentType()
 	defer bodyWriter.Close()
-	resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token, "&type=image"}, ""), contentType, bodyBuf)
+	resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token}, ""), contentType, bodyBuf)
 	if err != nil {
 		log.Println(err.Error())
 		return err

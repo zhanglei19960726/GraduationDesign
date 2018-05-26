@@ -1,6 +1,7 @@
 package wxsrv
 
 import (
+	"GraduationDesign/wxclient"
 	"fmt"
 	"github.com/wizjin/weixin"
 	"io/ioutil"
@@ -14,6 +15,7 @@ var (
 	filePath = goPath + "/src/GraduationDesign/file/"
 )
 
+//
 const (
 	token          = "zhang"
 	appID          = "wxf4b1e3a9d5753984"
@@ -34,6 +36,10 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	writer.ReplyText("欢迎关注")
 	wx := writer.GetWeixin()
+	articles := make([]weixin.Article, 2)
+	articles[0].Title = "整体情况"
+	articles[1].Title = "教学大纲"
+	writer.PostNews(articles)
 	createMenu(wx)
 }
 
@@ -74,9 +80,9 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		articles[0].Title = "sql 语句"
 		articles[1].Title = "数据库模型"
 		articles[2].Title = "数据库完整性和安全性"
+		wxclient.AddPicture("1.png")
 		writer.PostNews(articles)
 	} else if request.EventKey == talkSpace {
-
 	}
 }
 
