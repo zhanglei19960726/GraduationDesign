@@ -71,7 +71,9 @@ type ArticlesReq struct {
 }
 
 type ArticlesResp struct {
-	MediaId string
+	MediaId    string `json:"media_id"`
+	NewsType   string `json:"type"`
+	Created_at int64  `json:"created_at"`
 }
 
 type Material struct {

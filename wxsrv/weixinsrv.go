@@ -1,6 +1,8 @@
 package wxsrv
 
 import (
+	"GraduationDesign/msgtype"
+	"GraduationDesign/wxclient"
 	"fmt"
 	"github.com/wizjin/weixin"
 	"log"
@@ -9,10 +11,10 @@ import (
 )
 
 var (
-	goPath   = os.Getenv("GOPATH")
-	path     = goPath + "/src/GraduationDesign/file/"
-	htmlPath = goPath + "/src/GraduationDesign/html/"
-	sqlMedia string
+	goPath         = os.Getenv("GOPATH")
+	path           = goPath + "/src/GraduationDesign/file/"
+	htmlPath       = goPath + "/src/GraduationDesign/html/"
+	sqlNewsItemURL string
 )
 
 //
@@ -25,7 +27,10 @@ const (
 	sqlKey          = "Mykey003"
 	sqlModlekey     = "Mykey004"
 	redirectUri     = "http://www.zhangleispace.club/upload"
-	sqlPictureURL   = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0"
+	sqlMedia        = "YREDkCL6wmBhl3cwhtjCFJMvm1nzupbiq12IhstEmWg"
+	sqlNewsMedia    = "YREDkCL6wmBhl3cwhtjCFEodwmDmkeOqhoxPT3Vgot0"
+	sqlNewsURL      = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
+	sqlPictureURL   = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0?wx_fmt=jpeg"
 	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0"
 )
 
@@ -40,15 +45,6 @@ func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, descript
 
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
-	media, err := w.UploadMediaFromFile(weixin.MediaTypeImage, path+"sql.jpg")
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
-	if err = w.DownloadMediaToFile(media, goPath); err != nil {
-		log.Println(err.Error())
-		return
-	}
 	content := ""
 	switch r.Content {
 	case "学习":
@@ -145,12 +141,17 @@ func Run() {
 	http.HandleFunc("/sql", sqlHandler)
 	http.HandleFunc("/module", moduleHandler)
 	http.HandleFunc("/sqlSer", sqlSerHandler)
-	//article := make([]msgtypetype.Articles, 1)
-	//article[0].Title = "sql 语言"
-	//article[0].ThumbMediaId = sqlMedia
-	//article[0].Content = "zhangleinihaoshuai"
-	//article[0].Digest = "hahaah"
-	//article[0].ShowCoverPic = 1
-	//wxclient.AddNews(article)
+	article := make([]msgtypetype.Articles, 1)
+	article[0].Title = "sql 语言"
+	article[0].ThumbMediaId = sqlMedia
+	article[0].Content = "zhangleinihaoshuai"
+	article[0].Digest = "hahaah"
+	article[0].ShowCoverPic = 1
+	mediaID, err := wxclient.AddNews(article)
+	if err != nil {
+		log.Println(err.Error())
+	}
+	fmt.Println(mediaID)
+	fmt.Println(wxclient.GetAndUpdateDBWxAToken())
 	http.ListenAndServe(":80", nil)
 }
