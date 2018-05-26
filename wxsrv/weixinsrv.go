@@ -4,31 +4,32 @@ import (
 	"fmt"
 	"github.com/wizjin/weixin"
 	"net/http"
-	"os"
 )
 
-var (
-	goPath         = os.Getenv("GOPATH")
-	path           = goPath + "/src/GraduationDesign/file/"
-	htmlPath       = goPath + "/src/GraduationDesign/html/"
-	sqlNewsItemURL string
-)
+//
+//var (
+//	goPath         = os.Getenv("GOPATH")
+//	path           = goPath + "/src/GraduationDesign/file/"
+//	htmlPath       = goPath + "/src/GraduationDesign/html/"
+//	sqlNewsItemURL string
+//)
 
 //
 const (
 	token           = "zhang"
 	appID           = "wxf4b1e3a9d5753984"
 	appSecret       = "c8981b2fc40b3ecc24f22dc644829099"
-	studyOnlineKey  = "Mykey001"
-	talkSpace       = "Mykey002"
-	sqlKey          = "Mykey003"
-	sqlModlekey     = "Mykey004"
+	sqlKey          = "Mykey001"
+	sqlModlekey     = "Mykey002"
 	redirectUri     = "http://www.zhangleispace.club/upload"
+	modlePicMedia   = "YREDkCL6wmBhl3cwhtjCFKxxlBy8btTVwu7OygZd5YU"
+	modleNewsMedia  = "YREDkCL6wmBhl3cwhtjCFJYlD7MKdRyP_1mFoDSBnwY"
 	sqlMedia        = "YREDkCL6wmBhl3cwhtjCFJMvm1nzupbiq12IhstEmWg"
 	sqlNewsMedia    = "YREDkCL6wmBhl3cwhtjCFEodwmDmkeOqhoxPT3Vgot0"
 	sqlNewsURL      = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
 	sqlPictureURL   = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0?wx_fmt=jpeg"
-	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0"
+	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0?wx_fmt=jpeg"
+	modleNewsURL    = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
 )
 
 func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, description string) {
@@ -50,13 +51,9 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "SQL语言":
 		sendOneArticle(w, "SQL 语言", sqlPictureURL, sqlNewsURL, "")
 	case "数据库安全性和完整性":
-		wx := w.GetWeixin()
-		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sqlSer", weixin.RedirectURLScopeBasic, "")
-		sendOneArticle(w, "数据库安全性和完整性", modlePictureURL, sqlURL, "")
+		sendOneArticle(w, "数据库安全性和完整性", modlePictureURL, modleNewsURL, "")
 	case "数据库模式":
-		wx := w.GetWeixin()
-		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/module", weixin.RedirectURLScopeBasic, "")
-		sendOneArticle(w, "数据库模式", modlePictureURL, sqlURL, "")
+		sendOneArticle(w, "数据库模式", modlePictureURL, modleNewsURL, "")
 	default:
 		content = r.Content
 		w.ReplyText(content)
@@ -115,10 +112,11 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		articles[0].Url = sqlNewsURL
 		articles[1].Title = "数据库模型"
 		articles[1].PicUrl = modlePictureURL
+		articles[1].Url = modleNewsURL
 		articles[2].Title = "数据库完整性和安全性"
 		articles[2].PicUrl = modlePictureURL
+		articles[2].Url = modleNewsURL
 		writer.ReplyNews(articles)
-	} else if request.EventKey == talkSpace {
 	}
 }
 
@@ -131,20 +129,15 @@ func Run() {
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
-	http.HandleFunc("/sql", sqlHandler)
-	http.HandleFunc("/module", moduleHandler)
-	http.HandleFunc("/sqlSer", sqlSerHandler)
 	//article := make([]msgtypetype.Articles, 1)
-	//article[0].Title = "sql 语言"
-	//article[0].ThumbMediaId = sqlMedia
-	//article[0].Content = "zhangleinihaoshuai"
-	//article[0].Digest = "hahaah"
-	//article[0].ShowCoverPic = 1
-	//mediaID, err := wxclient.AddNews(article)
+	//article[0].Title = "数据库模式"
+	//article[0].ThumbMediaId = modlePicMedia
+	//article[0].Content = "数据库模式"
+	//mediaID, err := AddNews(article)
 	//if err != nil {
 	//	log.Println(err.Error())
 	//}
 	//fmt.Println(mediaID)
-	//fmt.Println(wxclient.GetAndUpdateDBWxAToken())
+	//fmt.Println(GetAndUpdateDBWxAToken())
 	http.ListenAndServe(":80", nil)
 }

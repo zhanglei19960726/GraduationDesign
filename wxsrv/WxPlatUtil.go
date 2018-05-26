@@ -1,4 +1,4 @@
-package wxclient
+package wxsrv
 
 import (
 	"bytes"
