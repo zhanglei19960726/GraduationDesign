@@ -79,19 +79,20 @@ func AddPicture(fileName string) error {
 		panic(err.Error())
 		return err
 	}
-	contentType := bodyWriter.FormDataContentType()
-	defer bodyWriter.Close()
-	resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token}, ""), contentType, bodyBuf)
-	if err != nil {
-		log.Println(err.Error())
-		return err
-	}
-	respBody, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Println(err.Error())
-		return err
-	}
-	defer resp.Body.Close()
-	fmt.Println(string(respBody))
+	fmt.Println(fileWriter)
+	//contentType := bodyWriter.FormDataContentType()
+	//defer bodyWriter.Close()
+	//resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token}, ""), contentType, bodyBuf)
+	//if err != nil {
+	//	log.Println(err.Error())
+	//	return err
+	//}
+	//respBody, err := ioutil.ReadAll(resp.Body)
+	//if err != nil {
+	//	log.Println(err.Error())
+	//	return err
+	//}
+	//defer resp.Body.Close()
+	//fmt.Println(string(respBody))
 	return nil
 }
