@@ -3,13 +3,16 @@ package wxsrv
 import (
 	"fmt"
 	"github.com/wizjin/weixin"
+	"log"
 	"net/http"
 	"os"
 )
 
 var (
 	goPath   = os.Getenv("GOPATH")
+	path     = goPath + "/src/GraduationDesign/file/"
 	htmlPath = goPath + "/src/GraduationDesign/html/"
+	sqlMedia string
 )
 
 //
@@ -37,7 +40,12 @@ func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, descript
 
 //文本消息的处理函数
 func echo(w weixin.ResponseWriter, r *weixin.Request) {
-
+	media, err := w.UploadMediaFromFile(weixin.MediaTypeImage, path+"1.jpg")
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	w.ReplyImage(media)
 	content := ""
 	switch r.Content {
 	case "学习":
@@ -50,11 +58,11 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "数据库安全性和完整性":
 		wx := w.GetWeixin()
 		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sqlSer", weixin.RedirectURLScopeBasic, "")
-		sendOneArticle(w, "数据库安全性和完整性", sqlPictureURL, sqlURL, "")
+		sendOneArticle(w, "数据库安全性和完整性", modlePictureURL, sqlURL, "")
 	case "数据库模式":
 		wx := w.GetWeixin()
 		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/module", weixin.RedirectURLScopeBasic, "")
-		sendOneArticle(w, "数据库模式", sqlPictureURL, sqlURL, "")
+		sendOneArticle(w, "数据库模式", modlePictureURL, sqlURL, "")
 	default:
 		content = r.Content
 		w.ReplyText(content)
@@ -134,5 +142,12 @@ func Run() {
 	http.HandleFunc("/sql", sqlHandler)
 	http.HandleFunc("/module", moduleHandler)
 	http.HandleFunc("/sqlSer", sqlSerHandler)
+	//article := make([]msgtypetype.Articles, 1)
+	//article[0].Title = "sql 语言"
+	//article[0].ThumbMediaId = sqlMedia
+	//article[0].Content = "zhangleinihaoshuai"
+	//article[0].Digest = "hahaah"
+	//article[0].ShowCoverPic = 1
+	//wxclient.AddNews(article)
 	http.ListenAndServe(":80", nil)
 }
