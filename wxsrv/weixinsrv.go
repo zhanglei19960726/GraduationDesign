@@ -110,12 +110,12 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		articles[0].PicUrl = sqlPictureURL
 		articles[0].Description = "zhangleihaha"
 		articles[0].Url = sqlNewsURL
-		articles[1].Title = "数据库模型"
-		articles[1].PicUrl = modlePictureURL
-		articles[1].Url = modleNewsURL
-		articles[2].Title = "数据库完整性和安全性"
-		articles[2].PicUrl = modlePictureURL
-		articles[2].Url = modleNewsURL
+		//articles[1].Title = "数据库模型"
+		//articles[1].PicUrl = modlePictureURL
+		//articles[1].Url = modleNewsURL
+		//articles[2].Title = "数据库完整性和安全性"
+		//articles[2].PicUrl = modlePictureURL
+		//articles[2].Url = modleNewsURL
 		writer.ReplyNews(articles)
 	}
 }
