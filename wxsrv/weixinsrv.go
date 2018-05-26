@@ -16,14 +16,16 @@ var (
 
 //
 const (
-	token          = "zhang"
-	appID          = "wxf4b1e3a9d5753984"
-	appSecret      = "c8981b2fc40b3ecc24f22dc644829099"
-	studyOnlineKey = "Mykey001"
-	talkSpace      = "Mykey002"
-	sqlKey         = "Mykey003"
-	sqlModlekey    = "Mykey004"
-	redirectUri    = "http://www.zhangleispace.club/upload"
+	token           = "zhang"
+	appID           = "wxf4b1e3a9d5753984"
+	appSecret       = "c8981b2fc40b3ecc24f22dc644829099"
+	studyOnlineKey  = "Mykey001"
+	talkSpace       = "Mykey002"
+	sqlKey          = "Mykey003"
+	sqlModlekey     = "Mykey004"
+	redirectUri     = "http://www.zhangleispace.club/upload"
+	sqlPictureURL   = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0"
+	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0"
 )
 
 //文本消息的处理函数
@@ -77,9 +79,11 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	articles := make([]weixin.Article, 3)
 	if request.EventKey == sqlKey {
 		articles[0].Title = "sql 语句"
-		articles[0].PicUrl = "http://mmbiz.qpic.cn/mmbiz_png/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPWU948sDB69H7Px0mXfB3QxFtJEgxtckUda5XbwvHkK7v0CDpGqNT2A/0"
+		articles[0].PicUrl = sqlPictureURL
 		articles[1].Title = "数据库模型"
+		articles[1].PicUrl = modlePictureURL
 		articles[2].Title = "数据库完整性和安全性"
+		articles[3].PicUrl = modlePictureURL
 		writer.PostNews(articles)
 	} else if request.EventKey == talkSpace {
 	}
