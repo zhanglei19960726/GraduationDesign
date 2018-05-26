@@ -11,7 +11,6 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
-	"path/filepath"
 	"strings"
 )
 
@@ -62,20 +61,20 @@ func AddNews(articles []msgtypetype.Articles) (string, error) {
 }
 
 func AddPicture(fileName string) error {
-	//token, err := GetAndUpdateDBWxAToken()
-	//if err != nil {
-	//	panic(err.Error())
-	//	return err
-	//}
+	token, err := GetAndUpdateDBWxAToken()
+	if err != nil {
+		panic(err.Error())
+		return err
+	}
 	bodyBuf := &bytes.Buffer{}
 	bodyWriter := multipart.NewWriter(bodyBuf)
-	fileWriter, err := bodyWriter.CreateFormFile("media", filepath.Base(fileName))
+	fileWriter, err := bodyWriter.CreateFormFile("media", fileName)
 	if err != nil {
 		fmt.Println("error writing to buffer")
 		return err
 	}
 	file, err := os.Open(goPath + picturePath + fileName)
-	buf := make([]byte, 1024)
+	buf := make([]byte, 10240)
 	file.Read(buf)
 	fmt.Println("buf is ", buf)
 	_, err = io.Copy(fileWriter, bytes.NewReader(buf))
@@ -84,19 +83,19 @@ func AddPicture(fileName string) error {
 		return err
 	}
 	fmt.Println(fileWriter)
-	//contentType := bodyWriter.FormDataContentType()
-	//defer bodyWriter.Close()
-	//resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token}, ""), contentType, bodyBuf)
-	//if err != nil {
-	//	log.Println(err.Error())
-	//	return err
-	//}
-	//respBody, err := ioutil.ReadAll(resp.Body)
-	//if err != nil {
-	//	log.Println(err.Error())
-	//	return err
-	//}
-	//defer resp.Body.Close()
-	//fmt.Println(string(respBody))
+	contentType := bodyWriter.FormDataContentType()
+	defer bodyWriter.Close()
+	resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token}, ""), contentType, bodyBuf)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+	respBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+	defer resp.Body.Close()
+	fmt.Println(string(respBody))
 	return nil
 }
