@@ -1,11 +1,13 @@
 package wxsrv
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/wizjin/weixin"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 const (
@@ -120,13 +122,33 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 
 func location(writer weixin.ResponseWriter, request *weixin.Request) {
 	fmt.Println(request.LocationX, request.LocationY)
-	response, err := http.Get("https://free-api.heweather.com/s6/weather/now?location=34.175102,108.858826&key=bef3e2e4c99a4884ae76299f5fc9d407")
+	x := strconv.FormatFloat(float64(request.LocationX), 'E', -1, 32)
+	y := strconv.FormatFloat(float64(request.LocationY), 'E', -1, 32)
+	response, err := http.Get("https://free-api.heweather.com/s6/weather/now?location=" + x + "," + y + "&key=bef3e2e4c99a4884ae76299f5fc9d407")
 	if err != nil {
 		log.Println(err.Error())
 		return
 	}
+	defer response.Body.Close()
 	buf, _ := ioutil.ReadAll(response.Body)
-	fmt.Println(string(buf))
+	data := &HeWeather6s{}
+	err = json.Unmarshal(buf, data)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	he := data.HeWeather6[0]
+	content := he.Update.Loc + "" +
+		"\r\n" + he.Basic.AdminArea + he.Basic.ParentCity + he.Basic.ParentCity + "" +
+		"\r\n" + "体感温度：" + he.Now.Fl + "度" +
+		"\r\n" + "温度：" + he.Now.Tmp + "度" +
+		"\r\n" + "风向" + he.Now.WindDir + "" +
+		"\r\n" + "风力" + he.Now.WindSc + "" +
+		"\r\n" + "风速" + he.Now.WindSpd + "km/h" +
+		"\r\n" + "相对湿度" + he.Now.Hum + "" +
+		"\r\n" + "降水量" + he.Now.Pcpn + "" +
+		"\r\n" + "能见度" + he.Now.Vis + "公里"
+	writer.ReplyText(content)
 }
 
 func Run() {

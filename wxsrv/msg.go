@@ -16,6 +16,37 @@ const (
 	addPictureUrl = "https://api.weixin.qq.com/cgi-bin/material/add_material"
 )
 
+type Basic struct {
+	Location   string `json:"location"`    //地区／城市名称
+	ParentCity string `json:"parent_city"` //该地区/城市的上级城市
+	AdminArea  string `json:"admin_area"`  //该地区/城市所属行政区域
+}
+
+type Updata struct {
+	Loc string `json:"loc"` //当地时间
+}
+
+type Now struct {
+	Fl      string `json:"fl"`       //体感温 摄氏度
+	Tmp     string `json:"tmp"`      //温度 摄氏度
+	WindDir string `json:"wind_dir"` //风向
+	WindSc  string `json:"wind_sc"`  //风力
+	WindSpd string `json:"wind_spd"` //风速 km/h
+	Hum     string `json:"hum"`      //相对湿度
+	Pcpn    string `json:"pcpn"`     //降水量
+	Vis     string `json:"vis"`      //能见度 km
+}
+
+type HeWeather6 struct {
+	Basic  Basic  `json:"basic"`  //基础信息
+	Update Updata `json:"update"` //接口更新时间
+	Now    Now    `json:"now"`    //实况天气
+}
+
+type HeWeather6s struct {
+	HeWeather6 []HeWeather6 `json:"HeWeather6"`
+}
+
 func doPost(accessToken, url string, newBytes []byte) (*msgtypetype.ArticlesResp, error) {
 	postReq, err := http.NewRequest("POST", strings.Join([]string{url, "?access_token=", accessToken}, ""), bytes.NewReader(newBytes))
 	if err != nil {
