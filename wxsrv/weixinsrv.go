@@ -12,7 +12,6 @@ import (
 
 var (
 	goPath   = os.Getenv("GOPATH")
-	filePath = goPath + "/src/GraduationDesign/file/"
 	htmlPath = goPath + "/src/GraduationDesign/html/"
 )
 
