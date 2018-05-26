@@ -117,6 +117,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 }
 
 func location(writer weixin.ResponseWriter, request *weixin.Request) {
+	writer.ReplyText("hahahaahahha")
 	fmt.Println(request.LocationX, request.LocationY)
 }
 
@@ -128,6 +129,7 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeEventSubscribe, subscribe)
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
+	//注册上报地理位置事件
 	mux.HandleFunc(weixin.MsgTypeEventLocation, location)
 	http.Handle("/", mux)
 	//article := make([]msgtypetype.Articles, 1)
