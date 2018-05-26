@@ -130,7 +130,7 @@ func Run() {
 	//注册点击事件
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	//注册上报地理位置事件
-	mux.HandleFunc(weixin.MsgTypeEventLocation, location)
+	mux.HandleFunc(weixin.MsgTypeLocation, location)
 	http.Handle("/", mux)
 	//article := make([]msgtypetype.Articles, 1)
 	//article[0].Title = "数据库模式"
