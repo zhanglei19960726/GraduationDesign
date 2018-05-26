@@ -143,12 +143,12 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 		"\r\n" + he.Basic.AdminArea + he.Basic.ParentCity + he.Basic.ParentCity + "" +
 		"\r\n" + "体感温度：" + he.Now.Fl + "度" +
 		"\r\n" + "温度：" + he.Now.Tmp + "度" +
-		"\r\n" + "风向" + he.Now.WindDir + "" +
-		"\r\n" + "风力" + he.Now.WindSc + "" +
-		"\r\n" + "风速" + he.Now.WindSpd + "km/h" +
-		"\r\n" + "相对湿度" + he.Now.Hum + "" +
-		"\r\n" + "降水量" + he.Now.Pcpn + "" +
-		"\r\n" + "能见度" + he.Now.Vis + "公里"
+		"\r\n" + "风向：" + he.Now.WindDir + "" +
+		"\r\n" + "风力：" + he.Now.WindSc + "" +
+		"\r\n" + "风速：" + he.Now.WindSpd + "km/h" +
+		"\r\n" + "相对湿度：" + he.Now.Hum + "" +
+		"\r\n" + "降水量：" + he.Now.Pcpn + "" +
+		"\r\n" + "能见度：" + he.Now.Vis + "公里"
 	writer.ReplyText(content)
 }
 
