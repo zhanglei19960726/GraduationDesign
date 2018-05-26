@@ -3,11 +3,8 @@ package wxsrv
 import (
 	"fmt"
 	"github.com/wizjin/weixin"
-	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
-	"text/template"
 )
 
 var (
@@ -51,9 +48,13 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sql", weixin.RedirectURLScopeBasic, "")
 		sendOneArticle(w, "SQL 语言", sqlPictureURL, sqlURL, "")
 	case "数据库安全性和完整性":
-		content = r.Content
+		wx := w.GetWeixin()
+		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/sqlSer", weixin.RedirectURLScopeBasic, "")
+		sendOneArticle(w, "数据库安全性和完整性", sqlPictureURL, sqlURL, "")
 	case "数据库模式":
-		content = r.Content
+		wx := w.GetWeixin()
+		sqlURL := wx.CreateRedirectURL("http://www.zhangleispace.club/module", weixin.RedirectURLScopeBasic, "")
+		sendOneArticle(w, "数据库模式", sqlPictureURL, sqlURL, "")
 	default:
 		content = r.Content
 		w.ReplyText(content)
@@ -121,36 +122,6 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	}
 }
 
-func userAgree(url string) {
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		log.Println("send msg err : ", err.Error())
-		return
-	}
-	client := http.Client{}
-	res, err := client.Do(req)
-	if err != nil {
-		log.Println("get msg err: ", err.Error())
-		return
-	}
-	defer res.Body.Close()
-	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		log.Println("read body err :", err.Error())
-		return
-	}
-	fmt.Println(string(body))
-}
-
-func sqlHandler(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(htmlPath + "sql.html")
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
-	t.Execute(w, nil)
-}
-
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
@@ -161,5 +132,7 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeEventClick, eventView)
 	http.Handle("/", mux)
 	http.HandleFunc("/sql", sqlHandler)
+	http.HandleFunc("/module", moduleHandler)
+	http.HandleFunc("/sqlSer", sqlSerHandler)
 	http.ListenAndServe(":80", nil)
 }
