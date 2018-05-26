@@ -117,7 +117,7 @@ func userAgree(url string) {
 }
 
 func sqlHandler(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(goPath + htmlPath + "admin.html")
+	t, err := template.ParseFiles(htmlPath + "admin.html")
 	if err != nil {
 		log.Println(err.Error())
 		return
