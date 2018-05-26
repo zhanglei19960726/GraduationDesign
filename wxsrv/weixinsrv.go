@@ -21,6 +21,7 @@ const (
 	appSecret       = "c8981b2fc40b3ecc24f22dc644829099"
 	sqlKey          = "Mykey001"
 	sqlModlekey     = "Mykey002"
+	sqlSerKey       = "Mykey003"
 	redirectUri     = "http://www.zhangleispace.club/upload"
 	modlePicMedia   = "YREDkCL6wmBhl3cwhtjCFKxxlBy8btTVwu7OygZd5YU"
 	modleNewsMedia  = "YREDkCL6wmBhl3cwhtjCFJYlD7MKdRyP_1mFoDSBnwY"
@@ -63,7 +64,6 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
-	writer.ReplyText("欢迎关注")
 	wx := writer.GetWeixin()
 	articles := make([]weixin.Article, 2)
 	articles[0].Title = "整体情况"
@@ -76,13 +76,16 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 func createMenu(wx *weixin.Weixin) error {
 	menu := &weixin.Menu{make([]weixin.MenuButton, 3)}
 	menu.Buttons[0].Name = "在线学习"
-	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 2)
+	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 3)
 	menu.Buttons[0].SubButtons[0].Name = "sql 语句"
 	menu.Buttons[0].SubButtons[0].Key = sqlKey
 	menu.Buttons[0].SubButtons[0].Type = weixin.MenuButtonTypeKey
 	menu.Buttons[0].SubButtons[1].Name = "数据库模式"
 	menu.Buttons[0].SubButtons[1].Key = sqlModlekey
 	menu.Buttons[0].SubButtons[1].Type = weixin.MenuButtonTypeKey
+	menu.Buttons[0].SubButtons[2].Name = "数据库安全性和完整性"
+	menu.Buttons[0].SubButtons[2].Key = sqlSerKey
+	menu.Buttons[0].SubButtons[2].Type = weixin.MenuButtonTypeKey
 	menu.Buttons[1].Name = "精彩案例"
 	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
 	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
@@ -104,21 +107,23 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
-	articles := make([]weixin.Article, 3)
-	if request.EventKey == sqlKey {
+	articles := make([]weixin.Article, 1)
+	switch request.EventKey {
+	case sqlKey:
 		articles[0].Title = "sql 语句"
 		articles[0].PicUrl = sqlPictureURL
 		articles[0].Description = "zhangleihaha"
 		articles[0].Url = sqlNewsURL
-		//articles[1].Title = "数据库模型"
-		//articles[1].PicUrl = modlePictureURL
-		//articles[1].Url = modleNewsURL
-		//articles[2].Title = "数据库完整性和安全性"
-		//articles[2].PicUrl = modlePictureURL
-		//articles[2].Url = modleNewsURL
-		fmt.Println(240)
-		writer.ReplyNews(articles)
+	case sqlModlekey:
+		articles[0].Title = "数据库模式"
+		articles[0].PicUrl = modlePictureURL
+		articles[0].Url = modleNewsURL
+	case sqlSerKey:
+		articles[0].Title = "数据库安全性和完整性"
+		articles[0].PicUrl = modlePictureURL
+		articles[0].Url = modleNewsURL
 	}
+	writer.ReplyNews(articles)
 }
 
 func Run() {
