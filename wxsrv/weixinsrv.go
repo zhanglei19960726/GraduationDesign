@@ -124,6 +124,7 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 	fmt.Println(request.LocationX, request.LocationY)
 	x := strconv.FormatFloat(float64(request.LocationX), 'E', -1, 32)
 	y := strconv.FormatFloat(float64(request.LocationY), 'E', -1, 32)
+	fmt.Println(x, y)
 	response, err := http.Get("https://free-api.heweather.com/s6/weather/now?location=" + x + "," + y + "&key=bef3e2e4c99a4884ae76299f5fc9d407")
 	if err != nil {
 		log.Println(err.Error())
