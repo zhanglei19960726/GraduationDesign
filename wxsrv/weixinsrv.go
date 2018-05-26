@@ -78,10 +78,10 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	articles := make([]weixin.Article, 3)
 	if request.EventKey == sqlKey {
 		articles[0].Title = "sql 语句"
+		articles[0].PicUrl = "http://mmbiz.qpic.cn/mmbiz_png/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPWU948sDB69H7Px0mXfB3QxFtJEgxtckUda5XbwvHkK7v0CDpGqNT2A/0"
 		articles[1].Title = "数据库模型"
 		articles[2].Title = "数据库完整性和安全性"
 		wxclient.AddPicture("1.png")
-		writer.PostNews(articles)
 	} else if request.EventKey == talkSpace {
 	}
 }
