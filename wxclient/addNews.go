@@ -5,12 +5,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
-	"mime/multipart"
 	"net/http"
-	"os"
 	"strings"
 )
 
@@ -62,40 +59,41 @@ func AddNews(articles []msgtypetype.Articles) (string, error) {
 
 func AddPicture(fileName string) error {
 	token, err := GetAndUpdateDBWxAToken()
+	fmt.Println(token)
 	if err != nil {
 		panic(err.Error())
 		return err
 	}
-	bodyBuf := &bytes.Buffer{}
-	bodyWriter := multipart.NewWriter(bodyBuf)
-	fileWriter, err := bodyWriter.CreateFormFile("media", fileName)
-	if err != nil {
-		fmt.Println("error writing to buffer")
-		return err
-	}
-	file, err := os.Open(goPath + picturePath + fileName)
-	buf := make([]byte, 10240)
-	file.Read(buf)
-	fmt.Println("buf is ", buf)
-	_, err = io.Copy(fileWriter, bytes.NewReader(buf))
-	if err != nil {
-		panic(err.Error())
-		return err
-	}
-	fmt.Println(fileWriter)
-	contentType := bodyWriter.FormDataContentType()
-	defer bodyWriter.Close()
-	resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token}, ""), contentType, bodyBuf)
-	if err != nil {
-		log.Println(err.Error())
-		return err
-	}
-	respBody, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Println(err.Error())
-		return err
-	}
-	defer resp.Body.Close()
-	fmt.Println(string(respBody))
+	//bodyBuf := &bytes.Buffer{}
+	//bodyWriter := multipart.NewWriter(bodyBuf)
+	//fileWriter, err := bodyWriter.CreateFormFile("media", fileName)
+	//if err != nil {
+	//	fmt.Println("error writing to buffer")
+	//	return err
+	//}
+	//file, err := os.Open(goPath + picturePath + fileName)
+	//buf := make([]byte, 10240)
+	//file.Read(buf)
+	//fmt.Println("buf is ", buf)
+	//_, err = io.Copy(fileWriter, bytes.NewReader(buf))
+	//if err != nil {
+	//	panic(err.Error())
+	//	return err
+	//}
+	//fmt.Println(fileWriter)
+	//contentType := bodyWriter.FormDataContentType()
+	//defer bodyWriter.Close()
+	//resp, err := http.Post(strings.Join([]string{"https://api.weixin.qq.com/cgi-bin/media/uploadimg", "?access_token=", token}, ""), contentType, bodyBuf)
+	//if err != nil {
+	//	log.Println(err.Error())
+	//	return err
+	//}
+	//respBody, err := ioutil.ReadAll(resp.Body)
+	//if err != nil {
+	//	log.Println(err.Error())
+	//	return err
+	//}
+	//defer resp.Body.Close()
+	//fmt.Println(string(respBody))
 	return nil
 }
