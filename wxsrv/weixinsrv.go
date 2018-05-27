@@ -84,8 +84,8 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 //创建菜单
 func createMenu(wx *weixin.Weixin) error {
 	menu := &weixin.Menu{make([]weixin.MenuButton, 3)}
-	menu.Buttons[0].Name = "在线学习"
-	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 4)
+	menu.Buttons[0].Name = "学习"
+	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 5)
 	menu.Buttons[0].SubButtons[0].Name = "sql 语句"
 	menu.Buttons[0].SubButtons[0].Key = sqlKey
 	menu.Buttons[0].SubButtons[0].Type = weixin.MenuButtonTypeKey
@@ -98,6 +98,9 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[0].SubButtons[3].Name = "关于我们"
 	menu.Buttons[0].SubButtons[3].Type = weixin.MenuButtonTypeKey
 	menu.Buttons[0].SubButtons[3].Key = aboutKey
+	menu.Buttons[0].SubButtons[4].Name = "在线学习"
+	menu.Buttons[0].SubButtons[4].Type = weixin.MenuButtonTypeUrl
+	menu.Buttons[0].SubButtons[4].Url = "http://www.runoob.com/sql/sql-tutorial.html"
 	menu.Buttons[1].Name = "精彩案例"
 	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
 	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
