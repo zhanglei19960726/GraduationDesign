@@ -64,10 +64,11 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 		//content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
 		//w.ReplyText(content)
 		music := &weixin.Music{
-			Title:       "zhanglie",
-			Description: "hahah",
-			MusicUrl:    "http://www.baidu.com",
-			HQMusicUrl:  "http://www.baidu.com",
+			Title:        "zhanglie",
+			Description:  "hahah",
+			MusicUrl:     "http://www.baidu.com",
+			HQMusicUrl:   "http://www.baidu.com",
+			ThumbMediaId: sqlNewsMedia,
 		}
 		w.ReplyMusic(music)
 	}
