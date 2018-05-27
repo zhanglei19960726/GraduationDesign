@@ -61,7 +61,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "数据库模式":
 		sendOneArticle(w, "数据库模式", modlePictureURL, modleNewsURL, "")
 	default:
-		sendOneArticle(w, "zhanglei", "http://qukufile2.qianqian.com/data2/pic/88582702/88582702.jpg@s_1,w_300,h_300", "http://zhangmenshiting.qianqian.com/data2/music/42783748/42783748.mp3?xcode=ab0b7dd2a119c401180b9e6dd2675aac", "")
+		sendOneArticle(w, "zhanglei", "http://qukufile2.qianqian.com/data2/pic/88582702/88582702.jpg@s_1,w_300,h_300", "http://zhangmenshiting.qianqian.com/data2/music/ba93ea8bb0e5b1425ce668645c8e9e23/541519353/541519353.mp3?xcode=bcf99f4396cdd02838b319dd5c3c046e", "")
 		content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
 		w.ReplyText(content)
 	}
@@ -207,6 +207,6 @@ func Run() {
 	//	log.Println(err.Error())
 	//}
 	//fmt.Println(mediaID)
-	fmt.Println(GetAndUpdateDBWxAToken())
+	//fmt.Println(GetAndUpdateDBWxAToken())
 	http.ListenAndServe(":80", nil)
 }
