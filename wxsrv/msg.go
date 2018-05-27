@@ -107,7 +107,7 @@ func getMuisc(music string) (info *Info, err error) {
 	if err != nil {
 		return info, err
 	}
-	respone, err := http.Get("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid=8" + id)
+	respone, err := http.Get("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid=" + id)
 	if err != nil {
 		return info, err
 	}
