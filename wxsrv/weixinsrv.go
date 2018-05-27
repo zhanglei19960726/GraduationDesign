@@ -64,7 +64,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 		//content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
 		//w.ReplyText(content)
 		music := &weixin.Music{
-			MusicUrl: "http://zhangmenshiting.qianqian.com/data2/music/42822293/42822293.mp3?xcode=4c6a93aecce3542f2b8f63f9ac723f36",
+		//MusicUrl: "http://zhangmenshiting.qianqian.com/data2/music/42822293/42822293.mp3?xcode=4c6a93aecce3542f2b8f63f9ac723f36",
 		}
 		w.ReplyMusic(music)
 	}
