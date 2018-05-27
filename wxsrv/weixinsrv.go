@@ -21,9 +21,11 @@ const (
 	modleNewsMedia  = "YREDkCL6wmBhl3cwhtjCFANV6ULcTfUZX5ZpOnNS7RM"
 	sqlMedia        = "YREDkCL6wmBhl3cwhtjCFJMvm1nzupbiq12IhstEmWg"
 	sqlNewsMedia    = "YREDkCL6wmBhl3cwhtjCFEodwmDmkeOqhoxPT3Vgot0"
-	sqlNewsURL      = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
+	sqlSerNewsMia   = "YREDkCL6wmBhl3cwhtjCFL_jY3h4d1lDXkDePVM0KFk"
 	sqlPictureURL   = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0?wx_fmt=jpeg"
 	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0?wx_fmt=jpeg"
+	sqlSerNewsURL   = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000020&idx=1&sn=4001746daa6a881e54795172d49287a2&chksm=7e6e815c4919084a58bf927d1cd9ae890653906c2bfd9e17db63d79c313c0c7819955236ab6f#rd"
+	sqlNewsURL      = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
 	modleNewsURL    = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000019&idx=1&sn=7dcedc05d52750da06db22d54fbb7591&chksm=7e6e815b4919084d81a3e663b98b71f04aec96931ec201ac8f75078b258aaa1c18df3e49727f#rd"
 )
 
@@ -48,7 +50,7 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "数据库安全性和完整性":
 		sendOneArticle(w, "数据库安全性和完整性", modlePictureURL, modleNewsURL, "")
 	case "数据库模式":
-		sendOneArticle(w, "数据库模式", modlePictureURL, modleNewsURL, "")
+		sendOneArticle(w, "数据库模式", modlePictureURL, sqlSerNewsURL, "")
 	default:
 		content = r.Content
 		w.ReplyText(content)
@@ -114,7 +116,7 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 	case sqlSerKey:
 		articles[0].Title = "数据库安全性和完整性"
 		articles[0].PicUrl = modlePictureURL
-		articles[0].Url = modleNewsURL
+		articles[0].Url = sqlSerNewsURL
 	default:
 		writer.ReplyOK()
 	}
@@ -164,9 +166,9 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeLocation, location)
 	http.Handle("/", mux)
 	//article := make([]msgtypetype.Articles, 1)
-	//article[0].Title = "数据库模式"
+	//article[0].Title = "数据库安全性和完整性"
 	//article[0].ThumbMediaId = modlePicMedia
-	//article[0].Content = "数据库模式"
+	//article[0].Content = "数据库安全性和完整性"
 	//mediaID, err := AddNews(article)
 	//if err != nil {
 	//	log.Println(err.Error())
