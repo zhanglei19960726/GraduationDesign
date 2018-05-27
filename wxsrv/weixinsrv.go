@@ -61,8 +61,12 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "数据库模式":
 		sendOneArticle(w, "数据库模式", modlePictureURL, modleNewsURL, "")
 	default:
-		content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
-		w.ReplyText(content)
+		//content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
+		//w.ReplyText(content)
+		music := &weixin.Music{
+			MusicUrl: "http://zhangmenshiting.qianqian.com/data2/music/42822293/42822293.mp3?xcode=4c6a93aecce3542f2b8f63f9ac723f36",
+		}
+		w.ReplyMusic(music)
 	}
 
 }
