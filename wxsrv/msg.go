@@ -69,9 +69,8 @@ type Song struct {
 
 type Info struct {
 	Error
-	SongInfo  SongInfo `json:"songinfo"`
-	ErrorCode string   `json:"error_code"`
-	Bitrate   Bitrate  `json:"bitrate"`
+	SongInfo SongInfo `json:"songinfo"`
+	Bitrate  Bitrate  `json:"bitrate"`
 }
 
 type Bitrate struct {
