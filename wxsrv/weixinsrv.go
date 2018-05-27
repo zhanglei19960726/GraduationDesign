@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"strings"
 )
 
 const (
@@ -61,9 +62,14 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "数据库模式":
 		sendOneArticle(w, "数据库模式", modlePictureURL, modleNewsURL, "")
 	default:
-		sendOneArticle(w, "zhanglei", "http://qukufile2.qianqian.com/data2/pic/88582702/88582702.jpg@s_1,w_300,h_300", "http://zhangmenshiting.qianqian.com/data2/music/ba93ea8bb0e5b1425ce668645c8e9e23/541519353/541519353.mp3?xcode=bcf99f4396cdd02838b319dd5c3c046e", "")
-		content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
-		w.ReplyText(content)
+		if strings.Contains(r.Content, "音乐+") == true {
+			sendOneArticle(w, "zhanglei", "http://qukufile2.qianqian.com/data2/pic/88582702/88582702.jpg@s_1,w_300,h_300", "http://zhangmenshiting.qianqian.com/data2/music/ba93ea8bb0e5b1425ce668645c8e9e23/541519353/541519353.mp3?xcode=bcf99f4396cdd02838b319dd5c3c046e", "")
+		} else {
+			content = "回复“学习”，获取学习内容\r\n" +
+				"上传地理位置获取天气状况\r\n" +
+				"回复“音乐+歌曲名”，获取歌曲"
+			w.ReplyText(content)
+		}
 	}
 
 }
