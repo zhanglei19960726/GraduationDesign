@@ -17,15 +17,14 @@ const (
 	sqlKey          = "Mykey001"
 	sqlModlekey     = "Mykey002"
 	sqlSerKey       = "Mykey003"
-	redirectUri     = "http://www.zhangleispace.club/upload"
 	modlePicMedia   = "YREDkCL6wmBhl3cwhtjCFKxxlBy8btTVwu7OygZd5YU"
-	modleNewsMedia  = "YREDkCL6wmBhl3cwhtjCFJYlD7MKdRyP_1mFoDSBnwY"
+	modleNewsMedia  = "YREDkCL6wmBhl3cwhtjCFANV6ULcTfUZX5ZpOnNS7RM"
 	sqlMedia        = "YREDkCL6wmBhl3cwhtjCFJMvm1nzupbiq12IhstEmWg"
 	sqlNewsMedia    = "YREDkCL6wmBhl3cwhtjCFEodwmDmkeOqhoxPT3Vgot0"
 	sqlNewsURL      = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
 	sqlPictureURL   = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0?wx_fmt=jpeg"
 	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0?wx_fmt=jpeg"
-	modleNewsURL    = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
+	modleNewsURL    = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000019&idx=1&sn=7dcedc05d52750da06db22d54fbb7591&chksm=7e6e815b4919084d81a3e663b98b71f04aec96931ec201ac8f75078b258aaa1c18df3e49727f#rd"
 )
 
 func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, description string) {
