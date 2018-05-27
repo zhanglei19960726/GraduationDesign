@@ -48,9 +48,9 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "SQL语言":
 		sendOneArticle(w, "SQL 语言", sqlPictureURL, sqlNewsURL, "")
 	case "数据库安全性和完整性":
-		sendOneArticle(w, "数据库安全性和完整性", modlePictureURL, modleNewsURL, "")
+		sendOneArticle(w, "数据库安全性和完整性", modlePictureURL, sqlSerNewsURL, "")
 	case "数据库模式":
-		sendOneArticle(w, "数据库模式", modlePictureURL, sqlSerNewsURL, "")
+		sendOneArticle(w, "数据库模式", modlePictureURL, modleNewsURL, "")
 	default:
 		content = r.Content
 		w.ReplyText(content)
