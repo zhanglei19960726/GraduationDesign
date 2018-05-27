@@ -61,16 +61,9 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	case "数据库模式":
 		sendOneArticle(w, "数据库模式", modlePictureURL, modleNewsURL, "")
 	default:
-		//content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
-		//w.ReplyText(content)
-		music := &weixin.Music{
-			Title:        "zhanglie",
-			Description:  "hahah",
-			MusicUrl:     "http://www.baidu.com",
-			HQMusicUrl:   "http://www.baidu.com",
-			ThumbMediaId: sqlNewsMedia,
-		}
-		w.ReplyMusic(music)
+		sendOneArticle(w, "zhanglei", "http://qukufile2.qianqian.com/data2/pic/88582702/88582702.jpg@s_1,w_300,h_300", "http://zhangmenshiting.qianqian.com/data2/music/42783748/42783748.mp3?xcode=ab0b7dd2a119c401180b9e6dd2675aac", "")
+		content = "回复“学习”，获取学习内容\r\n上传地理位置获取天气状况"
+		w.ReplyText(content)
 	}
 
 }
@@ -91,7 +84,7 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 
 //创建菜单
 func createMenu(wx *weixin.Weixin) error {
-	menu := &weixin.Menu{make([]weixin.MenuButton, 3)}
+	menu := &weixin.Menu{Buttons: make([]weixin.MenuButton, 3)}
 	menu.Buttons[0].Name = "学习"
 	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 5)
 	menu.Buttons[0].SubButtons[0].Name = "sql 语句"
@@ -214,6 +207,6 @@ func Run() {
 	//	log.Println(err.Error())
 	//}
 	//fmt.Println(mediaID)
-	//fmt.Println(GetAndUpdateDBWxAToken())
+	fmt.Println(GetAndUpdateDBWxAToken())
 	http.ListenAndServe(":80", nil)
 }
