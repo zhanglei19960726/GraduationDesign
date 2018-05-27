@@ -53,8 +53,8 @@ type HeWeather6s struct {
 //音乐的
 
 type Error struct {
-	Errno        string `json:"errno"`
-	ErrorCode    string `json:"error_code"`
+	Errno        int32  `json:"errno"`
+	ErrorCode    int32  `json:"error_code"`
 	ErrorMessage string `json:"error_message"`
 }
 
