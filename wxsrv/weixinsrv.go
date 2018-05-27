@@ -115,6 +115,8 @@ func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
 		articles[0].Title = "数据库安全性和完整性"
 		articles[0].PicUrl = modlePictureURL
 		articles[0].Url = modleNewsURL
+	default:
+		writer.ReplyOK()
 	}
 	writer.ReplyNews(articles)
 }
