@@ -111,7 +111,7 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
 	menu.Buttons[2].Name = "放松一刻"
 	menu.Buttons[2].Type = weixin.MenuButtonTypeUrl
-	menu.Buttons[2].Url = "http://www.music.163.com/"
+	menu.Buttons[2].Url = "http://music.163.com/"
 	err := wx.CreateMenu(menu)
 	if err != nil {
 		fmt.Println(err.Error())
