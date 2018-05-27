@@ -11,22 +11,31 @@ import (
 )
 
 const (
-	token           = "zhang"
-	appID           = "wxf4b1e3a9d5753984"
-	appSecret       = "c8981b2fc40b3ecc24f22dc644829099"
-	sqlKey          = "Mykey001"
-	sqlModlekey     = "Mykey002"
-	sqlSerKey       = "Mykey003"
-	modlePicMedia   = "YREDkCL6wmBhl3cwhtjCFKxxlBy8btTVwu7OygZd5YU"
-	modleNewsMedia  = "YREDkCL6wmBhl3cwhtjCFANV6ULcTfUZX5ZpOnNS7RM"
-	sqlMedia        = "YREDkCL6wmBhl3cwhtjCFJMvm1nzupbiq12IhstEmWg"
-	sqlNewsMedia    = "YREDkCL6wmBhl3cwhtjCFEodwmDmkeOqhoxPT3Vgot0"
-	sqlSerNewsMia   = "YREDkCL6wmBhl3cwhtjCFL_jY3h4d1lDXkDePVM0KFk"
-	sqlPictureURL   = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0?wx_fmt=jpeg"
-	modlePictureURL = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0?wx_fmt=jpeg"
-	sqlSerNewsURL   = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000020&idx=1&sn=4001746daa6a881e54795172d49287a2&chksm=7e6e815c4919084a58bf927d1cd9ae890653906c2bfd9e17db63d79c313c0c7819955236ab6f#rd"
-	sqlNewsURL      = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
-	modleNewsURL    = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000019&idx=1&sn=7dcedc05d52750da06db22d54fbb7591&chksm=7e6e815b4919084d81a3e663b98b71f04aec96931ec201ac8f75078b258aaa1c18df3e49727f#rd"
+	token               = "zhang"
+	appID               = "wxf4b1e3a9d5753984"
+	appSecret           = "c8981b2fc40b3ecc24f22dc644829099"
+	sqlKey              = "Mykey001"
+	sqlModlekey         = "Mykey002"
+	sqlSerKey           = "Mykey003"
+	aboutKey            = "Mykey004"
+	modlePicMedia       = "YREDkCL6wmBhl3cwhtjCFKxxlBy8btTVwu7OygZd5YU"
+	modleNewsMedia      = "YREDkCL6wmBhl3cwhtjCFANV6ULcTfUZX5ZpOnNS7RM"
+	teachAboutPicMedia  = "YREDkCL6wmBhl3cwhtjCFLgghKx774P7iLNHyZ-um84"
+	teachAboutNewsMedia = "YREDkCL6wmBhl3cwhtjCFF8_Tj95EmkbOtabTZOGxrs"
+	zhengtiPicMedia     = "YREDkCL6wmBhl3cwhtjCFPnJ3605TeQB-HvBMQCa3uM"
+	zhengtiNewsMedia    = "YREDkCL6wmBhl3cwhtjCFGDIKsFhr_jzwJbr90HhkY0"
+	sqlPicMedia         = "YREDkCL6wmBhl3cwhtjCFJMvm1nzupbiq12IhstEmWg"
+	sqlNewsMedia        = "YREDkCL6wmBhl3cwhtjCFEodwmDmkeOqhoxPT3Vgot0"
+	sqlSerNewsMia       = "YREDkCL6wmBhl3cwhtjCFL_jY3h4d1lDXkDePVM0KFk"
+	zhengtiPicURL       = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo0xAiaRg1TLh358xmTibKFMVUawp2ialic2G3qmw8xTDvXEEOwHiakbht2UqqnKiaUXn6LtkObnaGIIjo1Q/0?wx_fmt=jpeg"
+	sqlPictureURL       = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPO9z7HMcqJO3t1tOMHYqbtpgEp1icj3lib6nDj89T4GyRHwo1Dzb881dw/0?wx_fmt=jpeg"
+	teachAboutPicURL    = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo0xAiaRg1TLh358xmTibKFMVUjYe0guqWNz3s6fRTo1dUjGIPKXD09OlSRs4v0AOdG40bgh4O5gm1jg/0?wx_fmt=jpeg"
+	modlePictureURL     = "http://mmbiz.qpic.cn/mmbiz_jpg/gLxmiaSTpZo1dJVGVgic7L2VBqzoFxanCPpb5SFr2sxdD1OletbgblLICK9Hwt8lqZFh57x6IZINsJKicu5rRYYlw/0?wx_fmt=jpeg"
+	sqlSerNewsURL       = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000020&idx=1&sn=4001746daa6a881e54795172d49287a2&chksm=7e6e815c4919084a58bf927d1cd9ae890653906c2bfd9e17db63d79c313c0c7819955236ab6f#rd"
+	teachNewsURL        = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000022&idx=1&sn=3692c5a939be07dd62c2db732e234273&chksm=7e6e815e49190848e7fe37b25dae2b3b6649435693ed797cda28c053ecd40797a60071f93c13#rd"
+	zhengtiNewsURL      = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000024&idx=1&sn=7e5e64fdd124a2723b5b68859cc84330&chksm=7e6e815049190846f60911e6d14abeb3faf27453531c797a2ac8cadd40297a285515fa970c0c#rd"
+	sqlNewsURL          = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000015&idx=1&sn=ad97809ea27f19c7653ef70b33df9379&chksm=7e6e814749190851f5c0a34d145473e2655ba50038e631ef76b5f32559dcf4cd684ff3d9ca6b#rd"
+	modleNewsURL        = "http://mp.weixin.qq.com/s?__biz=MzU5NTU4MTIyMw==&mid=100000019&idx=1&sn=7dcedc05d52750da06db22d54fbb7591&chksm=7e6e815b4919084d81a3e663b98b71f04aec96931ec201ac8f75078b258aaa1c18df3e49727f#rd"
 )
 
 func sendOneArticle(w weixin.ResponseWriter, title, picUrl, articleurl, description string) {
@@ -63,7 +72,11 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	wx := writer.GetWeixin()
 	articles := make([]weixin.Article, 2)
 	articles[0].Title = "整体情况"
+	articles[0].PicUrl = zhengtiPicURL
+	articles[0].Url = zhengtiNewsURL
 	articles[1].Title = "教学大纲"
+	articles[1].PicUrl = teachAboutPicURL
+	articles[1].Url = teachNewsURL
 	writer.PostNews(articles)
 	createMenu(wx)
 }
@@ -72,7 +85,7 @@ func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 func createMenu(wx *weixin.Weixin) error {
 	menu := &weixin.Menu{make([]weixin.MenuButton, 3)}
 	menu.Buttons[0].Name = "在线学习"
-	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 3)
+	menu.Buttons[0].SubButtons = make([]weixin.MenuButton, 4)
 	menu.Buttons[0].SubButtons[0].Name = "sql 语句"
 	menu.Buttons[0].SubButtons[0].Key = sqlKey
 	menu.Buttons[0].SubButtons[0].Type = weixin.MenuButtonTypeKey
@@ -82,6 +95,9 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[0].SubButtons[2].Name = "数据库安全性和完整性"
 	menu.Buttons[0].SubButtons[2].Key = sqlSerKey
 	menu.Buttons[0].SubButtons[2].Type = weixin.MenuButtonTypeKey
+	menu.Buttons[0].SubButtons[3].Name = "关于我们"
+	menu.Buttons[0].SubButtons[3].Type = weixin.MenuButtonTypeKey
+	menu.Buttons[0].SubButtons[3].Key = aboutKey
 	menu.Buttons[1].Name = "精彩案例"
 	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
 	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
@@ -103,24 +119,37 @@ func createMenu(wx *weixin.Weixin) error {
 
 //接收点击菜单跳转链接时的事件
 func eventView(writer weixin.ResponseWriter, request *weixin.Request) {
-	articles := make([]weixin.Article, 1)
 	switch request.EventKey {
 	case sqlKey:
+		articles := make([]weixin.Article, 1)
 		articles[0].Title = "sql 语句"
 		articles[0].PicUrl = sqlPictureURL
 		articles[0].Url = sqlNewsURL
+		writer.ReplyNews(articles)
 	case sqlModlekey:
+		articles := make([]weixin.Article, 1)
 		articles[0].Title = "数据库模式"
 		articles[0].PicUrl = modlePictureURL
 		articles[0].Url = modleNewsURL
+		writer.ReplyNews(articles)
 	case sqlSerKey:
+		articles := make([]weixin.Article, 1)
 		articles[0].Title = "数据库安全性和完整性"
 		articles[0].PicUrl = modlePictureURL
 		articles[0].Url = sqlSerNewsURL
+		writer.ReplyNews(articles)
+	case aboutKey:
+		articles := make([]weixin.Article, 2)
+		articles[0].Title = "整体情况"
+		articles[0].PicUrl = zhengtiPicURL
+		articles[0].Url = zhengtiNewsURL
+		articles[1].Title = "教学大纲"
+		articles[1].PicUrl = teachAboutPicURL
+		articles[1].Url = teachNewsURL
+		writer.ReplyNews(articles)
 	default:
 		writer.ReplyOK()
 	}
-	writer.ReplyNews(articles)
 }
 
 func location(writer weixin.ResponseWriter, request *weixin.Request) {
@@ -166,9 +195,9 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeLocation, location)
 	http.Handle("/", mux)
 	//article := make([]msgtypetype.Articles, 1)
-	//article[0].Title = "数据库安全性和完整性"
-	//article[0].ThumbMediaId = modlePicMedia
-	//article[0].Content = "数据库安全性和完整性"
+	//article[0].Title = "整体情况"
+	//article[0].ThumbMediaId = zhengtiPicMedia
+	//article[0].Content = "整体情况"
 	//mediaID, err := AddNews(article)
 	//if err != nil {
 	//	log.Println(err.Error())

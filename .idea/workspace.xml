@@ -17,8 +17,11 @@
       <file leaf-file-name="weixinsrv.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="170" column="7" lean-forward="true" selection-start-line="170" selection-start-column="7" selection-end-line="170" selection-end-column="7" />
+            <state relative-caret-position="418">
+              <caret line="148" column="34" lean-forward="true" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
+              <folding>
+                <element signature="e#15#120#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -274,7 +277,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49924356" weight="0.3305785" />
       <window_info anchor="bottom" id="Run" order="10" sideWeight="0.4977307" weight="0.38181818" />
       <window_info id="Structure" order="1" sideWeight="0.505" side_tool="true" weight="0.18154311" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49848714" visible="true" weight="0.4280992" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49848714" weight="0.4280992" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4977307" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -682,8 +685,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wxsrv/weixinsrv.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="170" column="7" lean-forward="true" selection-start-line="170" selection-start-column="7" selection-end-line="170" selection-end-column="7" />
+        <state relative-caret-position="418">
+          <caret line="148" column="34" lean-forward="true" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
+          <folding>
+            <element signature="e#15#120#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
