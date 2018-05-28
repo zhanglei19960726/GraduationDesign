@@ -206,8 +206,12 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	t := template.New(htmlPath + "admin.html")
-	err := t.Execute(w, nil)
+	t, err := template.ParseFiles(htmlPath + "admin.html")
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	err = t.Execute(w, nil)
 	if err != nil {
 		log.Println(err.Error())
 		return
@@ -236,5 +240,9 @@ func Run() {
 	//}
 	//fmt.Println(mediaID)
 	//fmt.Println(GetAndUpdateDBWxAToken())
-	http.ListenAndServe(":80", nil)
+	err := http.ListenAndServe(":80", nil)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
 }
