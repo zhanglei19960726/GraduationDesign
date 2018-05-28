@@ -201,7 +201,7 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	t := template.New("../html/admin.htmls")
+	t := template.New("../html/admin.html")
 	err := t.Execute(w, nil)
 	if err != nil {
 		log.Println(err.Error())
