@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	htmlPath = os.Getenv("GOPATH") + "/src/GraduationDesign/"
+	htmlPath = os.Getenv("GOPATH") + "/src/GraduationDesign/html/"
 )
 
 const (
@@ -206,7 +206,6 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-
 	t := template.New(htmlPath + "admin.html")
 	err := t.Execute(w, nil)
 	if err != nil {
