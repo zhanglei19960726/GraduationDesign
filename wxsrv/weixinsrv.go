@@ -8,8 +8,13 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
+)
+
+var (
+	htmlPath = os.Getenv("GOPATH") + "/src/GraduationDesign/"
 )
 
 const (
@@ -201,7 +206,8 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	t := template.New("../html/admin.html")
+
+	t := template.New(htmlPath + "admin.html")
 	err := t.Execute(w, nil)
 	if err != nil {
 		log.Println(err.Error())
