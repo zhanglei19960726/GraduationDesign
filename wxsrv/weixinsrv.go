@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/wizjin/weixin"
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -64,7 +65,6 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 	default:
 		if strings.Contains(r.Content, "音乐+") == true {
 			muisc := strings.Split(r.Content, "+")
-			fmt.Println(muisc)
 			info, err := getMuisc(muisc[1])
 			if err != nil {
 				w.ReplyText(err.Error())
@@ -200,6 +200,15 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 	writer.ReplyText(content)
 }
 
+func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	t := template.New("../html/admin")
+	err := t.Execute(w, nil)
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+}
+
 func Run() {
 	mux := weixin.New(token, appID, appSecret)
 	//注册文本消息函数
@@ -211,6 +220,7 @@ func Run() {
 	//注册上报地理位置
 	mux.HandleFunc(weixin.MsgTypeLocation, location)
 	http.Handle("/", mux)
+	http.HandleFunc("/upload", uploadHandler)
 	//article := make([]msgtypetype.Articles, 1)
 	//article[0].Title = "整体情况"
 	//article[0].ThumbMediaId = zhengtiPicMedia
