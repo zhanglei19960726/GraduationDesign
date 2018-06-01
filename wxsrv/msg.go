@@ -9,12 +9,16 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
+	"os"
 	"strings"
+	"time"
 )
 
 const (
 	addNewsUrl    = "https://api.weixin.qq.com/cgi-bin/material/add_news"
 	addPictureUrl = "https://api.weixin.qq.com/cgi-bin/material/add_material"
+	loginExpire   = 123
 )
 
 type Basic struct {
@@ -160,4 +164,88 @@ func AddNews(articles []msgtypetype.Articles) (string, error) {
 	req, _ := json.Marshal(requestBody)
 	id, err := doPost(token, addNewsUrl, req)
 	return id.MediaId, err
+}
+
+//二维码
+type Expire struct {
+	ActionName string     `json:"action_name"`
+	ActionInfo ActionInfo `json:"action_info"`
+}
+
+type ActionInfo struct {
+	SceneId int32 `json:"scene_id"`
+}
+
+type ExpireResponse struct {
+	Ticket        string `json:"ticket"`
+	ExpireSeconds string `json:"expire_seconds"`
+	Url           string `json:"url"`
+}
+
+func getNeverExpire() (ex *ExpireResponse, err error) {
+	expire := Expire{
+		ActionName: "QR_LIMIT_SCENE",
+		ActionInfo: ActionInfo{
+			SceneId: loginExpire,
+		},
+	}
+	data, err := json.Marshal(expire)
+	if err != nil {
+		return ex, err
+	}
+	token, err := GetAndUpdateDBWxAToken()
+	if err != nil {
+		return ex, err
+	}
+	postReq, err := http.NewRequest("POST", "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token="+token, bytes.NewBuffer(data))
+	if err != nil {
+		return ex, err
+	}
+	client := &http.Client{}
+	resp, err := client.Do(postReq)
+	if err != nil {
+		return ex, err
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("读取消息失败")
+		return ex, err
+	}
+	fmt.Println(string(body))
+	ex = &ExpireResponse{}
+	err = json.Unmarshal(body, ex)
+	return ex, nil
+}
+
+func GetNeverExpirePic(filePath string) error {
+	ex, err := getNeverExpire()
+	if err != nil {
+		return err
+	}
+	ex.Ticket, err = url.PathUnescape(ex.Ticket)
+	if err != nil {
+		return err
+	}
+	resp, err := http.Get("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + ex.Ticket)
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+	file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE, 0666)
+	if err != nil {
+		return err
+	}
+	_, err = file.Write(body)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type Note struct {
+	Title       string
+	Description string
+	CreateOn    time.Time
 }

@@ -11,10 +11,11 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 var (
-	htmlPath = os.Getenv("GOPATH") + "/src/GraduationDesign/html/"
+	htmlPath = os.Getenv("GOPATH") + "/src/GraduationDesign/template/"
 )
 
 const (
@@ -119,7 +120,7 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[0].SubButtons[3].Key = aboutKey
 	menu.Buttons[0].SubButtons[4].Name = "在线学习"
 	menu.Buttons[0].SubButtons[4].Type = weixin.MenuButtonTypeUrl
-	menu.Buttons[0].SubButtons[4].Url = "http://www.runoob.com/sql/sql-tutorial.html"
+	menu.Buttons[0].SubButtons[4].Url = "http://www.zhangleispace/upload"
 	menu.Buttons[1].Name = "精彩案例"
 	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
 	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
@@ -205,17 +206,49 @@ func location(writer weixin.ResponseWriter, request *weixin.Request) {
 	writer.ReplyText(content)
 }
 
+var templates map[string]*template.Template
+var noteStore = make(map[string]Note)
+var id = 0
+
+func init() {
+	if templates == nil {
+		templates = make(map[string]*template.Template)
+	}
+
+	templates["index"] = template.Must(template.ParseFiles("template/index.html", "template/base.html"))
+	templates["add"] = template.Must(template.ParseFiles("template/add.html", "template/base.html"))
+}
+
+func renderTemplate(w http.ResponseWriter, name string, template string, viewModel interface{}) {
+	tmpl, ok := templates[name]
+	if !ok {
+		http.Error(w, "The template does not exist.", http.StatusInternalServerError)
+	}
+	err := tmpl.ExecuteTemplate(w, template, viewModel)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+}
+
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(htmlPath + "admin.html")
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
-	err = t.Execute(w, nil)
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
+	renderTemplate(w, "index", "base", noteStore)
+}
+
+func addNote(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "add", "base", nil)
+}
+
+func saveNote(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	title := r.PostFormValue("title")
+	desc := r.PostFormValue("description")
+	note := Note{title, desc, time.Now()}
+	id++
+
+	k := strconv.Itoa(id)
+	noteStore[k] = note
+	http.Redirect(w, r, "/upload", 302)
 }
 
 func Run() {
@@ -230,6 +263,8 @@ func Run() {
 	mux.HandleFunc(weixin.MsgTypeLocation, location)
 	http.Handle("/", mux)
 	http.HandleFunc("/upload", uploadHandler)
+	http.HandleFunc("/notes/add", addNote)
+	http.HandleFunc("/notes/save", saveNote)
 	//article := make([]msgtypetype.Articles, 1)
 	//article[0].Title = "整体情况"
 	//article[0].ThumbMediaId = zhengtiPicMedia
@@ -240,6 +275,11 @@ func Run() {
 	//}
 	//fmt.Println(mediaID)
 	//fmt.Println(GetAndUpdateDBWxAToken())
+	//err := GetNeverExpirePic()
+	//if err != nil {
+	//	log.Println(err.Error())
+	//	return
+	//}
 	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		log.Println(err.Error())
