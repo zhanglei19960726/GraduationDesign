@@ -120,7 +120,7 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[0].SubButtons[3].Key = aboutKey
 	menu.Buttons[0].SubButtons[4].Name = "在线学习"
 	menu.Buttons[0].SubButtons[4].Type = weixin.MenuButtonTypeUrl
-	menu.Buttons[0].SubButtons[4].Url = "http://www.zhangleispace/upload"
+	menu.Buttons[0].SubButtons[4].Url = "http://www.zhangleispace.club/upload"
 	menu.Buttons[1].Name = "精彩案例"
 	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
 	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
