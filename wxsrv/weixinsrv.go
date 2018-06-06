@@ -230,6 +230,7 @@ func Run() {
 	//	log.Println(err.Error())
 	//	return
 	//}
+	SetMedia()
 	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		log.Println(err.Error())

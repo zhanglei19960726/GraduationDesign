@@ -245,18 +245,19 @@ func GetNeverExpirePic(filePath string) error {
 }
 
 //修改永久图文素材
+type Articles struct {
+	Titile           string `json:"titile"`
+	ThumbMediaId     string `json:"thumb_media_id"`
+	Author           string `json:"author"`
+	Digest           string `json:"digest"`
+	ShowCoverPic     int32  `json:"show_cover_pic"`
+	Content          string `json:"content"`
+	ContentSourceUrl string `json:"content_source_url"`
+}
 type Media struct {
-	MediaID  string `json:"media_id"`
-	Index    string `json:"index"`
-	Articles struct {
-		Titile           string `json:"titile"`
-		ThumbMediaId     string `json:"thumb_media_id"`
-		Author           string `json:"author"`
-		Digest           string `json:"digest"`
-		ShowCoverPic     int32  `json:"show_cover_pic"`
-		Content          string `json:"content"`
-		ContentSourceUrl string `json:"content_source_url"`
-	} `json:"articles"`
+	MediaID  string   `json:"media_id"`
+	Index    string   `json:"index"`
+	Articles Articles `json:"articles"`
 }
 
 type ErrMsg struct {
@@ -267,15 +268,9 @@ type ErrMsg struct {
 func SetMedia() {
 	media := Media{
 		MediaID: zhengtiNewsMedia,
-		Articles: struct {
-			Titile           string
-			ThumbMediaId     string
-			Author           string
-			Digest           string
-			ShowCoverPic     int32
-			Content          string
-			ContentSourceUrl string
-		}{Titile: "软件推荐"},
+		Articles: Articles{
+			Titile: "软件推荐",
+		},
 	}
 	token, err := GetAndUpdateDBWxAToken()
 	if err != nil {
