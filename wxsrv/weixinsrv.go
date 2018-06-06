@@ -19,6 +19,8 @@ const (
 	sqlModlekey         = "Mykey002"
 	sqlSerKey           = "Mykey003"
 	aboutKey            = "Mykey004"
+	knowlage            = "Mykey005"
+	soft                = "Mykey006"
 	modlePicMedia       = "YREDkCL6wmBhl3cwhtjCFKxxlBy8btTVwu7OygZd5YU"
 	modleNewsMedia      = "YREDkCL6wmBhl3cwhtjCFANV6ULcTfUZX5ZpOnNS7RM"
 	teachAboutPicMedia  = "YREDkCL6wmBhl3cwhtjCFLgghKx774P7iLNHyZ-um84"
@@ -114,17 +116,14 @@ func createMenu(wx *weixin.Weixin) error {
 	menu.Buttons[0].SubButtons[4].Name = "在线学习"
 	menu.Buttons[0].SubButtons[4].Type = weixin.MenuButtonTypeUrl
 	menu.Buttons[0].SubButtons[4].Url = "http://www.zhangleispace.club/upload"
-	menu.Buttons[1].Name = "精彩案例"
-	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 2)
+	menu.Buttons[1].Name = "涨姿势"
+	menu.Buttons[1].SubButtons = make([]weixin.MenuButton, 1)
 	menu.Buttons[1].SubButtons[0].Name = "mysql教程"
-	menu.Buttons[1].SubButtons[0].Type = weixin.MenuButtonTypeUrl
-	menu.Buttons[1].SubButtons[0].Url = "http://www.runoob.com/mysql/mysql-tutorial.html"
-	menu.Buttons[1].SubButtons[1].Name = "sql server 教程"
-	menu.Buttons[1].SubButtons[1].Type = weixin.MenuButtonTypeUrl
-	menu.Buttons[1].SubButtons[1].Url = "http://www.runoob.com/sql/sql-tutorial.html"
-	menu.Buttons[2].Name = "放松一刻"
-	menu.Buttons[2].Type = weixin.MenuButtonTypeUrl
-	menu.Buttons[2].Url = "http://music.163.com/"
+	menu.Buttons[1].SubButtons[0].Type = weixin.MenuButtonTypeKey
+	menu.Buttons[1].SubButtons[0].Key = knowlage
+	menu.Buttons[2].Name = "软件推荐"
+	menu.Buttons[2].Type = weixin.MenuButtonTypeKey
+	menu.Buttons[2].Key = soft
 	err := wx.CreateMenu(menu)
 	if err != nil {
 		fmt.Println(err.Error())

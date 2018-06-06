@@ -12,7 +12,6 @@ import (
 	"net/url"
 	"os"
 	"strings"
-	"time"
 )
 
 const (
@@ -218,6 +217,7 @@ func getNeverExpire() (ex *ExpireResponse, err error) {
 	return ex, nil
 }
 
+//获取永久二维码
 func GetNeverExpirePic(filePath string) error {
 	ex, err := getNeverExpire()
 	if err != nil {
@@ -244,8 +244,65 @@ func GetNeverExpirePic(filePath string) error {
 	return nil
 }
 
-type Note struct {
-	Title       string
-	Description string
-	CreateOn    time.Time
+//修改永久图文素材
+type Media struct {
+	MediaID  string `json:"media_id"`
+	Index    string `json:"index"`
+	Articles struct {
+		Titile           string `json:"titile"`
+		ThumbMediaId     string `json:"thumb_media_id"`
+		Author           string `json:"author"`
+		Digest           string `json:"digest"`
+		ShowCoverPic     int32  `json:"show_cover_pic"`
+		Content          string `json:"content"`
+		ContentSourceUrl string `json:"content_source_url"`
+	} `json:"articles"`
+}
+
+type ErrMsg struct {
+	Errcode string `json:"errcode"`
+	Errmsg  string `json:"errmsg"`
+}
+
+func SetMedia() {
+	media := Media{
+		MediaID: zhengtiNewsMedia,
+		Articles: struct {
+			Titile           string
+			ThumbMediaId     string
+			Author           string
+			Digest           string
+			ShowCoverPic     int32
+			Content          string
+			ContentSourceUrl string
+		}{Titile: "软件推荐"},
+	}
+	token, err := GetAndUpdateDBWxAToken()
+	if err != nil {
+		log.Println("get token error:", err.Error())
+		return
+	}
+	data, err := json.Marshal(media)
+	if err != nil {
+		log.Println("json marshal error:", err.Error())
+		return
+	}
+	resq, err := http.NewRequest("POST", "https://api.weixin.qq.com/cgi-bin/material/update_news?access_token="+token, bytes.NewBuffer(data))
+	if err != nil {
+		log.Println("http post error:", err.Error())
+		return
+	}
+	client := &http.Client{}
+	resp, err := client.Do(resq)
+	if err != nil {
+		log.Println("client Do error:", err.Error())
+		return
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	if err != nil {
+		log.Println("read body error:", err.Error())
+		return
+	}
+	fmt.Println(string(body))
 }

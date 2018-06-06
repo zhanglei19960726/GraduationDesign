@@ -6,7 +6,6 @@ import (
 )
 
 var templates map[string]*template.Template
-var noteStore = make(map[string]Note)
 
 //
 //func init() {
@@ -35,8 +34,5 @@ func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	noteStore["zhanglei"] = Note{
-		Title: "zhanglei",
-	}
-	renderTemplate(w, "index", noteStore)
+	renderTemplate(w, "index", nil)
 }
