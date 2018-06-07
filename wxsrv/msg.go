@@ -284,10 +284,7 @@ func SetMedia() {
 	}
 	fmt.Println(token)
 	data, err := json.Marshal(media)
-	fmt.Println(string(data
-
-
-	))
+	fmt.Println(string(data))
 	//if err != nil {
 	//	log.Println("json marshal error:", err.Error())
 	//	return
