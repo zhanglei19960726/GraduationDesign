@@ -26,7 +26,7 @@ const (
 	teachAboutPicMedia  = "YREDkCL6wmBhl3cwhtjCFLgghKx774P7iLNHyZ-um84"
 	teachAboutNewsMedia = "YREDkCL6wmBhl3cwhtjCFF8_Tj95EmkbOtabTZOGxrs"
 	zhengtiPicMedia     = "YREDkCL6wmBhl3cwhtjCFPnJ3605TeQB-HvBMQCa3uM"
-	zhengtiNewsMedia    = "YREDkCL6wmBhl3cwhtjCFGDIKsFhr_jzwJbr90HhkY0"
+	zhengtiNewsMedia    = "YREDkCL6wmBhl3cwhtjCFPXFuVC4rW0jdxkFi0bavmo"
 	sqlPicMedia         = "YREDkCL6wmBhl3cwhtjCFJMvm1nzupbiq12IhstEmWg"
 	sqlNewsMedia        = "YREDkCL6wmBhl3cwhtjCFEodwmDmkeOqhoxPT3Vgot0"
 	sqlSerNewsMia       = "YREDkCL6wmBhl3cwhtjCFL_jY3h4d1lDXkDePVM0KFk"
@@ -85,14 +85,15 @@ func echo(w weixin.ResponseWriter, r *weixin.Request) {
 //关注事件的处理函数
 func subscribe(writer weixin.ResponseWriter, request *weixin.Request) {
 	wx := writer.GetWeixin()
-	articles := make([]weixin.Article, 2)
-	articles[0].Title = "整体情况"
-	articles[0].PicUrl = zhengtiPicURL
-	articles[0].Url = zhengtiNewsURL
-	articles[1].Title = "教学大纲"
-	articles[1].PicUrl = teachAboutPicURL
-	articles[1].Url = teachNewsURL
-	writer.PostNews(articles)
+	//articles := make([]weixin.Article, 2)
+	//articles[0].Title = "整体情况"
+	//articles[0].PicUrl = zhengtiPicURL
+	//articles[0].Url = zhengtiNewsURL
+	//articles[1].Title = "教学大纲"
+	//articles[1].PicUrl = teachAboutPicURL
+	//articles[1].Url = teachNewsURL
+	//writer.PostNews(articles)
+	writer.ReplyText("欢迎关注")
 	createMenu(wx)
 }
 
@@ -230,7 +231,6 @@ func Run() {
 	//	log.Println(err.Error())
 	//	return
 	//}
-	SetMedia()
 	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		log.Println(err.Error())

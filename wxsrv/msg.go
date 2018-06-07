@@ -256,7 +256,7 @@ type Articles struct {
 }
 type Media struct {
 	MediaID  string   `json:"media_id"`
-	Index    string   `json:"index"`
+	Index    int32    `json:"index"`
 	Articles Articles `json:"articles"`
 }
 
@@ -268,8 +268,13 @@ type ErrMsg struct {
 func SetMedia() {
 	media := Media{
 		MediaID: zhengtiNewsMedia,
+		Index:   0,
 		Articles: Articles{
-			Titile: "软件推荐",
+			Titile:       "软件推荐",
+			ThumbMediaId: zhengtiPicMedia,
+			Content:      "软件推荐",
+			Digest:       "",
+			ShowCoverPic: 0,
 		},
 	}
 	token, err := GetAndUpdateDBWxAToken()
@@ -277,12 +282,62 @@ func SetMedia() {
 		log.Println("get token error:", err.Error())
 		return
 	}
+	fmt.Println(token)
+	data, err := json.Marshal(media)
+	fmt.Println(string(data
+
+
+	))
+	//if err != nil {
+	//	log.Println("json marshal error:", err.Error())
+	//	return
+	//}
+	//resq, err := http.NewRequest("POST", "https://api.weixin.qq.com/cgi-bin/material/update_news?access_token="+token, bytes.NewBuffer(data))
+	//if err != nil {
+	//	log.Println("http post error:", err.Error())
+	//	return
+	//}
+	//client := &http.Client{}
+	//resp, err := client.Do(resq)
+	//if err != nil {
+	//	log.Println("client Do error:", err.Error())
+	//	return
+	//}
+	//body, err := ioutil.ReadAll(resp.Body)
+	//defer resp.Body.Close()
+	//if err != nil {
+	//	log.Println("read body error:", err.Error())
+	//	return
+	//}
+	//fmt.Println(string(body))
+}
+
+//获取素材列表
+type MediaList struct {
+	Type   string `json:"type"`
+	Offset int32  `json:"offset"`
+	Count  int32  `json:"count"`
+}
+
+func GetMediaList() {
+	media := MediaList{
+		Type:   "news",
+		Offset: 0,
+		Count:  20,
+	}
+	token, err := GetAndUpdateDBWxAToken()
+	if err != nil {
+		log.Println("get token error:", err.Error())
+		return
+	}
+	fmt.Println(token)
 	data, err := json.Marshal(media)
 	if err != nil {
 		log.Println("json marshal error:", err.Error())
 		return
 	}
-	resq, err := http.NewRequest("POST", "https://api.weixin.qq.com/cgi-bin/material/update_news?access_token="+token, bytes.NewBuffer(data))
+	fmt.Println(string(data))
+	resq, err := http.NewRequest("POST", "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token="+token, bytes.NewBuffer(data))
 	if err != nil {
 		log.Println("http post error:", err.Error())
 		return
