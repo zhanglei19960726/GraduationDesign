@@ -1,7 +1,12 @@
 package wxsrv
 
 import (
+	"bytes"
+	"encoding/json"
+	"github.com/arstd/weixin"
 	"html/template"
+	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -22,6 +27,8 @@ func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
 	}
 
 	templates["index"] = template.Must(template.ParseFiles("resource/template/index.html"))
+	templates["first"] = template.Must(template.ParseFiles("resource/template/first.html"))
+	templates["ho"] = template.Must(template.ParseFiles("resource/template/navigation.html"))
 	tmpl, ok := templates[name]
 	if !ok {
 		http.Error(w, "The template does not exist.", http.StatusInternalServerError)
@@ -35,4 +42,78 @@ func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "index", nil)
+}
+
+func reHandler(w http.ResponseWriter, r *http.Request) {
+	info, err := getUserInfo()
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	renderTemplate(w, "first", info)
+}
+
+var (
+	Note  string
+	appid = "wxf4b1e3a9d5753984"
+)
+
+func hoHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "ho", Note)
+}
+
+func SendTemplateMsg(msg *weixin.TemplateMsg) error {
+	token, err := GetAndUpdateDBWxAToken()
+	if err != nil {
+		return err
+	}
+	data, _ := json.Marshal(msg)
+	postReq, err := http.NewRequest("POST", "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="+token, bytes.NewBuffer(data))
+	if err != nil {
+		return err
+	}
+	client := &http.Client{}
+	resp, err := client.Do(postReq)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+	_, err = ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("读取消息失败")
+		return err
+	}
+	return nil
+}
+
+func submit(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	title := r.PostFormValue("title")
+	desc := r.PostFormValue("des")
+	Note = "提交成功"
+	http.Redirect(w, r, "/ho", 302)
+	list, err := getUserList()
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	for _, v := range list.Data.Openid {
+		msg := &weixin.TemplateMsg{
+			ToUser:     v,
+			TemplateId: "ucQWmyKD2xd6FULnqmiBqYdbeR-xTNMBfyw4CSOSJTQ",
+			Data: weixin.TemplateData{
+				Keyword1: weixin.KeywordPair{
+					Value: title,
+				},
+				Keyword2: weixin.KeywordPair{
+					Value: desc,
+				},
+			},
+		}
+		err := SendTemplateMsg(msg)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+	}
 }

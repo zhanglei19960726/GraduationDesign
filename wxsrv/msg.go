@@ -353,3 +353,79 @@ func GetMediaList() {
 	}
 	fmt.Println(string(body))
 }
+
+type UserList struct {
+	Total      int    `json:"total"`
+	Count      int    `json:"count"`
+	Data       OpenID `json:"data"`
+	NextOpenID string `json:"next_openid"`
+	Err        ErrMsg
+}
+
+type OpenID struct {
+	Openid []string `json:"openid"`
+}
+
+type UserInfo struct {
+	NickName      string `json:"nickname"`
+	HeadImgUrl    string `json:"headimgurl"`
+	SubscribeTime int32  `json:"subscribe_time"`
+}
+
+func getUserList() (userList *UserList, err error) {
+	token, err := GetAndUpdateDBWxAToken()
+	if err != nil {
+		log.Println("get token error:", err.Error())
+		return nil, errors.New(err.Error())
+	}
+	resp, err := http.Get("https://api.weixin.qq.com/cgi-bin/user/get?access_token=" + token)
+	if err != nil {
+		return nil, errors.New(err.Error())
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, errors.New(err.Error())
+	}
+	userList = &UserList{}
+	err = json.Unmarshal(body, userList)
+	if err != nil {
+		return nil, errors.New(err.Error())
+	}
+	if userList.Err.Errmsg != "" {
+		return nil, errors.New(userList.Err.Errmsg)
+	}
+	return
+}
+
+func getUserInfo() (userInfo []UserInfo, err error) {
+	list, err := getUserList()
+	if err != nil {
+		return nil, errors.New(err.Error())
+	}
+	info := &UserInfo{}
+	token, err := GetAndUpdateDBWxAToken()
+	if err != nil {
+		return nil, errors.New(err.Error())
+	}
+	for _, v := range list.Data.Openid {
+		resp, err := http.Get("https://api.weixin.qq.com/cgi-bin/user/info?access_token=" +
+			token + "&openid=" + v)
+		if err != nil {
+			return nil, errors.New(err.Error())
+		}
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			resp.Body.Close()
+			return nil, errors.New(err.Error())
+		}
+		err = json.Unmarshal(body, info)
+		if err != nil {
+			resp.Body.Close()
+			return nil, errors.New(err.Error())
+		}
+		userInfo = append(userInfo, *info)
+		resp.Body.Close()
+	}
+	return
+}
