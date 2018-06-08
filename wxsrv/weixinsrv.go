@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"os"
 )
 
 const (
@@ -216,8 +215,7 @@ func Run() {
 	//注册上报地理位置
 	mux.HandleFunc(weixin.MsgTypeLocation, location)
 	http.Handle("/", mux)
-	goPath := os.Getenv("GOPATH")
-	http.Handle(goPath+"/GraduationDesgin/resource/", http.StripPrefix("/GraduationDesgin/resource/", http.FileServer(http.Dir("GraduationDesgin/resource"))))
+	http.Handle("/resource/", http.StripPrefix("/resource/", http.FileServer(http.Dir("resource"))))
 	http.HandleFunc("/upload", uploadHandler)
 	http.HandleFunc("/re", reHandler)
 	http.HandleFunc("/ho", hoHandler)
