@@ -56,8 +56,18 @@
                 <li><a href="javascript:funcShow('http://www.zhangleispace.club/ka')">上传课件</a></li>
             </ul>
         </div>
-        <div id="div1" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-           <h1>数据库微信公众账号后台管理</h1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <form action="http://www.zhangleispace.club/na/sumbit" method="post">
+                <p>通告题目：<br>
+                    <input type="text" name="title">
+                </p>
+                <p> 通告内容:<br>
+                    <textarea rows="4" cols="50" name="des"></textarea>
+                </p>
+                <p>
+                    <input type="submit" value="提交">{{.}}
+                </p>
+            </form>
         </div>
     </div>
 </div>

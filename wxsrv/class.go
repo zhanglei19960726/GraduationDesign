@@ -12,16 +12,7 @@ import (
 
 var templates map[string]*template.Template
 
-//
-//func init() {
-//	if templates == nil {
-//		templates = make(map[string]*template.Template)
-//	}
-//
-//	templates["index"] = template.Must(template.ParseFiles("template/index.html"))
-//}
-
-func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
+func init() {
 	if templates == nil {
 		templates = make(map[string]*template.Template)
 	}
@@ -29,6 +20,10 @@ func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
 	templates["index"] = template.Must(template.ParseFiles("resource/template/index.html"))
 	templates["first"] = template.Must(template.ParseFiles("resource/template/first.html"))
 	templates["ho"] = template.Must(template.ParseFiles("resource/template/navigation.html"))
+	templates["na"] = template.Must(template.ParseFiles("resource/template/uploadtonggao.html"))
+}
+
+func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
 	tmpl, ok := templates[name]
 	if !ok {
 		http.Error(w, "The template does not exist.", http.StatusInternalServerError)
@@ -54,8 +49,7 @@ func reHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 var (
-	Note  string
-	appid = "wxf4b1e3a9d5753984"
+	Note string
 )
 
 func hoHandler(w http.ResponseWriter, r *http.Request) {
@@ -101,6 +95,42 @@ func submit(w http.ResponseWriter, r *http.Request) {
 		msg := &weixin.TemplateMsg{
 			ToUser:     v,
 			TemplateId: "ucQWmyKD2xd6FULnqmiBqYdbeR-xTNMBfyw4CSOSJTQ",
+			Data: weixin.TemplateData{
+				Keyword1: weixin.KeywordPair{
+					Value: title,
+				},
+				Keyword2: weixin.KeywordPair{
+					Value: desc,
+				},
+			},
+		}
+		err := SendTemplateMsg(msg)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+	}
+}
+
+func naHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "na", Note)
+}
+
+func naSubmitHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	title := r.PostFormValue("title")
+	desc := r.PostFormValue("des")
+	Note = "提交成功"
+	http.Redirect(w, r, "/ho", 302)
+	list, err := getUserList()
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	for _, v := range list.Data.Openid {
+		msg := &weixin.TemplateMsg{
+			ToUser:     v,
+			TemplateId: "IZZwdJ8MJoFd4Tw9FXEV6WZHU3smdAq2pZkDtjRt9uM",
 			Data: weixin.TemplateData{
 				Keyword1: weixin.KeywordPair{
 					Value: title,
