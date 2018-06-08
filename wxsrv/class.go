@@ -121,7 +121,7 @@ func naSubmitHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.PostFormValue("title")
 	desc := r.PostFormValue("des")
 	Note = "提交成功"
-	http.Redirect(w, r, "/ho", 302)
+	http.Redirect(w, r, "/na", 302)
 	list, err := getUserList()
 	if err != nil {
 		log.Println(err.Error())
