@@ -86,6 +86,7 @@ func submit(w http.ResponseWriter, r *http.Request) {
 	desc := r.PostFormValue("des")
 	Note = "提交成功"
 	http.Redirect(w, r, "/ho", 302)
+	Note = ""
 	list, err := getUserList()
 	if err != nil {
 		log.Println(err.Error())
