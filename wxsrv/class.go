@@ -29,7 +29,7 @@ func init() {
 	templates["getHo"] = template.Must(template.ParseFiles("resource/template/getHo.html"))
 	templates["getNa"] = template.Must(template.ParseFiles("resource/template/getNa.html"))
 	templates["getKe"] = template.Must(template.ParseFiles("resource/template/getKe.html"))
-	templates["Ke"] = template.Must(template.ParseFiles("resource/template/Addkejian.html"))
+	templates["ke"] = template.Must(template.ParseFiles("resource/template/Addkejian.html"))
 }
 
 func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
