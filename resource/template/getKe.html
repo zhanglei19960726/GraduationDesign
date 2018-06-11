@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/resource/favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/resource/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/resource/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/resource/template/dashboard.css" rel="stylesheet">
+    <script src="/resource/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <script type="text/javascript">
+        function funcShow(id) {
+            window.location.href = id;//需要跳转的地址
+        }
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="javascript:funcShow('http://www.zhangleispace.club/re')">成员管理</a></li>
+                <li><a href="javascript:funcShow('http://www.zhangleispace.club/ho')">发布作业</a></li>
+                <li><a href="javascript:funcShow('http://www.zhangleispace.club/na')">发布通告</a></li>
+                <li><a href="javascript:funcShow('http://www.zhangleispace.club/ka')">上传课件</a></li>
+                <li><a href="javascript:funcShow('http://www.zhangleispace.club/getHo')">查看作业</a></li>
+                <li><a href="javascript:funcShow('http://www.zhangleispace.club/getNa')">查看通告</a></li>
+                <li><a href="javascript:funcShow('http://www.zhangleispace.club/getke')">查看课件</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">成员</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>发布时间</th>
+                    </tr>
+                    </thead>
+                {{range $value := .}}
+                    <tbody>
+                    <tr>
+                        <td>{{$value.Title}}</td>
+                        <td>{{$value.Content}}</td>
+                        <td>{{$value.CreatTime}}</td>
+                    </tr>
+                    </tbody>
+                {{end}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/resource/assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="/resource/dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="/resource/assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/resource/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

@@ -24,6 +24,8 @@ func init() {
 	templates["ho"] = template.Must(template.ParseFiles("resource/template/navigation.html"))
 	templates["na"] = template.Must(template.ParseFiles("resource/template/uploadtonggao.html"))
 	templates["getHo"] = template.Must(template.ParseFiles("resource/template/getHo.html"))
+	templates["getNa"] = template.Must(template.ParseFiles("resource/template/getNa.html"))
+	templates["getKe"] = template.Must(template.ParseFiles("resource/template/getKe.html"))
 }
 
 func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
@@ -160,4 +162,14 @@ func naSubmitHandler(w http.ResponseWriter, r *http.Request) {
 func getHoHandler(w http.ResponseWriter, r *http.Request) {
 	home, _ := db.GetHome()
 	renderTemplate(w, "getHo", home)
+}
+
+func getNaHandler(w http.ResponseWriter, r *http.Request) {
+	na, _ := db.GetNa()
+	renderTemplate(w, "getNa", na)
+}
+
+func getKeHandler(w http.ResponseWriter, r *http.Request) {
+	ke, _ := db.GetKe()
+	renderTemplate(w, "getKe", ke)
 }
