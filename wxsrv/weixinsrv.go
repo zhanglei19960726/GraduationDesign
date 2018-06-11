@@ -219,6 +219,7 @@ func Run() {
 	http.HandleFunc("/ho/sumbit", submit)
 	http.HandleFunc("/na", naHandler)
 	http.HandleFunc("/na/sumbit", naSubmitHandler)
+	http.HandleFunc("/getHo", getHoHandler)
 	//http.HandleFunc("/notes/add", addNote)
 	//http.HandleFunc("/notes/save", saveNote)
 	//http.HandleFunc("/notes/edit/{id}", editNote)

@@ -88,7 +88,7 @@ func GetKe() (ke []Ke, err error) {
 }
 
 func AddKe(creatTime int64, title, content string) error {
-	_, err := db.Exec("INSERT  INTO home(creattime,title,content) VALUE (?,?,?)", creatTime, title, content)
+	_, err := db.Exec("INSERT  INTO ke(creattime,title,content) VALUE (?,?,?)", creatTime, title, content)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -115,7 +115,7 @@ func GetNa() (na []NaDB, err error) {
 }
 
 func AddNa(creatTime int64, title, content string) error {
-	_, err := db.Exec("INSERT  INTO home(creattime,title,content) VALUE (?,?,?)", creatTime, title, content)
+	_, err := db.Exec("INSERT  INTO na(creattime,title,content) VALUE (?,?,?)", creatTime, title, content)
 	if err != nil {
 		panic(err.Error())
 	}
