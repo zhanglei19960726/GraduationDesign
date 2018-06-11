@@ -59,8 +59,18 @@
                 <li><a href="javascript:funcShow('http://www.zhangleispace.club/getke')">查看学习资料</a></li>
             </ul>
         </div>
-        <div id="div1" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-           <h1>数据库微信公众账号后台管理</h1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <form action="http://www.zhangleispace.club/ke/sumbit" method="post">
+                <p>学习资料题目：<br>
+                    <input type="text" name="title">
+                </p>
+                <p> 学习资料内容:<br>
+                    <textarea rows="4" cols="50" name="des"></textarea>
+                </p>
+                <p>
+                    <input type="file" value="提交">{{.}}
+                </p>
+            </form>
         </div>
     </div>
 </div>

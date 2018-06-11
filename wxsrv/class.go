@@ -4,11 +4,14 @@ import (
 	"GraduationDesign/db"
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/arstd/weixin"
 	"html/template"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -26,6 +29,7 @@ func init() {
 	templates["getHo"] = template.Must(template.ParseFiles("resource/template/getHo.html"))
 	templates["getNa"] = template.Must(template.ParseFiles("resource/template/getNa.html"))
 	templates["getKe"] = template.Must(template.ParseFiles("resource/template/getKe.html"))
+	templates["Ke"] = template.Must(template.ParseFiles("resource/template/Addkejian.html"))
 }
 
 func renderTemplate(w http.ResponseWriter, name string, viewModel interface{}) {
@@ -172,4 +176,31 @@ func getNaHandler(w http.ResponseWriter, r *http.Request) {
 func getKeHandler(w http.ResponseWriter, r *http.Request) {
 	ke, _ := db.GetKe()
 	renderTemplate(w, "getKe", ke)
+}
+
+func keHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "ke", nil)
+}
+
+func keSubmit(w http.ResponseWriter, r *http.Request) {
+	file, head, err := r.FormFile("file")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer file.Close()
+	//创建文件
+	fW, err := os.Create(head.Filename)
+	if err != nil {
+		fmt.Println("文件创建失败")
+		return
+	}
+	defer fW.Close()
+	_, err = io.Copy(fW, file)
+	if err != nil {
+		fmt.Println("文件保存失败")
+		return
+	}
+	//io.WriteString(w, head.Filename+" 保存成功")
+	http.Redirect(w, r, "/ke", http.StatusFound)
 }
