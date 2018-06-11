@@ -183,6 +183,8 @@ func keHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func keSubmit(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	title := r.PostFormValue("title")
 	file, head, err := r.FormFile("file")
 	if err != nil {
 		fmt.Println(err)
@@ -201,6 +203,30 @@ func keSubmit(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("文件保存失败")
 		return
 	}
-	//io.WriteString(w, head.Filename+" 保存成功")
+	list, err := getUserList()
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	for _, v := range list.Data.Openid {
+		msg := &weixin.TemplateMsg{
+			ToUser:     v,
+			TemplateId: "ISB8o5BSaRlFXEAC0drM6Rs5vxDqy0V97DrAz2Fvisc",
+			Data: weixin.TemplateData{
+				Keyword1: weixin.KeywordPair{
+					Value: title,
+				},
+				Keyword2: weixin.KeywordPair{
+					Value: head.Filename,
+				},
+			},
+		}
+		err := SendTemplateMsg(msg)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+	}
+	db.AddKe(time.Now().Unix(), title, head.Filename)
 	http.Redirect(w, r, "/ka", http.StatusFound)
 }
