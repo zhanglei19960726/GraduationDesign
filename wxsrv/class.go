@@ -1,6 +1,7 @@
 package wxsrv
 
 import (
+	"GraduationDesign/db"
 	"bytes"
 	"encoding/json"
 	"github.com/arstd/weixin"
@@ -8,6 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
 var templates map[string]*template.Template
@@ -111,6 +113,10 @@ func submit(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+	err = db.AddHome(time.Now().Unix(), title, desc)
+	if err != nil {
+		log.Println(err.Error())
+	}
 }
 
 func naHandler(w http.ResponseWriter, r *http.Request) {
@@ -147,4 +153,5 @@ func naSubmitHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+	db.AddNa(time.Now().Unix(), title, desc)
 }
