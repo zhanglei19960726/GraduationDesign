@@ -216,7 +216,7 @@ func Run() {
 	http.HandleFunc("/upload", uploadHandler)
 	http.HandleFunc("/re", reHandler)
 	http.HandleFunc("/ho", hoHandler)
-	http.HandleFunc("/ke", keHandler)
+	http.HandleFunc("/ka", keHandler)
 	http.HandleFunc("/ke/sumbit", keSubmit)
 	http.HandleFunc("/ho/sumbit", submit)
 	http.HandleFunc("/na", naHandler)

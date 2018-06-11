@@ -202,5 +202,5 @@ func keSubmit(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//io.WriteString(w, head.Filename+" 保存成功")
-	http.Redirect(w, r, "/ke", http.StatusFound)
+	http.Redirect(w, r, "/ka", http.StatusFound)
 }
