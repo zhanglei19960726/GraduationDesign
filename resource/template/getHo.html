@@ -65,17 +65,17 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>头像</th>
-                        <th>昵称</th>
-                        <th>关注时间</th>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>发布时间</th>
                     </tr>
                     </thead>
                 {{range $value := .}}
                     <tbody>
                     <tr>
-                        <td><img src='{{$value.HeadImgUrl}}' style="width: auto;height: 40px"></td>
-                        <td>{{$value.NickName}}</td>
-                        <td>{{$value.SubscribeTime}}</td>
+                        <td><img src='{{$value.Title}}' style="width: auto;height: 40px"></td>
+                        <td>{{$value.Content}}</td>
+                        <td>{{$value.CreatTime}}</td>
                     </tr>
                     </tbody>
                 {{end}}
